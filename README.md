@@ -15,5 +15,5 @@
 Юлія Вакульчук (developer)
 Наталія Материнська (developer)
 Вікторія Дон (developer)
-Константин (developer)
+Константин Божій (developer)
 Віталій Кожа (developer)
