@@ -1,14 +1,16 @@
-#Команда `Hell's-Kitchen`
+# Команда `Hell's-Kitchen`
 
-##Макет:
+## Макет:
+
 https://www.figma.com/file/DfLTK1bjDwKKxkEJ1FTyFF/TastyTreats?node-id=0%3A1&t=o1FdgCAP1yd69DBN-1
 
-##ТЗ:
+## ТЗ:
+
 https://docs.google.com/spreadsheets/d/18AiL3Qi3EPQ-0-WW5roQ5va287xnO_d1721FsaQZO6c/edit#gid=0
 
-##Готовий сайт: https://va7ul.github.io/hells-kitchen/
+## Готовий сайт: https://va7ul.github.io/hells-kitchen/
 
-###Наша команда:
+### Наша команда:
 
 - Василь Подвірний (team-lead)
 - Ірина Толкачова (scrum-master)
