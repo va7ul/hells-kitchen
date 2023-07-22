@@ -1,7 +1,7 @@
 import './js/hero';
 import './js/header';
-import './js/popular_recipes';
 import './js/all_categories';
+import './js/popular_recipes';
 import './js/card_template';
 import './js/search_filters';
 import './js/all_recipes';
