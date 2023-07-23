@@ -1,4 +1,4 @@
-import { getAllCategories, getRecipes } from './api';
+import { getAllCategories, resetAllFiters } from './api';
 
 const allCategoriesEl = document.querySelector('.js-all-categories');
 const categoriesListEl = document.querySelector('.js-categories');
@@ -24,7 +24,7 @@ getAllCategories()
 
 categoriesContainerEl.addEventListener('click', onCategory);
 
-function onCategory(evt) {
+async function onCategory(evt) {
   if (evt.target.nodeName !== 'BUTTON') {
     return;
   }
@@ -35,8 +35,15 @@ function onCategory(evt) {
   const activeCategoryEl = document.querySelector('.active-category');
   activeCategoryEl.classList.remove('active-category');
   selectCategory.classList.add('active-category');
+}
 
-  getRecipes()
-    .then(recipe => console.log(recipe))
-    .catch(error => console.log(error));
+allCategoriesEl.addEventListener('click', onAllCategory);
+
+async function onAllCategory(evt) {
+  let selectCategory = evt.target;
+  resetAllFiters();
+
+  const activeCategoryEl = document.querySelector('.active-category');
+  activeCategoryEl.classList.remove('active-category');
+  selectCategory.classList.add('active-category');
 }
