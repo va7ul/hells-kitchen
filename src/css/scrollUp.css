@@ -1,6 +1,6 @@
 .btn-up {
     position: fixed;
-    background: linear-gradient(141.22deg, #9BB537 9.4%, #33f81988 91.91%);
+    background: linear-gradient(141.22deg, #9BB537 9.4%, rgba(51, 248, 25, 0.533) 91.91%);
     right: 10px;
     bottom: 20px;
     border-radius: 74px;
