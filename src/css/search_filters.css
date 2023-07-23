@@ -4,7 +4,7 @@
     --ss-font-color: #4d4d4d;
     --ss-font-placeholder-color: #8d8d8d;
     --ss-disabled-color: #dcdee2;
-    --ss-border-color: #dcdee2;
+    --ss-border-color: #dbdde1;
     --ss-highlight-color: #fffb8c;
     --ss-success-color: #00b755;
     --ss-error-color: #dc3545;
@@ -55,7 +55,7 @@
     width: 100%;
     padding: var(--ss-spacing-s);
     cursor: pointer;
-    border: 1px solid var(--ss-border-color);
+    border: 1px solid rgba(5, 5, 5, 0.20);
     border-radius: var(--ss-border-radius);
     background-color: var(--light-theme-fill);
     outline: 0;
@@ -480,39 +480,41 @@
 
 /*# sourceMappingURL=slimselect.css.map */
 
-/* filter-css */
+
+/* ------------------------- МОИ filter-css  --------------------------------*/
+
+
+.filter-form-home{
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.input-box{
+    width: 335px;
+}
+
+.time-box, .area-box, .ingr-box {
+    display: inline-block;
+}
+
+.filter-text-home{
+    display: block;
+    font-weight: 400;
+    font-size: 12px;
+    opacity: 0.5;
+    margin-bottom: 8px;
+}
 
 .filter-input {
     width: 100%;
     height: 46px;
+    box-sizing: border-box;
+    background-color: var(--light-theme-fill);
 }
 
-@media screen and (min-width: 375px) {
-
-
-    .filter-form-home {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        gap: 14px;
-
-    }
-
-    .filter-text-home {
-        font-size: 12px;
-        opacity: 0.5;
-        /* margin-bottom: 8px; */
-    }
-    
-    .filter-input {
-        width: 335px;
-        height: 46px;
-    }
-
-   
-
     .filter-time {
-        width: 158px;
+        width: 160px;
         height: 46px;
     }
 
@@ -524,7 +526,7 @@
     }
    
     .filter-area{
-        width: 158px;
+        width: 160px;
         height: 46px;
     }
 
@@ -537,17 +539,16 @@
         margin-top: 14px;
     }
 
-    .time{
-        width: 160px;
-        height: 124px;
-        padding: 14px 95px 14px 18px;
-    }
-}
-
-
-
 
 @media screen and (min-width: 768px) {
+
+    .filter-form-home {
+        gap: 16px;
+    }
+
+    .input-box {
+    width: 278px;
+    }
 
     .filter-text-home {
         font-size: 14px;
@@ -571,11 +572,24 @@
 
 @media screen and (min-width: 1280px) {
   
+    .filter-input {
+        width: 278px;
+        height: 48px;
+   
+    }
     .filter-time {
-        width: 119px;
+        width: 125px;
         height: 48px;
     }
 
-   
+   .filter-area{
+        width: 141px;
+        height: 48px;
+   }
+
+   .filter-product{
+        width: 188px;
+        height: 48px;
+   }
 }
 
