@@ -1,0 +1,25 @@
+<div class="container-mobile js-menu-container" id="mobile-menu">
+  <button class="burger-close js-close-menu">
+    <svg width="32" height="32">
+      <use href="/src/img/sprite.svg#icon-x"></use>
+    </svg>
+  </button>
+
+  <ul class="mobile-nav-content">
+    <li class="mobile-home-link">
+      <a class="mobile-nav-link current" href="./index.html">Home</a>
+    </li>
+    <li class="mobile-favorites-link">
+      <a class="mobile-nav-link" href="./favorites.html">Favorites</a>
+    </li>
+
+    <!-- toggle switch burger -->
+    <div class="container-switch-mobile">
+      <label id="switch" class="switch">
+        <input type="checkbox" onchange="toggleTheme()" id="slider" />
+        <span class="slider round"></span>
+      </label>
+      <!-- <button id="switch" onclick="toggleTheme()">Switch</button> -->
+    </div>
+  </ul>
+</div>
