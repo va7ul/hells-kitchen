@@ -37,3 +37,5 @@ function findRecipe(recipeId){
    favorites.push(item)
 
 }
+
+export {fetchRecipes}
