@@ -13,3 +13,6 @@ import './js/modals/mobile_menu';
 import './js/modals/order_now';
 import './js/modals/rating';
 import './js/modals/recipe';
+
+import './js/api';
+import './js/templates';
