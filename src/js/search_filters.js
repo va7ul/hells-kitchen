@@ -3,6 +3,7 @@ import debounce from "lodash.debounce";
 import { getAreas, getIngredients, save, getRecipes } from "./api";
 
 let userInput = "";
+let i = 0;
 
 const inputSearch = document.querySelector(".js-input-home")
 const inputForm = document.querySelector(".js-form-home")
@@ -27,7 +28,7 @@ function onInputSearch(evt) {
 
 function createTimeOptions() {
 
-        for (let i = 5; i <= 120; i += 5){
+        for ( i = 5; i <= 120; i += 5){
                 const option = `<option value="${i}">${i} min</option>`
             timeOptions.insertAdjacentHTML("beforeend", option)  
         }
