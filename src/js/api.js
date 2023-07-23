@@ -3,13 +3,40 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 axios.defaults.baseURL = 'https://tasty-treats-backend.p.goit.global/api';
 
-localStorage.setItem('category', '');
-localStorage.setItem('page', 1);
-localStorage.setItem('limit', 9);
-localStorage.setItem('time', '');
-localStorage.setItem('title', '');
-localStorage.setItem('area', '');
-localStorage.setItem('ingredients', '');
+function resetAllFiters() {
+  localStorage.setItem('recipes', '');
+  localStorage.setItem('category', '');
+  resetFilters();
+}
+
+function resetFilters() {
+  localStorage.setItem('page', 1);
+  localStorage.setItem('limit', 9);
+  localStorage.setItem('time', '');
+  localStorage.setItem('title', '');
+  localStorage.setItem('area', '');
+  localStorage.setItem('ingredients', '');
+}
+
+resetAllFiters();
+
+const save = async (key, value) => {
+  try {
+    const serializedState = JSON.stringify(value);
+    localStorage.setItem(key, serializedState);
+  } catch (error) {
+    console.error('Set state error: ', error.message);
+  }
+};
+
+const load = async key => {
+  try {
+    const serializedState = localStorage.getItem(key);
+    return serializedState === null ? undefined : JSON.parse(serializedState);
+  } catch (error) {
+    console.error('Get state error: ', error.message);
+  }
+};
 
 async function getMasterclasses() {
   const url = `/events`;
@@ -119,4 +146,8 @@ export {
   getRecipeById,
   patchRating,
   postOrder,
+  resetAllFiters,
+  resetFilters,
+  save,
+  load,
 };
