@@ -10,7 +10,7 @@ function createCategoriesList(categories) {
     .map(
       category =>
         `<li>
-        <button type="button" class="categories-list-item_favor filter_btn categories-item_favor js-test">${category.name}</button>
+        <button type="button" class="filter_btn  js-test">${category.name}</button>
         </li>`
     )
     .join('');
@@ -25,7 +25,7 @@ getAllCategories()
   })
   .catch(error => console.log(error));
 
-categoriesContainerEl.addEventListener('click', onCategory);
+categoriesListEl.addEventListener('click', onCategory);
 
 function onCategory(evt) {
   if (evt.target.nodeName !== 'BUTTON') {

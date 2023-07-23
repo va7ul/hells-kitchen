@@ -50,8 +50,29 @@
     padding-right: 24px;
 } */
 
-/* Обнуляем отступы и стили списка */
-.categories-list-favor,
+
+/* Стили для кнопок категорий */
+.favor-categories-list button {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-right: 15px;
+    padding: 8px 12px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Стили для активной категории */
+.favor-categories-list button.active-category {
+    background-color: #007bff;
+    color: #fff;
+}
+
+
+/* Обнуляем отступы и стили списка
 .filter_btn {
     display: flex;
     align-items: center;
@@ -63,17 +84,16 @@
 .categories-main-btn_favor,
 .filter_btn
  {
-    color: #050505;
-    background: #050505;
+    background: none;
     border-radius: 15px;
     border: 1px solid rgba(5, 5, 5, 0.20);
     margin-right: 15px;
     padding: 10px 10px;
-    gap: 18px;
+    gap: 18;
     transition: var(--transition-dur-and-func);
-}
+} */
 
-@media screen and (min-width: 768px) {
+/* @media screen and (min-width: 768px) {
     .categories-main-btn_favor {
         margin-bottom: 10px;
     }
@@ -158,4 +178,4 @@
 .categories-list-item_favor:is(:hover, :focus) {
     color: var(--green-btn);
     opacity: 1;
-}
+} */
