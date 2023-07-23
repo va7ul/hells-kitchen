@@ -27,7 +27,7 @@ function onInputSearch(evt) {
 
 function createTimeOptions() {
 
-        for (i = 5; i <= 120; i += 5){
+        for (let i = 5; i <= 120; i += 5){
                 const option = `<option value="${i}">${i} min</option>`
             timeOptions.insertAdjacentHTML("beforeend", option)  
         }
