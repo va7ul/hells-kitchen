@@ -1,11 +1,10 @@
-import axios from 'axios';
-import { getAllCategories, getRecipe } from './api';
+import { getAllCategories, getRecipes } from './api';
+
 const allCategoriesEl = document.querySelector('.js-all-categories');
 const categoriesListEl = document.querySelector('.js-categories');
 const categoriesContainerEl = document.querySelector(
   '.categories-list-container'
 );
-// const activeCategoryEl = document.querySelector('.active-category');
 
 function createCategoriesList(categories) {
   const markup = categories
@@ -33,10 +32,11 @@ function onCategory(evt) {
   let selectCategory = evt.target;
   localStorage.setItem('category', selectCategory.textContent);
 
-//   activeCategoryEl.classList.remove('active-category');
-//   selectCategory.classList.add('active-category');
-}
+  const activeCategoryEl = document.querySelector('.active-category');
+  activeCategoryEl.classList.remove('active-category');
+  selectCategory.classList.add('active-category');
 
-getRecipe()
-  .then(recipe => console.log(recipe))
-  .catch(error => console.log(error));
+  getRecipes()
+    .then(recipe => console.log(recipe))
+    .catch(error => console.log(error));
+}
