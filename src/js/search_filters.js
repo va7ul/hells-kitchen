@@ -4,23 +4,38 @@ import { getAreas, getIngredients, save, getRecipes } from "./api";
 
 let userInput = "";
 let i = 0;
+let timeSelect;
+let areaSelect;
+let productSelect;
 
-const inputSearch = document.querySelector(".js-input-home")
-const inputForm = document.querySelector(".js-form-home")
-const timeOptions = document.querySelector(".js-time")
-const areaOptions = document.querySelector(".js-area")
-const productOptions = document.querySelector(".js-product")
+const inputSearch = document.querySelector(".js-input-home");
+const inputForm = document.querySelector(".js-form-home");
+const timeOptions = document.querySelector(".js-time");
+const areaOptions = document.querySelector(".js-area");
+const productOptions = document.querySelector(".js-product");
+const resetBtn = document.querySelector(".js-reset-filter");
 
 inputForm.addEventListener("submit", function (evt) { evt.preventDefault()});
 inputSearch.addEventListener("input", debounce(onInputSearch, 300));
-timeOptions.addEventListener("change", onTimeOptions)
-areaOptions.addEventListener("change", onAreaOptions)
-productOptions.addEventListener("change", onProductOptions)
+timeOptions.addEventListener("change", onTimeOptions);
+areaOptions.addEventListener("change", onAreaOptions);
+productOptions.addEventListener("change", onProductOptions);
+resetBtn.addEventListener("click", onResetBtn);
+
+function onResetBtn() {
+
+        inputSearch.value = "";
+        save("title", "");
+        timeSelect.setSelected(timeSelect.getData()[0]);
+        areaSelect.setSelected(areaSelect.getData()[0]);
+        productSelect.setSelected(productSelect.getData()[0]);       
+}
 
 function onInputSearch(evt) {
            
         userInput = evt.target.value.trim();
         if (userInput === "") {
+                save("title", "")
             return 
         }
         save("title", `${userInput}`);
@@ -32,7 +47,7 @@ function createTimeOptions() {
                 const option = `<option value="${i}">${i} min</option>`
             timeOptions.insertAdjacentHTML("beforeend", option)  
         }
-        new SlimSelect({
+        timeSelect = new SlimSelect({
             select: '.js-time',
          settings: {
                 showSearch: false,
@@ -49,7 +64,7 @@ getAreas()
                 areas.map(({ name }) => {
                         areaOptions.insertAdjacentHTML("beforeend", `<option value="${name}">${name}</option>`)
                 })
-                new SlimSelect({
+                areaSelect = new SlimSelect({
             select: '.js-area',
         settings: {
                 showSearch: false,
@@ -67,7 +82,7 @@ getIngredients()
                 ingridients.map(({ name }) => {
                         productOptions.insertAdjacentHTML("beforeend", `<option value="${name}">${name}</option>`)
                 })
-                new SlimSelect({
+                productSelect = new SlimSelect({
             select: '.js-product',
         settings: {
                 showSearch: false,
