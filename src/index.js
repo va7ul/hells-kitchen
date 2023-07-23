@@ -1,4 +1,5 @@
 import './js/hero';
+import './js/slick.min';
 import './js/header';
 import './js/all_categories';
 import './js/popular_recipes';
