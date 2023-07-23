@@ -12,7 +12,7 @@ fetchRecipes();
     try {
       dataRecipes = await getRecipes();
       await createCardTemplate(dataRecipes, cardsGallery);
-      const recipeCard = document.querySelector('.reciepe-card')
+      const recipeCard = document.querySelector('.card-template')
       cardsGallery.addEventListener('change', addToFavorites);
       return dataRecipes;
     } catch (error) {
@@ -24,16 +24,20 @@ fetchRecipes();
     Notiflix.Notify.failure(error.message);
   }
 
-
-
   function addToFavorites(event){
-    const recipeId = event.target.dataset.id;
+    const recipeId = event.target.closest('.card-template').dataset.id;
     favoriteRecipe = findRecipe(recipeId);
     console.log(favorites)
   }
 
 function findRecipe(recipeId){
    const item = dataRecipes.find(({ _id }) => _id === recipeId)
-   favorites.push(item)
-
+   if (favorites.find(({_id}) => _id === recipeId) === undefined){
+    favorites.push(item)
+   }
+   else{
+    removeFromFavorites()
+   }
 }
+
+export {fetchRecipes}
