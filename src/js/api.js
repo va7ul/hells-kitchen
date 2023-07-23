@@ -73,7 +73,7 @@ async function getRecipes() {
   const url = `/recipes?category=${category}&page=${page}&limit=${limit}&title=${title}&time=${time}&area=${area}&ingredients=${ingredients}`;
   try {
     const response = await axios.get(url);
-    return response.data;
+    return response.data.results;
   } catch (error) {
     Notify.failure('Oops! Something went wrong!');
   }
