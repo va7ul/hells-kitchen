@@ -21,6 +21,7 @@ function onInputSearch(evt) {
            
         userInput = evt.target.value.trim();
         if (userInput === "") {
+                save("title", "")
             return 
         }
         save("title", `${userInput}`);
