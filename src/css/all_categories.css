@@ -86,6 +86,9 @@
 }
 
 .categories-list-item {
+    width: 100%;
+    display: flex;
+    background: none;
     transition: var(--transition-dur-and-func);
 }
 

@@ -4,7 +4,6 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 axios.defaults.baseURL = 'https://tasty-treats-backend.p.goit.global/api';
 
 function resetAllFiters() {
-  localStorage.setItem('recipes', '');
   localStorage.setItem('category', '');
   resetFilters();
 }
