@@ -10,6 +10,7 @@ import './js/scrollUp';
 
 import './js/favorites/favorite_filter';
 import './js/favorites/favorite_recipes';
+import './js/favorites/favorite_all_categories';
 
 import './js/modals/mobile_menu';
 import './js/modals/order_now';
