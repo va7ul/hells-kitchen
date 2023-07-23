@@ -1,6 +1,6 @@
 .btn-up {
     position: fixed;
-    background: linear-gradient(141.22deg, #9BB537 9.4%, #f84119 91.91%);
+    background: linear-gradient(141.22deg, #9BB537 9.4%, #33f81988 91.91%);
     right: 10px;
     bottom: 20px;
     border-radius: 74px;
@@ -15,8 +15,8 @@
 
 .btn-up:hover {
     background: linear-gradient(141.22deg,
-            #F84119 9.4%,
-            rgba(248, 159, 25, 0.68) 91.91%);
+            #33f81988 9.4%,
+            #9BB537 91.91%);
     padding-bottom: 15px;
 }
 
@@ -38,7 +38,7 @@
 @media (hover: hover) and (pointer: fine) {
     .btn-up:hover {
         background: linear-gradient(141.22deg,
-                #f84119 9.4%,
-                rgba(248, 159, 25, 0.68) 91.91%);
+                #33f81988 9.4%,
+                #9BB537 91.91%);
     }
 }
