@@ -1,0 +1,29 @@
+.favorite-recipes-list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+@media screen and (min-width: 768px) {
+.favorite-recipes-list-wrapper{
+   max-width: 704px;
+}
+.favorite-recipes-list li{
+    width: calc((100% - 2 * 16px) / 3);
+}
+.favorite-recipes-list{
+    gap: 16px;
+}
+}
+
+@media screen and (min-width: 1200px) {
+.favorite-recipes-list-wrapper{
+   max-width: 1080px;
+}
+.favorite-recipes-list li{
+    width: calc((100% - 3 * 16px) / 4);
+}
+.favorite-recipes-list{
+    row-gap: 32px;
+}
+}
