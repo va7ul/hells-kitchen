@@ -13,7 +13,6 @@ const refs = {
     const scrollLockMethod = !isMenuOpen
       ? 'disableBodyScroll'
       : 'enableBodyScroll';
-    bodyScrollLock[scrollLockMethod](document.body);
   };
   refs.openMenuBtn.addEventListener('click', toggleMenu);
   refs.closeMenuBtn.addEventListener('click', toggleMenu);
@@ -23,6 +22,5 @@ const refs = {
     if (!e.matches) return;
     refs.mobileMenu.classList.remove('is-open');
     refs.openMenuBtn.setAttribute('aria-expanded', false);
-    bodyScrollLock.enableBodyScroll(document.body);
   });
 })();
