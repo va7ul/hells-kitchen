@@ -1,6 +1,7 @@
 import SlimSelect from "slim-select";
 import debounce from "lodash.debounce";
 import { getAreas, getIngredients, save, getRecipes } from "./api";
+import { fetchRecipes } from "./all_recipes";
 
 let userInput = "";
 let i = 0;
@@ -25,20 +26,22 @@ resetBtn.addEventListener("click", onResetBtn);
 function onResetBtn() {
 
         inputSearch.value = "";
-        save("title", "");
+        localStorage.setItem('title', '');
         timeSelect.setSelected(timeSelect.getData()[0]);
         areaSelect.setSelected(areaSelect.getData()[0]);
-        productSelect.setSelected(productSelect.getData()[0]);       
+        productSelect.setSelected(productSelect.getData()[0]);
+        fetchRecipes();
 }
 
 function onInputSearch(evt) {
            
         userInput = evt.target.value.trim();
         if (userInput === "") {
-                save("title", "")
+                localStorage.setItem('title', '');
             return 
         }
-        save("title", `${userInput}`);
+        localStorage.setItem('title', userInput);
+        fetchRecipes();
 }
 
 function createTimeOptions() {
@@ -95,17 +98,20 @@ getIngredients()
 
 function onTimeOptions(evt) {
         const time = evt.currentTarget.value;
-        save("time", `${time}`);
+        localStorage.setItem('time', time);
+        fetchRecipes();
 }
 
 function onAreaOptions(evt) {
         const area = evt.currentTarget.value;
-        save("area", `${area}`);
+        localStorage.setItem('area', area);
+        fetchRecipes();
 }
 
 
 
 function onProductOptions(evt) {
         const ingredients = evt.currentTarget.value;
-        save("ingredients", `${ingredients}`);
+        localStorage.setItem('ingredients', ingredients);
+        fetchRecipes();
 }
