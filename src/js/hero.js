@@ -1,3 +1,4 @@
+import { getMasterclasses } from './api';
 const { default: axios } = require('axios');
 let $ = require('jquery');
 
@@ -16,17 +17,6 @@ function sliderStart() {
 }
 
 const slider = document.querySelector('.slider');
-
-async function fetchEvents() {
-  try {
-    const response = await axios.get(
-      'https://tasty-treats-backend.p.goit.global/api/events'
-    );
-    return response.data;
-  } catch (error) {
-    Notify.failure('Oops! Something went wrong!');
-  }
-}
 
 function renderSlider(response) {
   const markup = response
@@ -52,7 +42,7 @@ function renderSlider(response) {
 }
 
 async function start() {
-  const data = await fetchEvents();
+  const data = await getMasterclasses();
   sliderStart();
   renderSlider(data);
 }
