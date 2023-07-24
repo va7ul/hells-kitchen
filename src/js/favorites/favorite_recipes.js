@@ -96,7 +96,7 @@ function onClick(evt) {
   }
   //видалення з favorites
   if (evt.target.classList.contains('favorite')) {
-    removeFromFavorites(evt.target);
+    removeFromFavorites(evt.target, favoriteArrFromLocalStorage);
     evt.target.closest('.card-template').remove();
   }
 }
@@ -106,15 +106,15 @@ function findProduct(elem) {
   return favoriteArrFromLocalStorage.find(({ _id }) => _id === productId);
 }
 
-function removeFromFavorites(elem) {
+function removeFromFavorites(elem, arr) {
   const productId = elem.closest('.card-template').dataset.id;
-  const removeElemIdx = favoriteArrFromLocalStorage.findIndex(
+  const removeElemIdx = arr.findIndex(
     item => item._id === productId
   );
-  favoriteArrFromLocalStorage.splice(removeElemIdx, 1);
+  arr.splice(removeElemIdx, 1);
   localStorage.setItem(
     KEY_FAVORITE,
-    JSON.stringify(favoriteArrFromLocalStorage)
+    JSON.stringify(arr)
   );
 }
 
