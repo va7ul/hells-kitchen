@@ -1,0 +1,44 @@
+.btn-up {
+    position: fixed;
+    background: linear-gradient(141.22deg, #9BB537 9.4%, #f84119 91.91%);
+    right: 10px;
+    bottom: 20px;
+    border-radius: 74px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    transition: 0.3s all;
+}
+
+.btn-up:hover {
+    background: linear-gradient(141.22deg,
+            #F84119 9.4%,
+            rgba(248, 159, 25, 0.68) 91.91%);
+    padding-bottom: 15px;
+}
+
+
+
+.btn-up::before {
+    content: "";
+    width: 40px;
+    height: 40px;
+    background: transparent no-repeat center center;
+    background-size: 100% 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='16' fill='%23111' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z'/%3E%3C/svg%3E");
+}
+
+.btn-up_hide {
+    display: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .btn-up:hover {
+        background: linear-gradient(141.22deg,
+                #f84119 9.4%,
+                rgba(248, 159, 25, 0.68) 91.91%);
+    }
+}
