@@ -14,7 +14,7 @@ function resetFilters() {
   localStorage.setItem('time', '');
   localStorage.setItem('title', '');
   localStorage.setItem('area', '');
-  localStorage.setItem('ingredients', '');
+  localStorage.setItem('ingredient', '');
 }
 
 resetAllFiters();
@@ -94,9 +94,9 @@ async function getRecipes() {
   let title = localStorage.getItem('title');
   let time = localStorage.getItem('time');
   let area = localStorage.getItem('area');
-  let ingredients = localStorage.getItem('ingredients');
+  let ingredient = localStorage.getItem('ingredient');
 
-  const url = `/recipes?category=${category}&page=${page}&limit=${limit}&title=${title}&time=${time}&area=${area}&ingredients=${ingredients}`;
+  const url = `/recipes?category=${category}&page=${page}&limit=${limit}&title=${title}&time=${time}&area=${area}&ingredient=${ingredient}`;
   try {
     const response = await axios.get(url);
     return response.data.results;
