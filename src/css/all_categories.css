@@ -1,3 +1,13 @@
+.wrapper-categories {
+    margin-bottom: 40px;
+}
+
+@media screen and (min-width: 768px) {
+    .wrapper-categories {
+        margin-bottom: 64px;
+    }
+}
+
 .all-categories-btn {
     color: var(--light-theme-main-text);
     opacity: 0.5;
@@ -6,7 +16,7 @@
     background: none;
     border-radius: 15px;
     border: 1px solid rgba(5, 5, 5, 0.20);
-    padding: 14px 29px;
+    padding: 14px 28px;
     margin-bottom: 24px;
     transition: var(--transition-dur-and-func);
 }
