@@ -1,0 +1,17 @@
+  .blocks-wrapper {
+      margin-bottom: 40px;
+  }
+
+  @media screen and (min-width: 768px) {
+      .blocks-wrapper {
+          display: flex;
+          gap: 32px;
+          margin-bottom: 64px;
+      }
+  }
+
+  @media screen and (min-width: 1280px) {
+      .blocks-wrapper {
+          gap: 64px;
+      }
+  }
