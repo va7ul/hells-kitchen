@@ -1,12 +1,11 @@
-import { getRecipes, save } from "./api";
+import { getRecipes} from "./api";
 import { createCardTemplate } from "./card_template";
+import { addToFavorites } from "./add-to-favorites";
 
 const cardsGallery = document.querySelector('.cards-gallery');
-const favorite = [];
 let dataRecipes = [];
-fetchRecipes();
 
-  
+fetchRecipes();  
 
   async function fetchRecipes() {
     try {
@@ -24,22 +23,5 @@ fetchRecipes();
     Notiflix.Notify.failure(error.message);
   }
 
-  function addToFavorites(event){
-    const recipeId = event.target.closest('.card-template').dataset.id;
-    favoriteRecipe = findRecipe(recipeId);
-    
-    console.log(favorite)
-  }
 
-function findRecipe(recipeId){
-   const item = dataRecipes.find(({ _id }) => _id === recipeId)
-   if (favorite.find(({_id}) => _id === recipeId) === undefined){
-    favorite.push(item)
-    save("KEY_FAVORITE", favorite)
-   }
-   else{
-    removeFromFavorites()
-   }
-}
-
-export {fetchRecipes, addToFavorites, favorite}
+export {fetchRecipes, dataRecipes}
