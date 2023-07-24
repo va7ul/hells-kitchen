@@ -1,29 +1,38 @@
 //import
-const KEY_FAVORITE = 'favorite';
-function createCardTemplate(data, list) {
-  const markup = data
-    .map(
-      ({ _id, preview, title, description, rating, area, ingredients, time }) =>
-        `<li class="card-template" data-id="${_id}" data-area="${area}" data-ingredients="${ingredients}" data-time="${time}">
-    <img src="${preview}" alt="${title}" class="card-template-img" />
-    <div class="card-template-info">  <h2 class="card-template-title">${title}</h2>
-  <p class="card-template-descr">${description}</p>
-  <div class="card-template-descr">${rating}</div>
-  <button class="card-template-btn" type="button">See recipe</button>
-    <button class="favorite" type="button">Favorite</button>
-  </div>
-</li>`
-    )
-    .join('');
+import { createCardTemplate } from '../card_template';
 
-  list.innerHTML = markup;
-}
+const KEY_FAVORITE = 'favorite';
+
+
+
 function createModal(product) {
   console.log(product);
 }
 //import
 
 // Для тестування
+
+// function createCardTemplate(data, list) {
+//   const markup = data
+//     .map(
+//       ({ _id, preview, title, description, rating, area, ingredients, time }) =>
+//         `<li class="card-template" data-id="${_id}" data-area="${area}" data-ingredients="${ingredients}" data-time="${time}">
+//     <img src="${preview}" alt="${title}" class="card-template-img" />
+//     <div class="card-template-info">  <h2 class="card-template-title">${title}</h2>
+//   <p class="card-template-descr">${description}</p>
+//   <div class="card-template-descr">${rating}</div>
+//   <button class="card-template-btn" type="button">See recipe</button>
+//     <button class="favorite" type="button">Favorite</button>
+//   </div>
+// </li>`
+//     )
+//     .join('');
+
+//   list.innerHTML = markup;
+// }
+
+
+
 import axios from 'axios';
 const favoriteArr = [];
 const id = [
