@@ -8,6 +8,7 @@ let i = 0;
 let timeSelect;
 let areaSelect;
 let productSelect;
+let ingredientsWithId = [];
 
 const inputSearch = document.querySelector(".js-input-home");
 const inputForm = document.querySelector(".js-form-home");
@@ -23,13 +24,17 @@ areaOptions.addEventListener("change", onAreaOptions);
 productOptions.addEventListener("change", onProductOptions);
 resetBtn.addEventListener("click", onResetBtn);
 
-function onResetBtn() {
-
+function onResetBtn(evt) {
+        console.log(evt.target)
         inputSearch.value = "";
-        localStorage.setItem('title', '');
         timeSelect.setSelected(timeSelect.getData()[0]);
         areaSelect.setSelected(areaSelect.getData()[0]);
         productSelect.setSelected(productSelect.getData()[0]);
+        localStorage.setItem('title', '');
+        localStorage.setItem('time', '');
+        localStorage.setItem('area', '');
+        localStorage.setItem('ingredients', '');
+        
         fetchRecipes();
 }
 
@@ -82,8 +87,11 @@ getAreas()
 
 getIngredients()
         .then(ingridients => {
-                ingridients.map(({ name }) => {
-                        productOptions.insertAdjacentHTML("beforeend", `<option value="${name}">${name}</option>`)
+               
+                
+                ingridients.map(({ name, _id }) => {
+                        productOptions.insertAdjacentHTML("beforeend", `<option data-ing="${_id}" value="${name}">${name}</option>`)
+                        
                 })
                 productSelect = new SlimSelect({
             select: '.js-product',
@@ -91,7 +99,8 @@ getIngredients()
                 showSearch: false,
                 placeholderText: 'Product',
   },
-        })
+                })
+                
         })
         .catch(error => console.log(error))
 
@@ -111,7 +120,7 @@ function onAreaOptions(evt) {
 
 
 function onProductOptions(evt) {
-        const ingredients = evt.currentTarget.value;
+        const ingredients = evt.target.options[evt.target.selectedIndex].dataset.ing;
         localStorage.setItem('ingredients', ingredients);
         fetchRecipes();
 }
