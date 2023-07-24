@@ -3,28 +3,39 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tasty Treats</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-
+    <title>Tasty Treats</title>
     <link rel="stylesheet" href="./css/style.css" />
+    <!-- Тут має бути Favicon -->
   </head>
   <body>
     <include src="./partials/header.html"></include>
     <main>
       <include src="./partials/hero.html"></include>
 
-      <div class="container">
-        <include src="./partials/popular_recipes.html"></include>
-        <include src="./partials/all_categories.html"></include>
-        <include src="./partials/search_filters.html"></include>
-        <include src="./partials/all_recipes.html"></include>
-      </div>
+      <section class="main-section">
+        <div class="container blocks-wrapper">
+          <div class="left-block">
+            <include src="./partials/all_categories.html"></include>
+            <include src="./partials/popular_recipes.html"></include>
+          </div>
+          <div class="right-block">
+            <include src="./partials/search_filters.html"></include>
+            <include src="./partials/all_recipes.html"></include>
+          </div>
+        </div>
+        <div class="container pagination-wrapper"></div>
+      </section>
     </main>
+
+    <footer>
+      <include src="./partials/modals/scroll-up.html"></include>
+    </footer>
 
     <include src="./partials/modals/mobile_menu.html"></include>
     <include src="./partials/modals/order_now.html"></include>
