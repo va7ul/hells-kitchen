@@ -256,7 +256,7 @@
   }
 
   /* The slider */
-  .slider {
+  .slider-header {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -268,7 +268,7 @@
     transition: 0.4s;
   }
 
-  .slider:before {
+  .slider-header:before {
     position: absolute;
     content: '';
     height: 20px;
@@ -286,15 +286,15 @@
     background-position: center;
   }
 
-  input:checked + .slider {
+  input:checked + .slider-header {
     background-color: var(--light-theme-switcher-btn);
   }
 
-  input:focus + .slider {
+  input:focus + .slider-header {
     box-shadow: 0 0 1px rgba(206, 205, 205, 1);
   }
 
-  input:checked + .slider:before {
+  input:checked + .slider-header:before {
     -webkit-transform: translateX(24px);
     -ms-transform: translateX(24px);
     transform: translateX(24px);
@@ -304,15 +304,15 @@
   }
 
   /* Rounded sliders */
-  .slider.round {
+  .slider-header.round {
     border-radius: 24px;
   }
 
-  .slider.round:before {
+  .slider-header.round:before {
     border-radius: 50%;
   }
 
-  .container-switch {
+  .container-switch-header {
     display: none;
   }
   .header-buttonbox {
@@ -364,7 +364,7 @@
   .shopping-cart {
     margin-right: 18px;
   }
-  .container-switch {
+  .container-switch-header {
     display: flex;
     width: 46px;
     height: 20px;
@@ -391,7 +391,7 @@
   }
 
   /* The slider */
-  .slider {
+  .slider-header {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -403,7 +403,7 @@
     transition: 0.4s;
   }
 
-  .slider:before {
+  .slider-header:before {
     position: absolute;
     content: '';
     height: 20px;
@@ -421,15 +421,15 @@
     background-position: center;
   }
 
-  input:checked + .slider {
+  input:checked + .slider-header {
     background-color: var(--light-theme-switcher-btn);
   }
 
-  input:focus + .slider {
+  input:focus + .slider-header {
     box-shadow: 0 0 1px rgba(206, 205, 205, 1);
   }
 
-  input:checked + .slider:before {
+  input:checked + .slider-header:before {
     -webkit-transform: translateX(24px);
     -ms-transform: translateX(24px);
     transform: translateX(24px);
@@ -439,11 +439,11 @@
   }
 
   /* Rounded sliders */
-  .slider.round {
+  .slider-header.round {
     border-radius: 24px;
   }
 
-  .slider.round:before {
+  .slider-header.round:before {
     border-radius: 50%;
   }
 
