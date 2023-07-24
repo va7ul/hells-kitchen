@@ -1,0 +1,11 @@
+.favorite-filter{
+    margin-top: 64px;
+    margin-bottom: 32px;
+}
+
+.favorite-filter-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}

@@ -1,11 +1,11 @@
 .favorite-recipes-list {
+  justify-content: center;
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
 }
 
 .empty-storage-wrapper {
-  max-width: 335px;
   height: 100vh;
   margin-left: auto;
   margin-right: auto;
@@ -13,19 +13,29 @@
   flex-direction: column;
   justify-content: center;
 }
-
 .empty-storage-text {
   text-align: center;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 375px) {
+   .favorite-recipes-list-wrapper {
+    max-width: 335px;
+  }
+  
   .empty-storage-wrapper {
-    max-width: 481px;
+    max-width: 335px;;
   }
-  .empty-storage-text {
-    font-size: 16px;
-    line-height: 1.5;
+}
+
+@media screen and (max-width: 768px) {
+  .hero-is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
   }
+}
+
+@media screen and (min-width: 768px) {
   .favorite-recipes-list-wrapper {
     max-width: 704px;
   }
@@ -33,11 +43,20 @@
     width: calc((100% - 2 * 16px) / 3);
   }
   .favorite-recipes-list {
+    justify-content: start;
     gap: 16px;
+  }
+
+  .empty-storage-wrapper {
+    max-width: 481px;
+  }
+  .empty-storage-text {
+    font-size: 16px;
+    line-height: 1.5;
   }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1280px) {
   .favorite-recipes-list-wrapper {
     max-width: 1080px;
   }

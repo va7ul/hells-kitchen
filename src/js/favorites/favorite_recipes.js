@@ -74,6 +74,8 @@ getProduct();
 // Для тестування
 
 const favoriteRecipesListEl = document.querySelector('.favorite-recipes-list');
+const heroEl=document.querySelector('.hero-section-favorites')
+
 const emptyStorageEl = document.querySelector('.empty-storage-wrapper');
 console.log(emptyStorageEl);
 
@@ -83,6 +85,7 @@ const favoriteArrFromLocalStorage =
 if (favoriteArrFromLocalStorage.length !== 0) {
   createCardTemplate(favoriteArrFromLocalStorage, favoriteRecipesListEl);
 } else {
+  heroEl.classList.add('hero-is-hidden');
   emptyStorageEl.classList.remove('is-hidden');
 }
 
