@@ -1,0 +1,279 @@
+/* // ==============  ТЕМНАЯ ТЕМА  ================================= */
+.pagination-active-dark-theme {
+    background: transparent;
+    background: rgba(155, 181, 55, 1);
+    color: rgba(255, 255, 255, 1);
+    cursor: pointer;
+    height: 24px;
+    width: 24px;
+    border: none;
+    left: 2643px;
+    top: 3845px;
+    border-radius: 50px;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 10px;
+    letter-spacing: 0em;
+}
+
+.pagination-active-dark-theme:hover,
+.pagination-active-dark-theme:active {
+    background: rgba(155, 181, 55, 1);
+}
+
+.pagination-dark-theme {
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #b7b7b7;
+    color: rgba(255, 255, 255, 1);
+    cursor: pointer;
+    height: 24px;
+    width: 24px;
+    left: 2643px;
+    top: 3845px;
+    border-radius: 50px;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 10px;
+    letter-spacing: 0em;
+}
+
+.pagination-dark-theme:hover,
+.pagination-dark-theme:active {
+    border: 1px rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* //=================Pagination=================== */
+/* .tui-pagination {
+    display: flex;
+    justify-content: center;
+    height: 40px;
+    margin-top: 20px;
+}
+
+@media screen and (min-width: 768px) {
+    .tui-pagination {
+        margin-top: 44px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .tui-pagination {
+        margin-top: 60px;
+    }
+}
+
+.tui-page-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 16px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(5, 5, 5, 0.3);
+    color: rgba(5, 5, 5, 1);
+    background: transparent;
+}
+
+.tui-page-btn:hover,
+.tui-page-btn:focus {
+    color: rgba(5, 5, 5, 1);
+    border: 2px solid #9BB537;
+}
+
+.tui-page-btn.tui-is-selected {
+    color: rgba(5, 5, 5, 1);
+    border: 2px solid #9BB537;
+    background: #9BB537;
+}
+
+.tui-page-btn.tui-first {
+    margin: 0;
+    border: none;
+    background-image: url(../img/double-arrow-prev.png);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.tui-page-btn.tui-last {
+    border: none;
+    background-image: url(../img/double-arrow-next.png);
+    background-position: 50% 50%;
+}
+
+.tui-page-btn.tui-prev-is-ellip.tui-first-child,
+.tui-page-btn.tui-next-is-ellip.tui-last-child {
+    border: none;
+}
+
+.tui-page-btn.tui-next {
+    background-image: url(../img/arrow-next.png);
+    background-position: 50%;
+    background-repeat: no-repeat;
+    border: none;
+    margin-right: 0;
+}
+
+.tui-page-btn.tui-prev {
+    background-image: url(../img/arrow-prev.png);
+    background-position: 50%;
+    background-repeat: no-repeat;
+    border: none;
+    margin-right: 0;
+}
+
+.tui-next-is-ellip,
+.tui-prev-is-ellip {
+    border: none;
+    align-items: flex-end;
+    width: 10px;
+}
+
+.tui-is-disabled {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.tui-next-is-ellip.tui-last-child {
+    margin-right: 0;
+} */
+
+
+.tui-page-btn.tui-prev-is-ellip::before,
+.tui-page-btn.tui-next-is-ellip::before {
+    content: '...';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 1px solid rgba(5, 5, 5, 0.3);
+    color: rgba(255, 255, 255, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tui-page-btn.tui-prev-is-ellip::before {
+    content: '...';
+    top: 50%;
+}
+
+/* Остальные стили */
+.tui-pagination {
+    display: flex;
+    justify-content: center;
+    gap: 0px;
+    height: 40px;
+    margin-top: 20px;
+}
+
+.tui-pagination::before,
+.tui-pagination::after {
+    content: "";
+    display: block;
+    width: 10px;
+}
+
+@media screen and (min-width: 768px) {
+    .tui-pagination {
+        margin-top: 44px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .tui-pagination {
+        margin-top: 60px;
+    }
+}
+
+.tui-page-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-right: 8px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(5, 5, 5, 0.3);
+    color: rgba(5, 5, 5, 1);
+    background: transparent;
+}
+
+.tui-page-btn:hover,
+.tui-page-btn:focus {
+    color: rgba(5, 5, 5, 1);
+    border: 2px solid #9BB537;
+}
+
+.tui-page-btn.tui-is-selected {
+    color: rgba(5, 5, 5, 1);
+    border: 2px solid #9BB537;
+    background: #9BB537;
+}
+
+.tui-page-btn.tui-first {
+    margin: 0;
+        border: none;
+    background-image: url(../img/double-arrow-prev.png);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.tui-page-btn.tui-last {
+    border: none;
+    background-image: url(../img/double-arrow-next.png);
+    background-position: 50% 50%;
+}
+
+.tui-page-btn.tui-prev-is-ellip.tui-first-child,
+.tui-page-btn.tui-next-is-ellip.tui-last-child {
+    border: none;
+    position: relative;
+    width: 40px;
+    height: 40px;
+}
+
+.tui-page-btn.tui-next {
+    margin-left: 15px;
+    margin-right: 5px;
+    background-image: url(../img/arrow-next.png);
+    background-position: 50%;
+    background-repeat: no-repeat;
+    border: none;
+}
+
+.tui-page-btn.tui-prev {
+    margin-left: 5px;
+    margin-right: 15px;
+    background-image: url(../img/arrow-prev.png);
+    background-position: 50%;
+    background-repeat: no-repeat;
+    border: none;
+}
+
+.tui-next-is-ellip,
+.tui-prev-is-ellip {
+    border: none;
+    align-items: flex-end;
+    width: 10px;
+}
+
+.tui-is-disabled {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.tui-next-is-ellip.tui-last-child {
+    margin-right: 0;
+}
