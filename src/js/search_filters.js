@@ -57,7 +57,7 @@ function createTimeOptions() {
         timeSelect = new SlimSelect({
             select: '.js-time',
          settings: {
-                showSearch: false,
+                showSearch: true,
                 placeholderText: '0 min',
   },
      })
@@ -74,7 +74,7 @@ getAreas()
                 areaSelect = new SlimSelect({
             select: '.js-area',
         settings: {
-                showSearch: false,
+                showSearch: true,
                 placeholderText: 'Region',
   },
     })
@@ -93,7 +93,7 @@ getIngredients()
                 productSelect = new SlimSelect({
             select: '.js-product',
         settings: {
-                showSearch: false,
+                showSearch: true,
                 placeholderText: 'Product',
   },
                 })
@@ -117,7 +117,6 @@ function onAreaOptions(evt) {
 function onProductOptions(evt) {
         const ingredient = evt.target.options[evt.target.selectedIndex].dataset.ing;
         localStorage.setItem('ingredient', ingredient);
-        console.log(ingredient)
         fetchRecipes();
 }
 
