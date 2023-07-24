@@ -16,15 +16,14 @@
 function createCardTemplate(data, list) {
    const markup = data.map(({ _id, preview, title, description, rating, area, ingredients, time }) =>
      `<li class="card-template" data-id="${_id}" data-area="${area}" data-ingredients="${ingredients}" data-time="${time}">
-     <input
-      type="checkbox"
-      class="js-add-to-fav add-to-fav"/>
     <img src="${preview}" alt="${title}" class="card-template-img" />
     <div class="card-template-info">  <h2 class="card-template-title">${title}</h2>
   <p class="card-template-descr">${description}</p>
   <div class="card-template-descr">${rating}</div>
   <button class="card-template-btn" type="button">See recipe</button>
-  
+  <input
+      type="checkbox"
+      class="js-add-to-fav add-to-fav"/>
   </div>
 </li>`).join('');
     
