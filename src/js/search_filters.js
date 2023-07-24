@@ -57,7 +57,7 @@ function createTimeOptions() {
         timeSelect = new SlimSelect({
             select: '.js-time',
          settings: {
-                showSearch: true,
+                showSearch: false,
                 placeholderText: '0 min',
   },
      })
