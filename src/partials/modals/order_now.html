@@ -1,0 +1,48 @@
+<div class="order-now-backdrop js-backdrop">
+  <div class="order-now-modal">
+    <h2 class="order-now-modal__title">Order Now</h2>
+    <button class="order-now-modal__close-btn" type="button">
+      <svg class="order-now-modal-close__img" width="32" height="32">
+        <use href="/images/sprite.svg#icon-krestik-modalka"></use>
+      </svg>
+    </button>
+    <div class="order-now-form-wrap">
+      <form class="order-now-modal-form">
+        <label>
+          <span>Name</span>
+          <input
+            class="order-now-modal-form__input"
+            type="text"
+            value=""
+            required
+          />
+        </label>
+        <label>
+          <span>Phone number</span>
+          <input
+            class="order-now-modal-form__input"
+            type="tel"
+            value=""
+            placeholder=""
+            pattern="^\+?3?8?(0\d{9})$"
+            required
+          />
+        </label>
+        <label>
+          <span>Email</span>
+          <input
+            class="order-now-modal-form__input"
+            type="email"
+            value=""
+            required
+          />
+        </label>
+        <label>
+          <span>Comment</span>
+          <textarea class="comment-textarea" name="comment"></textarea>
+        </label>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </div>
+</div>
