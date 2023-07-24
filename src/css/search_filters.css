@@ -238,7 +238,7 @@
     transform: scaleY(0);
     transform-origin: center top;
     overflow: hidden;
-    z-index: 10000;
+    z-index: 1;
 }
 
 .ss-content.ss-relative {
@@ -504,6 +504,7 @@
     font-size: 12px;
     opacity: 0.5;
     margin-bottom: 8px;
+    margin-left: 4px;
 }
 
 .filter-input {
@@ -511,15 +512,18 @@
     height: 46px;
     box-sizing: border-box;
     background-color: var(--light-theme-fill);
+    padding-left: 48px;
+    padding-right: 18px;
 }
 
     .filter-time {
         width: 160px;
         height: 46px;
+        padding: 14px 18px;
     }
 
     .filter-general{
-        padding: 14px 18px;
+        /* padding: 14px 18px; */
         border-radius: 15px;
         border: 1px solid rgba(5, 5, 5, 0.20);
        
@@ -528,16 +532,21 @@
     .filter-area{
         width: 160px;
         height: 46px;
+        padding: 14px 18px;
     }
 
     .filter-product{
         width: 188px;
         height: 46px;
+        padding: 14px 18px;
     }
 
     .filter-btn-home{
         display: flex;
         margin-top: 14px;
+        border: none;
+        background-color: inherit;
+        margin-left: auto;
     }
 
     .filter-icon-clear{
@@ -545,6 +554,20 @@
         fill: var(--green-btn);
     }
 
+   
+    .filter-icon-search{
+
+    }
+
+    .svg-with-input{
+        position: relative;
+    }
+
+    .svg-with-input svg{
+        position: absolute;
+        top: 14px;
+        left: 18px;
+    }
 
 @media screen and (min-width: 768px) {
 
