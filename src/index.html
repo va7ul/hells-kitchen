@@ -11,43 +11,40 @@
     />
     <title>Tasty Treats</title>
     <link rel="stylesheet" href="./css/style.css" />
-    <!-- Тут має бути Favicon -->
+    <link href="/images/favicon.ico" rel="icon" type="image/x-icon" />
   </head>
   <body>
-
-    <!-- Добавил временно -->
-        <nav class="main-nav">
-          <ul class="site-nav list">
-            <li class="item">
-              <a href="index.html" class="link current">Home</a>
-            </li>
-            <li class="item">
-              <a href="./favorites.html" class="link">Favorites</a>
-            </li>
-          </ul>
-        </nav>
-    <!-- Добавил временно -->
-
     <include src="./partials/header.html"></include>
     <main>
       <include src="./partials/hero.html"></include>
 
-      <div class="container">
-        <include src="./partials/all_categories.html"></include>
-        <include src="./partials/popular_recipes.html"></include>
-        <include src="./partials/search_filters.html"></include>
-        <include src="./partials/all_recipes.html"></include>
-         
-        <!-- Добавьте контейнер для списка рецептов -->
-          <div id="catalog-list"></div>
-        <!-- добавил для пагинации -->
-        <div id="tui-pagination-container" class="tui-pagination"></div>  
-      </div>
-      
-      <!-- добавил для скролла -->
-      <div class="btn-up btn-up_hide"></div>
-    
+      <section class="main-section">
+        <div class="container blocks-wrapper">
+          <div class="left-block">
+            <include src="./partials/all_categories.html"></include>
+            <include src="./partials/popular_recipes.html"></include>
+          </div>
+          <div class="right-block">
+            <include src="./partials/search_filters.html"></include>
+            <include src="./partials/all_recipes.html"></include>
+          </div>
+        </div>
+        <div class="container pagination-wrapper">
+                    <!-- Добавьте контейнер для списка рецептов -->
+              <div id="catalog-list"></div>
+            <!-- добавил для пагинации -->
+            <div id="tui-pagination-container" class="tui-pagination"></div>  
+          </div>
+
+          <!-- добавил для скролла -->
+          <div class="btn-up btn-up_hide"></div>
+        </div>
+      </section>
     </main>
+
+    <footer>
+      <include src="./partials/modals/scroll-up.html"></include>
+    </footer>
 
     <include src="./partials/modals/mobile_menu.html"></include>
     <include src="./partials/modals/order_now.html"></include>

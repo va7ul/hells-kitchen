@@ -1,7 +1,8 @@
-import { getAllCategories, getRecipes } from './api';
+import { getAllCategories, resetAllFiters } from './api';
+import { fetchRecipes } from './all_recipes';
 
-const allCategoriesEl = document.querySelector('.js-all-categories');
-const categoriesListEl = document.querySelector('.js-categories');
+const allCategoriesEl = document.querySelector('.all-categories-btn');
+const categoriesListEl = document.querySelector('.categories-list-items');
 const categoriesContainerEl = document.querySelector(
   '.categories-list-container'
 );
@@ -11,7 +12,7 @@ function createCategoriesList(categories) {
     .map(
       category =>
         `<li>
-        <button type="button" class="categories-list-item categories-item js-test">${category.name}</button>
+        <button type="button" class="categories-list-btn categories-item">${category.name}</button>
         </li>`
     )
     .join('');
@@ -22,9 +23,11 @@ getAllCategories()
   .then(categories => createCategoriesList(categories))
   .catch(error => console.log(error));
 
+fetchRecipes();
+
 categoriesContainerEl.addEventListener('click', onCategory);
 
-function onCategory(evt) {
+async function onCategory(evt) {
   if (evt.target.nodeName !== 'BUTTON') {
     return;
   }
@@ -36,7 +39,18 @@ function onCategory(evt) {
   activeCategoryEl.classList.remove('active-category');
   selectCategory.classList.add('active-category');
 
-  getRecipes()
-    .then(recipe => console.log(recipe))
-    .catch(error => console.log(error));
+  fetchRecipes();
+}
+
+allCategoriesEl.addEventListener('click', onAllCategory);
+
+async function onAllCategory(evt) {
+  let selectCategory = evt.target;
+  resetAllFiters();
+
+  const activeCategoryEl = document.querySelector('.active-category');
+  activeCategoryEl.classList.remove('active-category');
+  selectCategory.classList.add('active-category');
+
+  fetchRecipes();
 }

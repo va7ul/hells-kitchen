@@ -1,30 +1,43 @@
-import { createCardTemplate } from './card_template';
-import { getRecipes } from './api';
-import { pagination } from './pagination';
+import { getRecipes } from "./api";
+import { createCardTemplate } from "./card_template";
 
-// const listContainer = document.querySelector('#catalog-list');
+const cardsGallery = document.querySelector('.cards-gallery');
+const favorites = [];
+let dataRecipes = [];
+fetchRecipes();
 
-// async function populateCardsWithRecipes() {
-//   try {
-//     const recipesData = await getRecipes(); // Выполняем запрос на получение данных о рецептах
-//     createCardTemplate(recipesData, listContainer); // Передаем полученные данные в функцию createCardTemplate
-//   } catch (error) {
-//     console.error('Ошибка при получении данных о рецептах:', error);
-//   }
-// }
+  
 
-// populateCardsWithRecipes();
+  async function fetchRecipes() {
+    try {
+      dataRecipes = await getRecipes();
+      await createCardTemplate(dataRecipes, cardsGallery);
+      const recipeCard = document.querySelector('.card-template')
+      cardsGallery.addEventListener('change', addToFavorites);
+      return dataRecipes;
+    } catch (error) {
+      onError(error);
+    }
+  }
 
-// // Обработчик события, который будет вызываться при изменении текущей страницы пагинации
-// pagination.on('afterMove', async (event) => {
-//   const currentPage = event.page;
-//   try {
-//     // Выполняем запрос на получение данных о рецептах с учетом новой текущей страницы
-//     const recipesData = await getRecipes({ page: currentPage });
-    
-//     // Обновляем карточки рецептов на странице
-//     createCardTemplate(recipesData, listContainer);
-//   } catch (error) {
-//     console.error('Ошибка при получении данных о рецептах:', error);
-//   }
-// });
+  function onError(error) {
+    Notiflix.Notify.failure(error.message);
+  }
+
+  function addToFavorites(event){
+    const recipeId = event.target.closest('.card-template').dataset.id;
+    favoriteRecipe = findRecipe(recipeId);
+    console.log(favorites)
+  }
+
+function findRecipe(recipeId){
+   const item = dataRecipes.find(({ _id }) => _id === recipeId)
+   if (favorites.find(({_id}) => _id === recipeId) === undefined){
+    favorites.push(item)
+   }
+   else{
+    removeFromFavorites()
+   }
+}
+
+export {fetchRecipes}

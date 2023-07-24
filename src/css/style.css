@@ -2,6 +2,7 @@
 
 @import './header.css';
 @import './hero.css';
+@import './main_section.css';
 @import './all_categories.css';
 @import './popular_recipes.css';
 @import './search_filters.css';
@@ -18,3 +19,4 @@
 @import './modals/order_now.css';
 @import './modals/rating.css';
 @import './modals/recipe.css';
+@import './modals/scroll_up.css';
