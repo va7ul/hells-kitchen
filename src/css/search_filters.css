@@ -1,10 +1,4 @@
 :root {
-    --ss-font-color: #4d4d4d;
-    --ss-font-placeholder-color: #8d8d8d;
-    --ss-disabled-color: #dcdee2;
-    --ss-border-color: #dbdde1;
-    --ss-highlight-color: #fffb8c;
-    --ss-success-color: #00b755;
     --ss-error-color: #dc3545;
     --ss-main-height: 35px;
     --ss-content-height: 500px;
@@ -67,10 +61,6 @@
 .ss-main.ss-disabled {
     background-color: var(--ss-disabled-color);
     cursor: not-allowed;
-}
-
-.ss-main.ss-disabled .ss-values .ss-disabled {
-    color: var(--ss-font-color);
 }
 
 .ss-main.ss-disabled .ss-values .ss-value .ss-value-delete {
@@ -193,7 +183,6 @@
 
 .ss-main .ss-deselect svg path {
     fill: none;
-    stroke: var(--ss-font-color);
     stroke-width: 20;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -234,7 +223,7 @@
     transform: scaleY(0);
     transform-origin: center top;
     overflow: hidden;
-    z-index: 1;
+    z-index: 10000;
 }
 
 .ss-content.ss-relative {
@@ -274,22 +263,28 @@
     min-width: 0px;
     padding: var(--ss-spacing-m) var(--ss-spacing-l);
     margin: 0;
-    border: 1px solid var(--ss-border-color);
     border-radius: var(--ss-border-radius);
     background-color: var(--dark-theme-main-text);
     outline: 0;
     text-align: left;
     box-sizing: border-box;
+    border: none;
 }
 
+
 .ss-content .ss-search input::placeholder {
-    color: var(--ss-font-placeholder-color);
-    vertical-align: middle;
+    vertical-align: middle;  
 }
 
 .ss-content .ss-search input:focus {
     box-shadow: 0 0 5px var(--green-btn);
 }
+
+.ss-content .ss-search input::-webkit-search-cancel-button {
+
+    -webkit-appearance: none;
+}
+
 
 .ss-content .ss-search .ss-addable {
     display: inline-flex;
@@ -299,7 +294,6 @@
     flex: 0 0 auto;
     height: auto;
     margin: 0 0 0 var(--ss-spacing-m);
-    border: 1px solid var(--ss-border-color);
     border-radius: var(--ss-border-radius);
 }
 
@@ -315,7 +309,6 @@
 
 .ss-content .ss-search .ss-addable svg path {
     fill: none;
-    stroke: var(--ss-font-color);
     stroke-width: 18;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -334,7 +327,6 @@
 }
 
 .ss-content .ss-list .ss-searching {
-    color: var(--ss-font-color);
     padding: var(--ss-spacing-l);
 }
 
@@ -430,7 +422,6 @@
 
 .ss-content .ss-list .ss-optgroup .ss-optgroup-label .ss-optgroup-actions .ss-closable .ss-arrow path {
     fill: none;
-    stroke: var(--ss-font-color);
     stroke-width: 18;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -445,7 +436,6 @@
 .ss-content .ss-list .ss-option {
     display: flex;
     padding: var(--ss-spacing-m) var(--ss-spacing-l) var(--ss-spacing-m) var(--ss-spacing-l);
-    color: var(--ss-font-color);
     cursor: pointer;
     user-select: none;
 }
@@ -464,14 +454,6 @@
 .ss-content .ss-list .ss-option.ss-disabled {
     cursor: not-allowed;
     background-color: var(--ss-disabled-color);
-}
-
-.ss-content .ss-list .ss-option.ss-disabled:hover {
-    color: var(--ss-font-color);
-}
-
-.ss-content .ss-list .ss-option .ss-search-highlight {
-    background-color: var(--ss-highlight-color);
 }
 
 /*# sourceMappingURL=slimselect.css.map */
@@ -521,39 +503,38 @@
     fill:var(--green-btn)
 }
 
-    .filter-time {
-        width: 160px;
-        height: 46px;
-        padding: 14px 18px;
-    }
+.filter-time {
+    width: 160px;
+    height: 46px;
+    padding: 14px 18px;
+}
 
-    .filter-general{
-        /* padding: 14px 18px; */
-        border-radius: 15px;
-        border: 1px solid rgba(5, 5, 5, 0.20);
+.filter-general{
+    border-radius: 15px;
+    border: 1px solid rgba(5, 5, 5, 0.20);
        
-    }
+}
    
-    .filter-area{
-        width: 160px;
-        height: 46px;
-        padding: 14px 18px;
-    }
+.filter-area{
+    width: 160px;
+    height: 46px;
+    padding: 14px 18px;
+}
 
-    .filter-product{
-        width: 188px;
-        height: 46px;
-        padding: 14px 18px;
-    }
+.filter-product{
+    width: 188px;
+    height: 46px;
+    padding: 14px 18px;
+}
 
-    .filter-btn-home{
-        display: flex;
-        margin-top: 14px;
-        border: none;
-        background-color: inherit;
-        margin-left: auto;
-        padding: 0px;
-    }
+.filter-btn-home{
+    display: flex;
+    margin-top: 14px;
+    border: none;
+    background-color: inherit;
+    margin-left: auto;
+    padding: 0px;
+}
 
 .filter-icon-search{
     opacity: .5;
@@ -572,19 +553,19 @@ input:focus+.filter-icon-search{
     opacity: 1;
 }
 
-    .filter-icon-clear{
-        stroke: var(--green-btn);
-    }
+.filter-icon-clear{
+    stroke: var(--green-btn);
+}
 
-    .svg-with-input{
-        position: relative;
-    }
+.svg-with-input{
+    position: relative;
+}
 
-    .svg-with-input svg{
-        position: absolute;
-        top: 14px;
-        left: 18px;
-    }
+.svg-with-input svg{
+    position: absolute;
+    top: 14px;
+    left: 18px;
+}
 
 @media screen and (min-width: 768px) {
 
@@ -593,7 +574,7 @@ input:focus+.filter-icon-search{
     }
 
     .input-box {
-    width: 278px;
+        width: 278px;
     }
 
     .filter-text-home {
@@ -602,6 +583,15 @@ input:focus+.filter-icon-search{
 
     .filter-time {
         width: 115px;
+        height: 48px;
+    }
+
+    .filter-area {
+        width: 140px;
+        height: 48px;
+    }
+
+    .filter-product{
         height: 48px;
     }
 
@@ -618,24 +608,8 @@ input:focus+.filter-icon-search{
 
 @media screen and (min-width: 1280px) {
   
-    .filter-input {
-        width: 278px;
-        height: 48px;
-   
-    }
     .filter-time {
         width: 125px;
-        height: 48px;
     }
-
-   .filter-area{
-        width: 141px;
-        height: 48px;
-   }
-
-   .filter-product{
-        width: 188px;
-        height: 48px;
-   }
 }
 
