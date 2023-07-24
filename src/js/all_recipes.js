@@ -40,4 +40,4 @@ function findRecipe(recipeId){
    }
 }
 
-export {fetchRecipes}
+export {fetchRecipes, addToFavorites, favorites}
