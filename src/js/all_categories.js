@@ -1,4 +1,4 @@
-import { getAllCategories, resetAllFiters } from './api';
+import { getAllCategories, resetAllFiters, save, load } from './api';
 import { fetchRecipes } from './all_recipes';
 
 const allCategoriesEl = document.querySelector('.all-categories-btn');
@@ -20,10 +20,11 @@ function createCategoriesList(categories) {
 }
 
 getAllCategories()
-  .then(categories => createCategoriesList(categories))
+  .then(categories => {
+    createCategoriesList(categories);
+    save('all categories', categories);
+  })
   .catch(error => console.log(error));
-
-fetchRecipes();
 
 categoriesContainerEl.addEventListener('click', onCategory);
 
