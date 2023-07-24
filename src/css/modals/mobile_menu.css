@@ -1,0 +1,55 @@
+/* ---- MOBILE MENU ---- */
+
+.container-mobile {
+  position: fixed;
+  z-index: 666;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 100vh;
+  padding-top: 200px;
+  padding-left: 73px;
+  padding-right: 74px;
+  margin-bottom: auto;
+  background-color: var(--green-btn);
+  transform-origin: bottom;
+  transform: scaleY(0);
+  transition: transform 1000ms var(--transition-dur-and-func);
+}
+
+.container-mobile.is-open {
+  transform: scaleY(1);
+  transform-origin: top;
+  transition: transform 1000ms var(--transition-dur-and-func);
+}
+
+.mobile-nav-link {
+  color: var(--dark-theme-main-text);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-align: center;
+}
+.mobile-nav-link:hover,
+.mobile-nav-link:focus {
+  color: #f8f8f8;
+}
+
+.burger-close {
+  position: absolute;
+  top: 20;
+  right: 20;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+}
+
+.mobile-home-link {
+  margin-bottom: 16px;
+}
+
+.mobile-nav-content {
+  margin-bottom: 0;
+}
