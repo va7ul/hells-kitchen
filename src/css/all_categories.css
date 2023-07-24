@@ -4,6 +4,7 @@
 
 @media screen and (min-width: 768px) {
     .wrapper-categories {
+        margin-top: 26px;
         margin-bottom: 64px;
     }
 }
