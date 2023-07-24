@@ -25,7 +25,7 @@ productOptions.addEventListener("change", onProductOptions);
 resetBtn.addEventListener("click", onResetBtn);
 
 function onResetBtn(evt) {
-        console.log(evt.target)
+        
         inputSearch.value = "";
         timeSelect.setSelected(timeSelect.getData()[0]);
         areaSelect.setSelected(areaSelect.getData()[0]);
@@ -33,7 +33,7 @@ function onResetBtn(evt) {
         localStorage.setItem('title', '');
         localStorage.setItem('time', '');
         localStorage.setItem('area', '');
-        localStorage.setItem('ingredients', '');
+        localStorage.setItem('ingredient', '');
         
         fetchRecipes();
 }
@@ -120,7 +120,8 @@ function onAreaOptions(evt) {
 
 
 function onProductOptions(evt) {
-        const ingredients = evt.target.options[evt.target.selectedIndex].dataset.ing;
-        localStorage.setItem('ingredients', ingredients);
+        const ingredient = evt.target.options[evt.target.selectedIndex].dataset.ing;
+        localStorage.setItem('ingredient', ingredient);
+        console.log(ingredient)
         fetchRecipes();
 }

@@ -121,7 +121,7 @@
     color: var(--ss-bg-color);
     line-height: 1;
     padding: var(--ss-spacing-s) var(--ss-spacing-m);
-    background-color: var(--ss-primary-color);
+    background-color: var(--green-btn);
     border-radius: var(--ss-border-radius);
 }
 
@@ -135,7 +135,7 @@
     user-select: none;
     align-items: center;
     width: fit-content;
-    background-color: var(--ss-primary-color);
+    background-color: var(--green-btn);
     border-radius: var(--ss-border-radius);
     animation-name: ss-valueIn;
     animation-duration: var(--ss-animation-timing);
@@ -292,7 +292,7 @@
 }
 
 .ss-content .ss-search input:focus {
-    box-shadow: 0 0 5px var(--ss-primary-color);
+    box-shadow: 0 0 5px var(--green-btn);
 }
 
 .ss-content .ss-search .ss-addable {
@@ -406,7 +406,7 @@
 
 .ss-content .ss-list .ss-optgroup .ss-optgroup-label .ss-optgroup-actions .ss-selectall svg path {
     fill: none;
-    stroke: var(--ss-success-color);
+    stroke: var(--green-btn);
     stroke-linecap: round;
     stroke-linejoin: round;
 }
@@ -456,13 +456,13 @@
 
 .ss-content .ss-list .ss-option:hover {
     color: var(--ss-bg-color);
-    background-color: var(--ss-primary-color);
+    background-color: var(--green-btn);
 }
 
 .ss-content .ss-list .ss-option.ss-highlighted,
 .ss-content .ss-list .ss-option:not(.ss-disabled).ss-selected {
     color: var(--ss-bg-color);
-    background-color: var(--ss-primary-color);
+    background-color: var(--green-btn);
 }
 
 .ss-content .ss-list .ss-option.ss-disabled {
@@ -514,6 +514,11 @@
     background-color: var(--light-theme-fill);
     padding-left: 48px;
     padding-right: 18px;
+    outline: none;
+}
+
+.filter-input::-ms-clear {
+    fill:var(--green-btn)
 }
 
     .filter-time {
@@ -548,6 +553,19 @@
         background-color: inherit;
         margin-left: auto;
     }
+
+.filter-icon-search{
+    opacity: .5;
+}
+
+.filter-input:focus{
+    box-shadow: 0 0 5px var(--green-btn);
+}
+
+input:focus+.filter-icon-search{
+    fill: var(--green-btn);
+    opacity: 1;
+}
 
     .filter-icon-clear{
         stroke: var(--green-btn);
