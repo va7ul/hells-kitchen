@@ -1,8 +1,13 @@
 import { getAllCategories } from '../api';
 import { createCardTemplate } from '../card_template';
+import { KEY_FAVORITE } from './favorite_recipes';
+
 
 const favoriteFilterEl = document.querySelector('.favorite-filter-list');
 const favoriteRecipesListEl = document.querySelector('.favorite-recipes-list');
+
+const favoriteArrFromLocalStorage =
+  JSON.parse(localStorage.getItem(KEY_FAVORITE)) ?? [];
 
 getAllCategories()
   .then(data => {
@@ -34,12 +39,14 @@ favoriteFilterEl.addEventListener('click', onClick);
 
 function onClick(evt) {
   if (evt.target.classList.contains('favorite-filter-btn')) {
-    const findProduct = findProductbyFilter(evt.target);
+    const findProduct = findProductByFilter(evt.target);
     createCardTemplate(findProduct, favoriteRecipesListEl);
   }
 }
 
-function findProductbyFilter(elem) {
-  const searchCategory = elem.closest('.favorite-filter-item').dataset.category;
-  return favoriteArr.map(({ category }) => category === searchCategory);
+function findProductByFilter(elem) {
+    const searchCategory = elem.closest('.favorite-filter-item').dataset.category;
+  return favoriteArrFromLocalStorage.map(
+    ({ category }) => category === searchCategory
+  );
 }
