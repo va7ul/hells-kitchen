@@ -88,13 +88,13 @@ async function getIngredients() {
 }
 
 async function getRecipes() {
-  category = localStorage.getItem('category');
-  page = localStorage.getItem('page');
-  limit = localStorage.getItem('limit');
-  title = localStorage.getItem('title');
-  time = localStorage.getItem('time');
-  area = localStorage.getItem('area');
-  ingredients = localStorage.getItem('ingredients');
+  let category = localStorage.getItem('category');
+  let page = localStorage.getItem('page');
+  let limit = localStorage.getItem('limit');
+  let title = localStorage.getItem('title');
+  let time = localStorage.getItem('time');
+  let area = localStorage.getItem('area');
+  let ingredients = localStorage.getItem('ingredients');
 
   const url = `/recipes?category=${category}&page=${page}&limit=${limit}&title=${title}&time=${time}&area=${area}&ingredients=${ingredients}`;
   try {

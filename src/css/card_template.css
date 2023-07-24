@@ -5,9 +5,9 @@
     align-items: start;
     position: relative;
     flex-shrink: 0;
-
     max-width: 335px;
     height: 335px;
+
     overflow: hidden;
     padding: 16px;
     border-radius: 8px;

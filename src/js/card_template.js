@@ -7,6 +7,7 @@ function createCardTemplate(data, list) {
       class="js-add-to-fav add-to-fav"/>
       <span class="heart-checkbox"></span>
       </label>
+
     <img src="${preview}" alt="${title}" class="card-template-img" />
     <div class="card-template-info">
     <h2 class="card-template-title">${title}</h2>

@@ -11,7 +11,7 @@
     />
     <title>Favorites</title>
     <link rel="stylesheet" href="./css/style.css" />
-    <!-- Тут має бути Favicon -->
+    <link href="/images/favicon.ico" rel="icon" type="image/x-icon" />
   </head>
   <body>
     <include src="./partials/header.html"></include>
@@ -20,6 +20,9 @@
 
       <include src="./partials/favorites/favorite_filter.html"></include>
       <include src="./partials/favorites/favorite_recipes.html"></include>
+
+      <!-- добавил для пагинации -->
+      <div id="tui-pagination-container" class="tui-pagination"></div>
     </main>
 
     <footer>
@@ -30,6 +33,6 @@
     <include src="./partials/modals/rating.html"></include>
     <include src="./partials/modals/recipe.html"></include>
 
-    <script type="module" src="./index.js"></script>
+    <script type="module" src="./favourites.js"></script>
   </body>
 </html>
