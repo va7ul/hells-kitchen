@@ -536,7 +536,13 @@
     }
 
     .filter-btn-home{
+        display: flex;
         margin-top: 14px;
+    }
+
+    .filter-icon-clear{
+        stroke: var(--green-btn);
+        fill: var(--green-btn);
     }
 
 
