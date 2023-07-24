@@ -6,6 +6,7 @@ import './js/popular_recipes';
 import './js/card_template';
 import './js/search_filters';
 import './js/all_recipes';
+import './js/scrollUp';
 
 import './js/modals/mobile_menu';
 import './js/modals/order_now';
