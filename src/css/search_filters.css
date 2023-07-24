@@ -551,12 +551,6 @@
 
     .filter-icon-clear{
         stroke: var(--green-btn);
-        fill: var(--green-btn);
-    }
-
-   
-    .filter-icon-search{
-
     }
 
     .svg-with-input{

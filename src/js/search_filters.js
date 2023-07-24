@@ -24,13 +24,17 @@ areaOptions.addEventListener("change", onAreaOptions);
 productOptions.addEventListener("change", onProductOptions);
 resetBtn.addEventListener("click", onResetBtn);
 
-function onResetBtn() {
-
+function onResetBtn(evt) {
+        console.log(evt.target)
         inputSearch.value = "";
+        timeSelect.setSelected(timeSelect.getData()[0]);
+        areaSelect.setSelected(areaSelect.getData()[0]);
+        productSelect.setSelected(productSelect.getData()[0]);
         localStorage.setItem('title', '');
         localStorage.setItem('time', '');
         localStorage.setItem('area', '');
         localStorage.setItem('ingredients', '');
+        
         fetchRecipes();
 }
 
