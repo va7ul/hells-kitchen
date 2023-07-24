@@ -1,6 +1,7 @@
 import { getRecipes} from "./api";
 import { createCardTemplate } from "./card_template";
 import { addToFavorites } from "./add-to-favorites";
+import Notiflix from "notiflix";
 
 const cardsGallery = document.querySelector('.cards-gallery');
 let dataRecipes = [];
