@@ -156,8 +156,8 @@
 }
 
 .slick-dots button {
-  width: 12px;
-  height: 12px;
+  width: 8px;
+  height: 8px;
   border: 1px;
   background-color: black;
 
@@ -237,7 +237,9 @@
   .slider {
     width: 702px;
   }
+  /*
   .slider-wrapper {
     width: 1180px;
   }
+  */
 }
