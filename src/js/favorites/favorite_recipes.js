@@ -1,11 +1,13 @@
 import { createCardTemplate } from '../card_template';
-import favoritesArray from '../favorites-array';
 
-const KEY_FAVORITE = 'favorite';
+//import favoritesArray from '../favorites-array';
+
+//const KEY_FAVORITE = 'favorite';
+const favorite = 'KEY_FAVORITE';
 
 // імпорт
 function createModal(product) {
-  console.log(product);
+  //console.log(product);
 }
 //імпорт
 
@@ -16,11 +18,13 @@ const paginationEl = document.querySelector('.tui-pagination');
 
 const emptyStorageEl = document.querySelector('.empty-storage-wrapper');
 
-// const favoriteArrFromLocalStorage =
-//   JSON.parse(localStorage.getItem(KEY_FAVORITE)) ?? [];
+const favoritesArray =
+  JSON.parse(localStorage.getItem(favorite)) ?? [];
 
 if (favoritesArray.length !== 0) {
   createCardTemplate(favoritesArray, favoriteRecipesListEl);
+  const checkHeartEl = document.querySelectorAll('.js-add-to-fav');
+  checkHeartEl.forEach((item) => item.checked = true)
 } else {
   heroEl.classList.add('hero-is-hidden');
   filtersEl.classList.add('hiddenvisualy');
@@ -54,10 +58,7 @@ function removeFromFavorites(elem, arr) {
     item => item._id === productId
   );
   arr.splice(removeElemIdx, 1);
-  localStorage.setItem(
-    KEY_FAVORITE,
-    JSON.stringify(arr)
-  );
+  localStorage.setItem(favorite, JSON.stringify(arr));
 }
 
-export { removeFromFavorites, KEY_FAVORITE };
+//export { removeFromFavorites, KEY_FAVORITE };
