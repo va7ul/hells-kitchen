@@ -563,6 +563,10 @@ input:focus+.filter-icon-search{
     left: 18px;
 }
 
+.dark-theme .filter-input{
+
+}
+
 @media screen and (min-width: 768px) {
 
     .filter-form-home {
