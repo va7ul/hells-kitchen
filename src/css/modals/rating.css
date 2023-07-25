@@ -1,5 +1,17 @@
 .rating-modal-btn-icon {
-    width: 16px;
-    height: 16px;
-    /* stroke: black; */
+    width: 10px;
+    height: 10px;
+    stroke: var(--light-theme-main-text);
+}
+
+@media screen and (min-width: 768px) {
+    .rating-modal-btn-icon {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+.rating-modal-btn {
+    background-color: transparent;
+    border: transparent;
 }
