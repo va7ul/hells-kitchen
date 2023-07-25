@@ -20,10 +20,7 @@ function createCategoriesList(categories) {
 }
 
 getAllCategories()
-  .then(categories => {
-    createCategoriesList(categories);
-    save('all categories', categories);
-  })
+  .then(categories => createCategoriesList(categories))
   .catch(error => console.log(error));
 
 categoriesContainerEl.addEventListener('click', onCategory);

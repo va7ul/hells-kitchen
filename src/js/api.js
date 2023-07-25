@@ -115,8 +115,8 @@ async function getRecipeById(recipeId) {
   }
 }
 
-async function patchRating(recipeId) {
-  const url = `/recipes/${recipeId}/rating`;
+async function patchRating(recipeId, rating) {
+  const url = `/recipes/${recipeId}/${rating}`;
   try {
     const response = await axios.patch(url);
     return response.data;
