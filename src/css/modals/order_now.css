@@ -88,7 +88,7 @@ body.show-modal-order-now .order-now-backdrop {
 
 .order-now-modal-form input,
 textarea {
-  width: 295px;
+  width: 270px;
   border-radius: 15px;
   border: 1px solid rgba(5, 5, 5, 0.2);
 }
