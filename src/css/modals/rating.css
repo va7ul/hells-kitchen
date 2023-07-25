@@ -68,6 +68,7 @@
 }
 
 .rating-modal-stars-wrapper {
+    display: flex;
     width: 161px;
     height: 24px;
     margin-bottom: 24px;
@@ -79,9 +80,13 @@
     }
 }
 
-.rating-stars-number {
+.live-rating {
     width: 25px;
     height: auto;
+    color: var(--light-theme-main-text);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
 }
 
 
