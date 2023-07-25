@@ -25,6 +25,8 @@ function createCardTemplate(data, list) {
     list.innerHTML = markup;
 }
 
+
+
 function onButtonClick(event) {
   const button = event.target;
   const _id = button.dataset.id;
@@ -44,7 +46,9 @@ function popUpFunction(_id) {
 
     let current_tags = "";
     for (let i = 0; i < recipe.tags.length; i++) {
-      current_tags += '<a href="" class="modal_tag">#'+recipe.tags[i]+"</a>";
+      if (recipe.tags[i] !== ""){
+        current_tags += '<a href="" class="modal_tag">#'+recipe.tags[i]+"</a>";
+      }
     }
 
     let current_ingredients = "";
@@ -71,14 +75,14 @@ function popUpFunction(_id) {
     }
 
     const transformedRecipe = `
-    <div class="bg_modal"></div>
+    <div id="bg_modal" class="bg_modal"></div>
     <div class="modal">
-      <div class="modal_close">
+      <a id="pop-up-close" class="modal_close">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
           <path d="M18 6L6 18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M6 6L18 18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-      </div>
+      </a>
   
       <div class="modal_container">
         <h4 class="modal_title">${recipe.title}</h4>
@@ -94,7 +98,7 @@ function popUpFunction(_id) {
                 ${current_stars}
               </div>
             </div>
-            <div class="modal_time">${recipe.time}</div>
+            <div class="modal_time">${recipe.time} min</div>
           </div>
         </div>
   
@@ -114,6 +118,21 @@ function popUpFunction(_id) {
     </div>
     `;
     modal_popup.innerHTML = transformedRecipe;
+
+
+    document.getElementById("pop-up-close").addEventListener("click", function () {
+      const popUpRecipes = document.querySelectorAll(".pop-up-recipe");
+      popUpRecipes.forEach(function (recipe) {
+        recipe.innerHTML = "";
+      });
+    });
+
+    document.getElementById("bg_modal").addEventListener("click", function () {
+      const popUpRecipes = document.querySelectorAll(".pop-up-recipe");
+      popUpRecipes.forEach(function (recipe) {
+        recipe.innerHTML = "";
+      });
+    });
   })
 }
 
