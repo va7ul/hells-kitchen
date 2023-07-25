@@ -1,8 +1,9 @@
 import favoritesArray from "./favorites-array";
 import { dataRecipes } from "./all_recipes";
 import { save } from "./api";
-import{KEY_FAVORITE, removeFromFavorites} from "./favorites/favorite_recipes"
+import { removeFromFavorites } from "./api";
 
+const KEY_FAVORITE = 'favorite';
 
 function addToFavorites(event){
     const recipeId = event.target.closest('.card-template').dataset.id;
@@ -19,5 +20,4 @@ function findRecipe(recipeId){
     removeFromFavorites(item, favoritesArray)
    }
 }
-
 export {addToFavorites}
