@@ -49,6 +49,7 @@
 }
 
 .slider {
+  cursor: grabbing;
   width: 355px;
   overflow: hidden;
 }
