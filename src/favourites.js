@@ -1,4 +1,4 @@
-import './js/hero';
+import './js/header';
 import './js/slick.min';
 
 import './js/favorites/favorite_filter';
