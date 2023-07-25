@@ -119,4 +119,5 @@ function popUpFunction(_id) {
     })
   }
   
- export {popUpFunction}
+export { popUpFunction }
+export {ratingStars}
