@@ -57,7 +57,8 @@ function createTimeOptions() {
         timeSelect = new SlimSelect({
             select: '.js-time',
          settings: {
-                showSearch: false,
+                 showSearch: false,
+                 openPosition: 'down',
                 placeholderText: '0 min',
   },
      })
@@ -75,6 +76,7 @@ getAreas()
             select: '.js-area',
         settings: {
                 showSearch: true,
+                openPosition: 'down',
                 placeholderText: 'Region',
   },
     })
@@ -94,6 +96,7 @@ getIngredients()
             select: '.js-product',
         settings: {
                 showSearch: true,
+                openPosition: 'down',
                 placeholderText: 'Product',
   },
                 })
