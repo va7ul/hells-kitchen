@@ -4,10 +4,9 @@
     justify-content: flex-end;
     align-items: start;
     position: relative;
+    width: 250px;
+    height: 287px;
     flex-shrink: 0;
-    max-width: 335px;
-    height: 335px;
-
     overflow: hidden;
     padding: 16px;
     border-radius: 8px;
@@ -25,6 +24,7 @@
     background-repeat: no-repeat;
     z-index: 1;
 }
+
 
 .card-template-img {
     position: absolute;
