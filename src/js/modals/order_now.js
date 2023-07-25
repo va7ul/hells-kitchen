@@ -3,6 +3,8 @@ const refs = {
   closeButtonEl: document.querySelector('.order-now-modal__close-btn'),
   backdropEl: document.querySelector('.js-backdrop'),
 };
+
+
 refs.openButtonEl.addEventListener('click', onModalOpen);
 
 refs.closeButtonEl.addEventListener('click', onModalRemove);
@@ -30,3 +32,4 @@ function onEscKeyPress(event) {
     onModalRemove();
   }
 }
+export { onModalOpen };

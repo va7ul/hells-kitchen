@@ -109,6 +109,7 @@ function popUpFunction(_id) {
       modalRestore(recipe);
     });
 
+
     // обробник подій натискання на клавішу 
     document.addEventListener("keydown", function (event) {
       const key = event.key || event.keyCode;
@@ -120,4 +121,6 @@ function popUpFunction(_id) {
   })
 }
 
-export {popUpFunction}
+export { popUpFunction }
+export {ratingStars}
+

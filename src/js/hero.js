@@ -1,4 +1,5 @@
 import { getMasterclasses } from './api';
+import { onModalOpen } from './modals/order_now';
 
 const { default: axios } = require('axios');
 
@@ -17,6 +18,9 @@ function sliderStart() {
     });
   });
 }
+
+const heroButtonEl = document.querySelector('.hero-btn');
+heroButtonEl.addEventListener('click', onModalOpen);
 
 const slider = document.querySelector('.slider');
 

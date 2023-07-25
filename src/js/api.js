@@ -115,8 +115,8 @@ async function getRecipeById(recipeId) {
   }
 }
 
-async function patchRating(recipeId) {
-  const url = `/recipes/${recipeId}/rating`;
+async function patchRating(recipeId, rating) {
+  const url = `/recipes/${recipeId}/${rating}`;
   try {
     const response = await axios.patch(url);
     return response.data;
@@ -135,6 +135,13 @@ async function postOrder(recipeId) {
   }
 }
 
+function removeFromFavorites(elem, arr) {
+  const productId = elem.closest('.card-template').dataset.id;
+  const removeElemIdx = arr.findIndex(item => item._id === productId);
+  arr.splice(removeElemIdx, 1);
+  localStorage.setItem(KEY_FAVORITE, JSON.stringify(arr));
+}
+
 export {
   getMasterclasses,
   getAllCategories,
@@ -149,4 +156,5 @@ export {
   resetFilters,
   save,
   load,
+  removeFromFavorites,
 };

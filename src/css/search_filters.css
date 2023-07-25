@@ -6,7 +6,7 @@
     --ss-spacing-m: 5px;
     --ss-spacing-s: 3px;
     --ss-animation-timing: 0.2s;
-    --ss-border-radius: 4px;
+    --ss-border-radius: 8px;
 }
 
 @keyframes ss-valueIn {
@@ -268,7 +268,7 @@
     outline: 0;
     text-align: left;
     box-sizing: border-box;
-    border: none;
+    border: 1px solid rgba(5, 5, 5, 0.20);
 }
 
 
@@ -443,12 +443,14 @@
 .ss-content .ss-list .ss-option:hover {
     color: var(--dark-theme-main-text);
     background-color: var(--green-btn);
+    border-radius: var(--ss-border-radius);
 }
 
 .ss-content .ss-list .ss-option.ss-highlighted,
 .ss-content .ss-list .ss-option:not(.ss-disabled).ss-selected {
     color: var(--dark-theme-main-text);
     background-color: var(--green-btn);
+    border-radius: var(--ss-border-radius);
 }
 
 
@@ -518,7 +520,7 @@
 .filter-product{
     width: 188px;
     height: 46px;
-    padding: 14px 18px;
+    padding: 0 14px 0 14px;
 }
 
 .filter-btn-home{

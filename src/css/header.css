@@ -40,9 +40,9 @@
   align-items: center;
 }
 
-.switch-theme {
+/*.switch-theme {
   display: none;
-}
+}*/
 
 .burger-open {
   padding: 0;
@@ -130,7 +130,7 @@
   transition: var(--transition-dur-and-func);
 }
 
-.theme-light {
+/*.theme-light {
   --light-theme-fill: #f8f8f8;
   --light-theme-main-text: #050505;
   --light-theme-switcher-btn: #cecdcd;
@@ -165,6 +165,7 @@
     padding-top: 20px;
     padding-bottom: 91px;
   }
+
   .head-navigation {
     display: none;
   }
@@ -175,7 +176,16 @@
   .shopping-cart {
     margin-right: 14px;
   }
-  .container-switch-mobile {
+  .head-theme-switcher {
+    display: none;
+  }
+  .menu-theme-switcher {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+  }
+
+  /*.container-switch-mobile {
     display: flex;
     width: 46px;
     height: 20px;
@@ -184,10 +194,10 @@
     justify-content: center;
     align-items: center;
     border-radius: 24px;
-  }
+  }*/
 
   /* The switch - the box around the slider */
-  .switch {
+  /*.switch {
     position: relative;
     display: inline-block;
     width: 46px;
@@ -195,14 +205,14 @@
   }
 
   /* Hide default HTML checkbox */
-  .switch input {
+  /*.switch input {
     opacity: 0;
     width: 0;
     height: 0;
   }
 
   /* The slider */
-  .slider-header {
+  /*.slider-header {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -213,8 +223,8 @@
     -webkit-transition: 0.4s;
     transition: 0.4s;
   }
-
-  .slider-header:before {
+*/
+  /*.slider-header:before {
     position: absolute;
     content: '';
     height: 20px;
@@ -250,17 +260,17 @@
   }
 
   /* Rounded sliders */
-  .slider-header.round {
+  /* .slider-header.round {
     border-radius: 24px;
-  }
+  }*/
 
-  .slider-header.round:before {
+  /*.slider-header.round:before {
     border-radius: 50%;
   }
-
-  .container-switch-header {
+*/
+  /* .container-switch-header {
     display: none;
-  }
+  }*/
   .header-buttonbox {
     display: flex;
     align-items: center;
@@ -284,7 +294,10 @@
     padding-top: 20px;
     padding-bottom: 87px;
   }
-
+  .head-theme-switcher {
+    display: block;
+    margin-left: 18px;
+  }
   .list-navigation {
     font-weight: 500;
   }
@@ -293,11 +306,6 @@
     font-size: 18px;
     line-height: 1.11;
     letter-spacing: -0.72px;
-  }
-
-  .head-theme-switcher {
-    display: block;
-    margin-left: 18px;
   }
 
   .header-menu-burger {
@@ -310,7 +318,50 @@
   .shopping-cart {
     margin-right: 18px;
   }
-  .container-switch-header {
+
+  .switcher-toggle[type='checkbox'] {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+    display: none;
+  }
+
+  .check-toggle {
+    position: relative;
+    display: block;
+    width: 46px;
+    height: 20px;
+    border-radius: 18px;
+    background-color: var(--light-theme-switcher-btn);
+
+    cursor: pointer;
+  }
+
+  .check-toggle::before {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 18px;
+    height: 18px;
+    border-radius: 18px;
+    background-color: var(--light-theme-fill);
+  }
+
+  .switcher-toggle:checked + .check-toggle {
+    background-color: var(--green-btn);
+  }
+
+  .switcher-toggle:checked + .check-toggle::before {
+    left: calc(100% - 1px);
+    transform: translateX(-100%);
+  }
+
+  .check-toggle:active::before {
+    width: 44px;
+  }
+
+  /*.container-switch-header {
     display: flex;
     width: 46px;
     height: 20px;
@@ -322,22 +373,22 @@
   }
 
   /* The switch - the box around the slider */
-  .switch {
+  /* .switch {
     position: relative;
     display: inline-block;
     width: 46px;
     height: 20px;
-  }
+  }*/
 
   /* Hide default HTML checkbox */
-  .switch input {
+  /*.switch input {
     opacity: 0;
     width: 0;
     height: 0;
   }
 
   /* The slider */
-  .slider-header {
+  /*.slider-header {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -385,13 +436,13 @@
   }
 
   /* Rounded sliders */
-  .slider-header.round {
+  /* .slider-header.round {
     border-radius: 24px;
-  }
+  }*/
 
-  .slider-header.round:before {
+  /*.slider-header.round:before {
     border-radius: 50%;
-  }
+  }*/
 
   .header-buttonbox {
     display: flex;
@@ -405,10 +456,6 @@
     padding-top: 42px;
     padding-bottom: 94px;
   }
-
-  .head-theme-switcher {
-    margin-left: 24px;
-  }
 }
 
 @media screen and (min-width: 375px) {
@@ -418,4 +465,34 @@
     margin-left: auto;
     margin-right: auto;
   }
+}
+
+body.dark-theme {
+  background-color: var(--dark-theme-fill);
+  color: var(--dark-theme-main-text);
+}
+
+.dark-theme .container-mobile {
+  background-color: rgba(5, 5, 5, 1);
+}
+
+.dark-theme .shopping-cart,
+.dark-theme .icon-gamburger {
+  stroke: var(--dark-theme-main-text);
+}
+
+.dark-theme .hero-title,
+.dark-theme .hero-description,
+.dark-theme .hero-btn {
+  color: var(--dark-theme-main-text);
+}
+.dark-theme .categories-list-btn,
+.dark-theme .card-template-title,
+.dark-theme .card-template-descr {
+  color: rgba(255, 255, 255, 1);
+}
+
+.dark-theme .mobile-nav-link:hover,
+.dark-theme .mobile-nav-link:focus {
+  color: var(--green-btn);
 }

@@ -1,10 +1,10 @@
 import Pagination from 'tui-pagination';
 
-const container = document.getElementById('tui-pagination-container');
+const container = document.getElementById('tui-pagination');
 const options = {
   totalItems: 20000,
-  itemsPerPage: 20,
-  visiblePages: 4,
+  itemsPerPage: 9,
+  visiblePages: 3,
   page: 1,
   centerAlign: false,
   firstItemClassName: 'tui-first-child',
@@ -25,4 +25,5 @@ const options = {
       '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">...</a>',
   },
 };
-export const pagination = new Pagination(container, options);
+const pagination = new Pagination(container, options);
+export {pagination}
