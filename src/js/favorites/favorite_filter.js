@@ -6,8 +6,8 @@ import { KEY_FAVORITE } from './favorite_recipes';
 const favoriteFilterEl = document.querySelector('.favorite-filter-list');
 const favoriteRecipesListEl = document.querySelector('.favorite-recipes-list');
 
-const favoriteArrFromLocalStorage =
-  JSON.parse(localStorage.getItem(KEY_FAVORITE)) ?? [];
+// const favoriteArrFromLocalStorage =
+//   JSON.parse(localStorage.getItem(KEY_FAVORITE)) ?? [];
 
 getAllCategories()
   .then(data => {
@@ -45,7 +45,9 @@ function onClick(evt) {
 }
 
 function findProductByFilter(elem) {
-    const searchCategory = elem.closest('.favorite-filter-item').dataset.category;
+  const searchCategory = elem.closest('.favorite-filter-item').dataset.category;
+  const favoriteArrFromLocalStorage =
+    JSON.parse(localStorage.getItem(KEY_FAVORITE));
   return favoriteArrFromLocalStorage.map(
     ({ category }) => category === searchCategory
   );

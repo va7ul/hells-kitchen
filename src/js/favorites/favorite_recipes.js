@@ -8,8 +8,6 @@ function createModal(product) {
   console.log(product);
 }
 //імпорт
-favoritesArray.push('sss')
-console.log('s')
 
 const favoriteRecipesListEl = document.querySelector('.favorite-recipes-list');
 const heroEl = document.querySelector('.hero-section-favorites')
