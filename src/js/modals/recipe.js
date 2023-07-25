@@ -1,5 +1,10 @@
 import {getRecipeById} from "../api";
-import {createCardTemplate} from "../card_template"
+import { createCardTemplate } from "../card_template"
+import { KEY_FAVORITE, removeFromFavorites } from "../favorites/favorite_recipes";
+import { addToFavorites } from "../add-to-favorites";
+
+
+
 
 function ratingStars(rating){
     let current_rating = Math.round(rating);
@@ -40,7 +45,7 @@ function popUpFunction(_id) {
       if(recipe.youtube){
         current_youtube = recipe.youtube.replace('watch?v=','embed/');
       }
-  
+
       const transformedRecipe = `
       <div id="bg_modal" class="bg_modal"></div>
       <div class="popup_modal">
@@ -74,8 +79,11 @@ function popUpFunction(_id) {
           </div>
           <div class="modal_description">${recipe.description}</div>
           <div class="modal_buttons">
-            <div class="modal_button modal_favourite">
+            <div class="modal_button modal_favourite modal_favourite_add">
               <button data-id="${recipe._id}">Add to favourite</button>
+            </div>
+             <div class="modal_button modal_favourite modal_favourite_remove">
+              <button data-id="${recipe._id}">Remove from favorite</button>
             </div>
             <div class="modal_button modal_rating_button">
               <button data-id="${recipe._id}">Give a rating</button>
@@ -116,7 +124,25 @@ function popUpFunction(_id) {
         }
       });
 
+
+      // перемикання кнопки додати та видалити
+
+      if (KEY_FAVORITE._id !== recipe._id) {
+        const removeBtnEl = document.querySelector('.modal_favourite_remove').addEventListener( 'click', removeFromFavorites)
+        const addBtnEl = document.querySelector('.modal_favourite_add').addEventListener('click', addToFavorites)
+        removeBtnEl.classList.add('is-hidden') && addBtnEl.classList.remove('is-hidden')
+      }
+       
+      
+
+
+
     })
+  
+  
   }
+
+   
+  
   
  export {popUpFunction}
