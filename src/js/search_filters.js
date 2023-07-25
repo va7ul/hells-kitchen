@@ -1,6 +1,6 @@
 import SlimSelect from "slim-select";
 import debounce from "lodash.debounce";
-import { getAreas, getIngredients, save, getRecipes } from "./api";
+import { getAreas, getIngredients, resetFilters } from "./api";
 import { fetchRecipes } from "./all_recipes";
 
 let userInput = "";
@@ -8,7 +8,6 @@ let i = 0;
 let timeSelect;
 let areaSelect;
 let productSelect;
-let ingredientsWithId = [];
 
 const inputSearch = document.querySelector(".js-input-home");
 const inputForm = document.querySelector(".js-form-home");
@@ -24,18 +23,18 @@ areaOptions.addEventListener("change", onAreaOptions);
 productOptions.addEventListener("change", onProductOptions);
 resetBtn.addEventListener("click", onResetBtn);
 
-function onResetBtn(evt) {
-        console.log(evt.target)
+function onResetBtn() {
+        
+        resetSelectsToDefault();
+        resetFilters();
+        fetchRecipes();
+}
+
+function resetSelectsToDefault() {
         inputSearch.value = "";
         timeSelect.setSelected(timeSelect.getData()[0]);
         areaSelect.setSelected(areaSelect.getData()[0]);
         productSelect.setSelected(productSelect.getData()[0]);
-        localStorage.setItem('title', '');
-        localStorage.setItem('time', '');
-        localStorage.setItem('area', '');
-        localStorage.setItem('ingredients', '');
-        
-        fetchRecipes();
 }
 
 function onInputSearch(evt) {
@@ -58,7 +57,8 @@ function createTimeOptions() {
         timeSelect = new SlimSelect({
             select: '.js-time',
          settings: {
-                showSearch: false,
+                 showSearch: false,
+                 openPosition: 'down',
                 placeholderText: '0 min',
   },
      })
@@ -75,7 +75,8 @@ getAreas()
                 areaSelect = new SlimSelect({
             select: '.js-area',
         settings: {
-                showSearch: false,
+                showSearch: true,
+                openPosition: 'down',
                 placeholderText: 'Region',
   },
     })
@@ -87,8 +88,6 @@ getAreas()
 
 getIngredients()
         .then(ingridients => {
-               
-                
                 ingridients.map(({ name, _id }) => {
                         productOptions.insertAdjacentHTML("beforeend", `<option data-ing="${_id}" value="${name}">${name}</option>`)
                         
@@ -96,7 +95,8 @@ getIngredients()
                 productSelect = new SlimSelect({
             select: '.js-product',
         settings: {
-                showSearch: false,
+                showSearch: true,
+                openPosition: 'down',
                 placeholderText: 'Product',
   },
                 })
@@ -117,10 +117,10 @@ function onAreaOptions(evt) {
         fetchRecipes();
 }
 
-
-
 function onProductOptions(evt) {
-        const ingredients = evt.target.options[evt.target.selectedIndex].dataset.ing;
-        localStorage.setItem('ingredients', ingredients);
+        const ingredient = evt.target.options[evt.target.selectedIndex].dataset.ing;
+        localStorage.setItem('ingredient', ingredient);
         fetchRecipes();
 }
+
+export { resetSelectsToDefault }

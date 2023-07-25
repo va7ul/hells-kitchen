@@ -2,7 +2,7 @@ import {getRecipeById} from "./api";
 
 function createCardTemplate(data, list) {
    const markup = data.map(({ _id, preview, title, description, rating, area, ingredients, time }) =>
-     `<div class="card-template" data-id="${_id}" data-area="${area}" data-ingredients="${ingredients}" data-time="${time}">
+     `<li class="card-template" data-id="${_id}" data-area="${area}" data-ingredients="${ingredients}" data-time="${time}">
     <label>
         <input
       type="checkbox"
@@ -20,7 +20,9 @@ function createCardTemplate(data, list) {
   </div>
   </div>
   
-</div>`).join('');
+
+</li>`).join('');
+ 
 
     list.innerHTML = markup;
 }
