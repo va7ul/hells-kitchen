@@ -1,10 +1,10 @@
 import Pagination from 'tui-pagination';
 
-const container = document.getElementById('tui-pagination-container');
+const container = document.getElementById('tui-pagination');
 const options = {
   totalItems: 20000,
   itemsPerPage: 9,
-  visiblePages: 4,
+  visiblePages: 3,
   page: 1,
   centerAlign: false,
   firstItemClassName: 'tui-first-child',

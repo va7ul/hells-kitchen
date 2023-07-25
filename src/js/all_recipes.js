@@ -6,7 +6,6 @@ import Notiflix from "notiflix";
 
 const cardsGallery = document.querySelector('.cards-gallery');
 let dataRecipes = [];
-let currentPage = 1;
 
 fetchRecipes();  
 
@@ -26,22 +25,14 @@ fetchRecipes();
     Notiflix.Notify.failure(error.message);
   }
 
+  pagination.on('afterMove', async (event) => {
+      const currentPage = event.page;
+      localStorage.setItem('page', currentPage)
+      try {
+        const currentRecipeData = await getRecipes({ page: currentPage });
+        createCardTemplate(currentRecipeData, cardsGallery);
+      } catch (error) {
+        console.error('Ошибка при получении данных о рецептах:', error);
+      }});
 
 export {fetchRecipes, dataRecipes}
-
-
-// const listContainer = document.querySelector('#catalog-list');
-
-// async function populateCardsWithRecipes() {
-//   try {
-//     const recipesData = await getRecipes(); // Выполняем запрос на получение данных о рецептах
-//     createCardTemplate(recipesData, listContainer); // Передаем полученные данные в функцию createCardTemplate
-//   } catch (error) {
-//     console.error('Ошибка при получении данных о рецептах:', error);
-//   }
-// }
-
-// populateCardsWithRecipes();
-
-// Обработчик события, который будет вызываться при изменении текущей страницы пагинации
-console.log(pagination)
