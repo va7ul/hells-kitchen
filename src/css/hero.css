@@ -2,7 +2,8 @@
   padding-bottom: 80px;
 }
 .hero-wrapper {
-  width: 335px;
+  max-width: 335px;
+  /* width: 335px; */
   margin-bottom: 48px;
   text-align: left;
 }
@@ -156,8 +157,8 @@
 }
 
 .slick-dots button {
-  width: 12px;
-  height: 12px;
+  width: 8px;
+  height: 8px;
   border: 1px;
   background-color: black;
 
@@ -172,6 +173,7 @@
 @media screen and (min-width: 768px) {
   .hero-wrapper {
     width: 446px;
+    max-width: 446px;
     margin-bottom: 64px;
   }
   .hero-title {
@@ -237,7 +239,9 @@
   .slider {
     width: 702px;
   }
+  /*
   .slider-wrapper {
     width: 1180px;
   }
+  */
 }

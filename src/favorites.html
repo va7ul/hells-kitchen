@@ -11,36 +11,17 @@
     />
     <title>Favorites</title>
     <link rel="stylesheet" href="./css/style.css" />
-    <link href="/images/favicon.ico" rel="icon" type="image/x-icon" />
+    <link href="./img/favicon.ico" rel="icon" type="image/x-icon" />
   </head>
   <body>
-    
-    <!-- Добавил временно -->
-    <nav class="main-nav">
-      <ul class="site-nav list">
-        <li class="item">
-          <a href="index.html" class="link">Home</a>
-        </li>
-        <li class="item">
-          <a href="./favorites.html" class="link current">Favorites</a>
-        </li>
-      </ul>
-    </nav>
-    <!-- Добавил временно -->
-
-    <include src="./partials/header.html"></include>
+    <include src="./partials//favorites/favorite-header.html"></include>
     <main>
       <include src="./partials//favorites/favorite_hero.html"></include>
 
       <include src="./partials/favorites/favorite_filter.html"></include>
       <include src="./partials/favorites/favorite_recipes.html"></include>
 
-      <!-- добавил для пагинации -->
       <div id="tui-pagination-container" class="tui-pagination"></div>
-
-      <!-- добавил для скролла -->
-      <div class="btn-up btn-up_hide"></div>
-
     </main>
 
     <footer>
@@ -48,6 +29,7 @@
     </footer>
 
     <include src="./partials/modals/mobile_menu.html"></include>
+    <include src="./partials/modals/order_now.html"></include>
     <include src="./partials/modals/rating.html"></include>
     <include src="./partials/modals/recipe.html"></include>
 
