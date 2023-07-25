@@ -8,13 +8,20 @@
   /* flex-wrap: wrap; */
   justify-content: start;
   gap: 12px;
-  /* overflow-x:scroll; */
-  overflow-y: auto;
-  overflow-x: hidden;
-  white-space:nowrap;
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+.favorite-filter-list::-webkit-scrollbar {
+  height: 8px;
+}
+
+.favorite-filter-list::-webkit-scrollbar-thumb {
+  border-radius: 12px;
+  background-color: rgba(5, 5, 5, 0.18);
 }
 
 .favorite-filter-btn {
+  background-color: var(--light-theme-fill);
   color: rgb(5, 5, 5, 0.3);
   border: 1px solid rgb(5, 5, 5, 0.2);
   border-radius: 15px;
@@ -24,11 +31,10 @@
   transition: background-color var(--transition-dur-and-func),
     color var(--transition-dur-and-func);
 }
-.favorite-filter-btn:hover,
 .favorite-filter-btn:focus {
-  background-color: var(--green-btn);
-  color: var(--light-theme-fill);
-}
+    background-color: var(--green-btn);
+    color: var(--light-theme-fill);
+  }
 
 @media screen and (min-width: 768px) {
   .favorite-filter {
@@ -40,5 +46,9 @@
   }
   .favorite-filter-list {
     gap: 15px;
+  }
+  .favorite-filter-btn:hover {
+    background-color: var(--green-btn);
+    color: var(--light-theme-fill);
   }
 }

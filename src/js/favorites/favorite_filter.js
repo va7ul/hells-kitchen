@@ -8,25 +8,48 @@ const favoriteRecipesListEl = document.querySelector('.favorite-recipes-list');
 const favoriteArrFromLocalStorage =
   JSON.parse(localStorage.getItem(KEY_FAVORITE)) ?? [];
 
-getAllCategories()
-  .then(data => {
-    if (data.length === 0) {
-      throw new Error();
-    }
-    const markup = data
-      .map(
-        ({ name }) =>
-          `<li class="favorite-filter-item" data-category="${name}">
+filterMarkup();
+
+function filterMarkup() {
+  const allCategories = favoriteArrFromLocalStorage.flatMap(
+    product => product.category
+  );
+  const uniqueCategories = allCategories.filter(
+    (category, index, array) => array.indexOf(category) === index
+  );
+  const markup = uniqueCategories
+    .map((category) =>
+      `<li class="favorite-filter-item" data-category="${category}">
              <button type="button" class="favorite-filter-btn">
-            ${name}
+            ${category}
              </button>
             </li>`
-      )
-      .join('');
+    )
+    .join('');
+  favoriteFilterEl.insertAdjacentHTML('beforeend', markup);
+}
+// getAllCategories()
+//   .then(data => {
+//     if (data.length === 0) {
+//       throw new Error();
+//     }
 
-    favoriteFilterEl.insertAdjacentHTML('beforeend', markup);
-  })
-  .catch(error => Notify.failure('Oops! Something went wrong!'));
+//     const markup = data
+//       .map(function ({ name }) {
+//         if (uniqueCategories.includes(name)) {
+//           console.log(name)
+//           `<li class="favorite-filter-item" data-category="${name}">
+//              <button type="button" class="favorite-filter-btn">
+//             ${name}
+//              </button>
+//             </li>`;
+//         }
+//       })
+//       .join('');
+
+//     favoriteFilterEl.insertAdjacentHTML('beforeend', markup);
+//   })
+//   .catch(error => Notify.failure('Oops! Something went wrong!'));
 
 favoriteFilterEl.addEventListener('click', onClick);
 
@@ -35,6 +58,9 @@ function onClick(evt) {
     const findProduct = findProductByFilter(evt.target);
     console.log(findProduct);
     createCardTemplate(findProduct, favoriteRecipesListEl);
+     const checkHeartEl = document.querySelectorAll('.js-add-to-fav');
+    checkHeartEl.forEach(item => (item.checked = true));
+    filterMarkup();
   }
 }
 
