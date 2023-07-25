@@ -1,3 +1,4 @@
+
 .bg_modal{
 	position: fixed;
 	top: 0;
@@ -47,6 +48,7 @@
 	justify-content: space-between;
 	align-items: center;
 	margin-bottom: 32px;
+	
 }
 .modal_tag{
 	border: 1px solid #cdcdcd;
@@ -105,3 +107,14 @@
 	background-color: white;
 	outline: 1px solid #9BB537;
 }
+
+
+@media only screen and (max-width: 768px) {
+	.modal_line {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	.modal_tags{
+		margin-bottom: 24px;
+	}
+  }
