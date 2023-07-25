@@ -2,9 +2,10 @@ import favoritesArray from "./favorites-array";
 import { dataRecipes } from "./all_recipes";
 import { save } from "./api";
 
+
 function addToFavorites(event){
     const recipeId = event.target.closest('.card-template').dataset.id;
-    favoriteRecipe = findRecipe(recipeId);
+    const favoriteRecipe = findRecipe(recipeId);
   }
 
 function findRecipe(recipeId){
