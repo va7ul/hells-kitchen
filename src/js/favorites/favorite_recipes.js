@@ -1,40 +1,39 @@
 import { createCardTemplate } from '../card_template';
-import favoritesArray from '../favorites-array';
 
 const KEY_FAVORITE = 'favorite';
 
-// імпорт
-function createModal(product) {
-  console.log(product);
-}
-//імпорт
 
-const favoriteRecipesListEl = document.querySelector('.favorite-recipes-list');
-const heroEl = document.querySelector('.hero-section-favorites')
-const filtersEl = document.querySelector('.favorite-filter');
-const paginationEl = document.querySelector('.tui-pagination');
+// function createModal(product) {
+//   //console.log(product);
+// }
+
+//const favoriteRecipesListEl = document.querySelector('.favorite-recipes-list');
+// const heroEl = document.querySelector('.hero-section-favorites');
+// const filtersEl = document.querySelector('.favorite-filter');
+// const paginationEl = document.querySelector('.tui-pagination');
 
 const emptyStorageEl = document.querySelector('.empty-storage-wrapper');
 
-// const favoriteArrFromLocalStorage =
-//   JSON.parse(localStorage.getItem(KEY_FAVORITE)) ?? [];
+const favoritesArray = JSON.parse(localStorage.getItem(KEY_FAVORITE)) ?? [];
 
 if (favoritesArray.length !== 0) {
   createCardTemplate(favoritesArray, favoriteRecipesListEl);
+  const checkHeartEl = document.querySelectorAll('.js-add-to-fav');
+  checkHeartEl.forEach((item) => item.checked = true)
 } else {
-  heroEl.classList.add('hero-is-hidden');
-  filtersEl.classList.add('hiddenvisualy');
-  paginationEl.classList.add('hiddenvisualy');
-  emptyStorageEl.classList.remove('hiddenvisualy');
+  // heroEl.classList.add('hero-is-hidden');
+  // filtersEl.classList.add('hiddenvisualy');
+  // paginationEl.classList.add('hiddenvisualy');
+  // emptyStorageEl.classList.remove('hiddenvisualy');
 }
 
-favoriteRecipesListEl.addEventListener('click', onClick);
+//favoriteRecipesListEl.addEventListener('click', onClick);
 
 function onClick(evt) {
   //відкриття модалки
   if (evt.target.classList.contains('card-template-btn')) {
     const product = findProduct(evt.target);
-    createModal(product);
+    //createModal(product);
   }
   //видалення з favorites
   if (evt.target.classList.contains('js-add-to-fav')) {
@@ -54,10 +53,7 @@ function removeFromFavorites(elem, arr) {
     item => item._id === productId
   );
   arr.splice(removeElemIdx, 1);
-  localStorage.setItem(
-    KEY_FAVORITE,
-    JSON.stringify(arr)
-  );
+  localStorage.setItem(KEY_FAVORITE, JSON.stringify(arr));
 }
 
 export { removeFromFavorites, KEY_FAVORITE };
