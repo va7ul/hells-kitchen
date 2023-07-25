@@ -1,0 +1,12 @@
+@import './common.css';
+
+@media screen and (max-width: 767px) {
+  .header-container {
+    display: none;
+  }
+
+  .header-favorite {
+    padding-top: 20px;
+    padding-bottom: 44px;
+  }
+}
