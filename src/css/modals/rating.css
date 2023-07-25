@@ -1,3 +1,44 @@
+.rating-modal-backdrop {
+    min-width: 90%;
+    max-width: 216px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 15px;
+    position: relative;
+    background-color: var(--dark-theme-main-text);
+}
+
+@media screen and (min-width: 375px) {
+    .rating-modal-backdrop {
+        min-width: 335px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .rating-modal-backdrop {
+        max-width: 424px;
+        max-width: 254px;
+        padding: 32px;
+    }
+}
+
+.rating-modal-btn-close {
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border: transparent;
+    position: absolute;
+    margin-top: 14px;
+    margin-right: 14px;
+}
+
+@media screen and (min-width: 768px) {
+    .rating-modal-btn-close {
+        width: 24px;
+        height: 24px;
+    }
+}
+
 .rating-modal-btn-icon {
     width: 10px;
     height: 10px;
@@ -9,9 +50,4 @@
         width: 12px;
         height: 12px;
     }
-}
-
-.rating-modal-btn {
-    background-color: transparent;
-    border: transparent;
 }
