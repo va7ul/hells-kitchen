@@ -1,6 +1,5 @@
 .rating-modal-backdrop {
-    min-width: 90%;
-    max-width: 216px;
+    width: 90%;
     margin: 0 auto;
     padding: 20px;
     border-radius: 15px;
@@ -10,14 +9,13 @@
 
 @media screen and (min-width: 375px) {
     .rating-modal-backdrop {
-        min-width: 335px;
+        width: 335px;
     }
 }
 
 @media screen and (min-width: 768px) {
     .rating-modal-backdrop {
-        max-width: 424px;
-        max-width: 254px;
+        width: 424px;
         padding: 32px;
     }
 }
@@ -49,6 +47,7 @@
 }
 
 .rating-modal-btn-icon {
+    width: 20px;
     height: 20px;
     stroke: var(--light-theme-main-text);
     transition: var(--transition-dur-and-func);
@@ -69,6 +68,8 @@
 }
 
 .rating-modal-stars-wrapper {
+    width: 161px;
+    height: 24px;
     margin-bottom: 24px;
 }
 
@@ -78,7 +79,10 @@
     }
 }
 
-
+.rating-stars-number {
+    width: 25px;
+    height: auto;
+}
 
 
 
