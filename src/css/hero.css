@@ -49,6 +49,7 @@
 }
 
 .slider {
+  cursor: grabbing;
   width: 355px;
   overflow: hidden;
 }
@@ -150,15 +151,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2px;
+  gap: 8px;
 }
 .slick-dots li {
   list-style: none;
 }
 
 .slick-dots button {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   border: 1px;
   background-color: black;
 
@@ -167,6 +168,8 @@
 }
 
 .slick-dots li.slick-active button {
+  width: 10px;
+  height: 10px;
   background-color: var(--green-btn);
 }
 
@@ -239,9 +242,4 @@
   .slider {
     width: 702px;
   }
-  /*
-  .slider-wrapper {
-    width: 1180px;
-  }
-  */
 }
