@@ -86,8 +86,8 @@
 
 .ss-main .ss-values .ss-placeholder {
     display: flex;
-    padding: var(--ss-spacing-s) var(--ss-spacing-m) var(--ss-spacing-s) var(--ss-spacing-m);
-    margin: auto 0px auto 0px;
+    /* padding: var(--ss-spacing-s) var(--ss-spacing-m) var(--ss-spacing-s) var(--ss-spacing-m); */
+    /* margin: auto 0px auto 0px; */
     line-height: 1em;
     align-items: center;
     width: 100%;
@@ -451,13 +451,6 @@
     background-color: var(--green-btn);
 }
 
-.ss-content .ss-list .ss-option.ss-disabled {
-    cursor: not-allowed;
-    background-color: var(--ss-disabled-color);
-}
-
-/*# sourceMappingURL=slimselect.css.map */
-
 
 /* -------------------------  МОИ filter-css  --------------------------------*/
 
@@ -497,6 +490,7 @@
     padding-left: 48px;
     padding-right: 18px;
     outline: none;
+    font-size: 14px;
 }
 
 .filter-input::-ms-clear {
@@ -573,6 +567,10 @@ input:focus+.filter-icon-search{
         gap: 16px;
     }
 
+   .ss-main .ss-values .ss-placeholder{
+        font-size: 16px;
+   }
+
     .input-box {
         width: 278px;
     }
@@ -598,12 +596,24 @@ input:focus+.filter-icon-search{
      .filter-input {
         width: 278px;
         height: 48px;
+        font-size: 16px;
     }
 
     .ss-content.ss-open-below {
         height: 188px;
     }
-   
+
+    .ss-content .ss-list .ss-option{
+        font-size: 16px;
+    }
+
+    .ss-content .ss-search input {
+        font-size: 16px;
+    }
+    
+    .ss-main .ss-values .ss-single{
+        font-size: 16px;
+    }
 }
 
 @media screen and (min-width: 1280px) {
