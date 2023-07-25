@@ -5,7 +5,6 @@ import './js/all_categories';
 import './js/popular_recipes';
 import './js/card_template';
 import './js/search_filters';
-import './js/modals/pop-up';
 import './js/all_recipes';
 
 import './js/modals/mobile_menu';

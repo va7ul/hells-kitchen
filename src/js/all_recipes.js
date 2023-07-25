@@ -5,7 +5,7 @@ import Notiflix from "notiflix";
 
 const cardsGallery = document.querySelector('.cards-gallery');
 let dataRecipes = [];
-
+console.log(cardsGallery);
 fetchRecipes();  
 
   async function fetchRecipes() {
