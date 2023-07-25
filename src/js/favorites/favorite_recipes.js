@@ -1,9 +1,6 @@
 import { createCardTemplate } from '../card_template';
 
-//import favoritesArray from '../favorites-array';
-
-//const KEY_FAVORITE = 'favorite';
-const favorite = 'KEY_FAVORITE';
+const KEY_FAVORITE = 'favorite';
 
 // імпорт
 function createModal(product) {
@@ -18,8 +15,7 @@ const paginationEl = document.querySelector('.tui-pagination');
 
 const emptyStorageEl = document.querySelector('.empty-storage-wrapper');
 
-const favoritesArray =
-  JSON.parse(localStorage.getItem(favorite)) ?? [];
+const favoritesArray = JSON.parse(localStorage.getItem(KEY_FAVORITE)) ?? [];
 
 if (favoritesArray.length !== 0) {
   createCardTemplate(favoritesArray, favoriteRecipesListEl);
@@ -58,7 +54,7 @@ function removeFromFavorites(elem, arr) {
     item => item._id === productId
   );
   arr.splice(removeElemIdx, 1);
-  localStorage.setItem(favorite, JSON.stringify(arr));
+  localStorage.setItem(KEY_FAVORITE, JSON.stringify(arr));
 }
 
-//export { removeFromFavorites, KEY_FAVORITE };
+export { removeFromFavorites, KEY_FAVORITE };
