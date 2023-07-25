@@ -60,4 +60,4 @@ function findProduct(elem) {
 //   localStorage.setItem(KEY_FAVORITE, JSON.stringify(arr));
 // }
 
-//export {removeFromFavorites};
+export {KEY_FAVORITE};
