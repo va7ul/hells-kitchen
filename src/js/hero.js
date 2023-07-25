@@ -1,5 +1,7 @@
 import { getMasterclasses } from './api';
+
 const { default: axios } = require('axios');
+
 let $ = require('jquery');
 
 function sliderStart() {
@@ -21,19 +23,17 @@ const slider = document.querySelector('.slider');
 function renderSlider(response) {
   const markup = response
     .map(event => {
-      return `      
-<div class="slider-item-cook" >
-<img src="${event.cook.imgUrl}" loading="lazy" alt="${event.cook.name}">
-</div>
-
-<div class="slider-item-topic bcg">
-  <img src="${event.topic.imgUrl}" loading="lazy" alt="${event.topic.name}">
-  <p class="description">${event.topic.name}</p>
-  <p class="country">${event.topic.area}</p>
-</div>
-
-<div class="slider-item-finally">
-  <img src="${event.topic.imgUrl}" loading="lazy" alt="${event.topic.name}">
+      return `       
+<div class="slider-item-cook" > 
+<img src="${event.cook.imgUrl}" loading="auto" alt="${event.cook.name}"> 
+</div> 
+<div class="slider-item-topic bcg"> 
+  <img src="${event.topic.imgUrl}" loading="auto" alt="${event.topic.name}"> 
+  <p class="description">${event.topic.name}</p> 
+  <p class="country">${event.topic.area}</p> 
+</div> 
+<div class="slider-item-finally"> 
+  <img src="${event.topic.imgUrl}" loading="auto" alt="${event.topic.name}"> 
 </div>`;
     })
     .join('');
