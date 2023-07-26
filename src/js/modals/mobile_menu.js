@@ -1,26 +1,30 @@
-const refs = {
-  mobileMenu: document.querySelector('.js-menu-container'),
-  openMenuBtn: document.querySelector('.js-open-menu'),
-  closeMenuBtn: document.querySelector('.js-close-menu'),
-};
-
 (() => {
+  const mobileMenu = document.querySelector('.js-menu-container');
+  const openMenuBtn = document.querySelector('.js-open-menu');
+  const closeMenuBtn = document.querySelector('.js-close-menu');
   const toggleMenu = () => {
     const isMenuOpen =
-      refs.openMenuBtn.getAttribute('aria-expanded') === 'true' || false;
-    refs.openMenuBtn.setAttribute('aria-expanded', !isMenuOpen);
-    refs.mobileMenu.classList.toggle('is-open');
+      openMenuBtn.getAttribute('aria-expanded') === 'true' || false;
+    openMenuBtn.setAttribute('aria-expanded', !isMenuOpen);
+    mobileMenu.classList.toggle('is-open');
     const scrollLockMethod = !isMenuOpen
       ? 'disableBodyScroll'
       : 'enableBodyScroll';
+    bodyScrollLock[scrollLockMethod](document.body);
   };
-  refs.openMenuBtn.addEventListener('click', toggleMenu);
-  refs.closeMenuBtn.addEventListener('click', toggleMenu);
+  openMenuBtn.addEventListener('click', toggleMenu);
+  closeMenuBtn.addEventListener('click', toggleMenu);
+
+  const scrollY = document.body.style.top;
+  document.body.style.position = '';
+  document.body.style.top = '';
+  window.scrollTo(0, parseInt(scrollY || '0') * -1);
 
   // Close the mobile menu on wider screens if the device orientation changes
   window.matchMedia('(min-width: 768px)').addEventListener('change', e => {
     if (!e.matches) return;
-    refs.mobileMenu.classList.remove('is-open');
-    refs.openMenuBtn.setAttribute('aria-expanded', false);
+    mobileMenu.classList.remove('is-open');
+    openMenuBtn.setAttribute('aria-expanded', false);
+    bodyScrollLock.enableBodyScroll(document.body);
   });
 })();

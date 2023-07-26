@@ -488,7 +488,11 @@ body.dark-theme {
 }
 .dark-theme .categories-list-btn,
 .dark-theme .card-template-title,
-.dark-theme .card-template-descr {
+.dark-theme .card-template-descr,
+.dark-theme .order-now-modal,
+.dark-theme .form input,
+.dark-theme .order-now-modal-form textarea,
+.dark-theme .order-now-modal__title {
   color: rgba(255, 255, 255, 1);
 }
 
