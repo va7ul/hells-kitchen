@@ -43,6 +43,7 @@ body.show-modal-order-now .order-now-backdrop {
   font-size: 18px;
   line-height: 1.2;
   text-transform: uppercase;
+  color: var(--light-theme-main-text);
 }
 
 .order-now-modal__close-btn {
