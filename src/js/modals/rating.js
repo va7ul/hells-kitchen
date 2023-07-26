@@ -4,6 +4,9 @@ const refs = {
   starsEl: document.querySelector('.live-rating'),
   submitBtnEl: document.querySelector('.rating-modal-form-btn'),
   inputEl: document.querySelector('.rating-modal-form-input'),
+  openButtonEl: document.querySelector('.rating-modal-btn-open'),
+  closeButtonEl: document.querySelector('.rating-modal-btn-close'),
+  backdropEl: document.querySelector('.js-backdrop'),
 };
 
 $('.my-rating-9').starRating({
@@ -39,12 +42,6 @@ function submitRating(evt) {
     .then(categories => console.log(categories))
     .catch(error => console.log(error));
 }
-
-const refs = {
-  openButtonEl: document.querySelector('.rating-modal-btn-open'),
-  closeButtonEl: document.querySelector('.rating-modal-btn-close'),
-  backdropEl: document.querySelector('.js-backdrop'),
-};
 
 refs.openButtonEl.addEventListener('click', onRatingModalOpen);
 refs.closeButtonEl.addEventListener('click', onRatingModalRemove);
