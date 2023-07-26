@@ -610,6 +610,10 @@ input:focus+.filter-icon-search{
 }
 
 @media screen and (min-width: 768px) {
+    
+    .filter-home-container {
+        width: 496px;
+    }
 
     .filter-form-home {
         gap: 16px;
@@ -630,7 +634,6 @@ input:focus+.filter-icon-search{
     .filter-time {
         width: 115px;
         height: 48px;
-        /* padding: 0 15px; */
     }
 
     .filter-area {
@@ -666,7 +669,11 @@ input:focus+.filter-icon-search{
 }
 
 @media screen and (min-width: 1280px) {
-  
+    
+    .filter-home-container {
+        width: 780px;
+    }
+
     .filter-time {
         width: 125px;
     }
