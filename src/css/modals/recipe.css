@@ -31,11 +31,23 @@
 	height: 86vh;
 	border-radius: 15px;
 }
+
 .modal_close{
 	float: right;
 	padding: 3px 12px 0 0;
 	cursor: pointer;
+	
 }
+
+/*
+.modal_close{
+	position: absolute;
+	top: 8px;
+	right: 80px;
+	border: none;
+	background-color: transparent;
+	padding: 5px;
+}*/
 
 .modal_close{
 	transition: fill .4s;
@@ -48,6 +60,7 @@
 
 .modal_container{
 	margin: 0 32px 32px 32px;
+	font-weight: 500;
 }
 .modal_title{
 	color: #050505;
