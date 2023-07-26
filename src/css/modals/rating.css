@@ -161,9 +161,15 @@ body.show-modal-rating .rating-modal-backdrop {
     }
 }
 
-/* .dark-theme .rating-modal-form-input {
+.dark-theme .rating-modal-form-input {
     background-color: var(--light-theme-main-text);
-} */
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    color: var(--dark-theme-main-text);
+}
+
+.dark-theme .rating-modal-form-input::placeholder {
+    color: rgba(255, 255, 255, 0.50);
+}
 
 .rating-modal-form-btn {
     width: 100%;
