@@ -563,6 +563,37 @@ input:focus+.filter-icon-search{
     left: 18px;
 }
 
+.dark-theme .filter-input{
+    color: var(--dark-theme-main-text);
+    background-color: var(--dark-theme-fill);
+    border: 1px solid rgba(255, 255, 255, 0.20);
+}
+
+.dark-theme .filter-general{
+    background-color: var(--dark-theme-fill);
+    border: 1px solid rgba(255, 255, 255, 0.20);
+}
+
+.dark-theme .ss-main .ss-values .ss-placeholder{
+    color: rgba(255, 255, 255, 0.50);
+}
+
+.dark-theme .ss-content.ss-open-below{
+    background-color: var(--light-theme-main-text);
+}
+
+.dark-theme .ss-content .ss-search input {
+    background-color: var(--dark-theme-fill);
+    color: var(--dark-theme-main-text);
+}
+
+.dark-theme .filter-text-home {
+    color: rgba(255, 255, 255, 0.50);
+}
+
+.dark-theme input::placeholder {
+    color: rgba(255, 255, 255, 0.50);
+}
 @media screen and (min-width: 768px) {
 
     .filter-form-home {
