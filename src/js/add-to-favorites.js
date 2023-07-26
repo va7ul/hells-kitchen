@@ -17,7 +17,7 @@ function findRecipe(recipeId){
     save(KEY_FAVORITE, favoritesArray)
    }
    else{
-    removeFromFavorites(item, favoritesArray)
+    removeFromFavorites(KEY_FAVORITE, item, favoritesArray);
    }
 }
 export {addToFavorites}

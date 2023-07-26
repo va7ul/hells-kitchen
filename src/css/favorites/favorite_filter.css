@@ -5,8 +5,8 @@
 
 .favorite-filter-list {
   display: flex;
-  /* flex-wrap: wrap; */
   justify-content: start;
+  padding-bottom: 10px;
   gap: 12px;
   overflow-x: scroll;
   white-space: nowrap;
@@ -32,9 +32,18 @@
     color var(--transition-dur-and-func);
 }
 .favorite-filter-btn:focus {
-    background-color: var(--green-btn);
-    color: var(--light-theme-fill);
-  }
+  background-color: var(--green-btn);
+  color: var(--light-theme-fill);
+}
+.in-focus {
+  background-color: var(--green-btn);
+  color: var(--light-theme-fill);
+}
+.favorite-active-btn {
+  color: var(--green-btn);
+  border-color: var(--green-btn);
+  opacity: 1;
+}
 
 @media screen and (min-width: 768px) {
   .favorite-filter {

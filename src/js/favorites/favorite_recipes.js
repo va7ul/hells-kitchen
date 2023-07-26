@@ -1,6 +1,6 @@
 import { createCardTemplate } from "../card_template";
 import { popUpFunction } from '../modals/recipe';
-import { removeFromFavorites } from "../api";
+import { removeFromFavorites} from '../api';
 
 const KEY_FAVORITE = 'favorite';
 
@@ -12,12 +12,6 @@ const paginationEl = document.querySelector('.tui-pagination');
 const emptyStorageEl = document.querySelector('.empty-storage-wrapper');
 
 const favoritesArray = JSON.parse(localStorage.getItem(KEY_FAVORITE)) ?? [];
-
-
-console.log('dddd')
-
-
-
 
 if (favoritesArray.length !== 0) {
   createCardTemplate(favoritesArray, favoriteRecipesListEl);
@@ -40,7 +34,7 @@ function onClick(evt) {
   }
   //видалення з favorites
   if (evt.target.classList.contains('js-add-to-fav')) {
-    removeFromFavorites(evt.target, favoritesArray);
+    removeFromFavorites(KEY_FAVORITE, evt.target, favoritesArray);
     evt.target.closest('.card-template').remove();
   }
 }
@@ -49,15 +43,5 @@ function findProduct(elem) {
   const productId = elem.closest('.card-template').dataset.id;
   return favoritesArray.find(({ _id }) => _id === productId);
 }
-
-// function removeFromFavorites(elem, arr) {
-//   console.log(jjj);
-//   const productId = elem.closest('.card-template').dataset.id;
-//   const removeElemIdx = arr.findIndex(
-//     item => item._id === productId
-//   );
-//   arr.splice(removeElemIdx, 1);
-//   localStorage.setItem(KEY_FAVORITE, JSON.stringify(arr));
-// }
 
 export {KEY_FAVORITE};
