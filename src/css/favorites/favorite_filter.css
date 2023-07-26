@@ -21,23 +21,30 @@
 }
 
 .favorite-filter-btn {
-  background-color: var(--light-theme-fill);
-  color: rgb(5, 5, 5, 0.3);
-  border: 1px solid rgb(5, 5, 5, 0.2);
+  background: none;
+  color: var(--light-theme-main-text);
+  opacity: 0.3;
+  border: 1px solid var(--light-theme-main-text);
   border-radius: 15px;
   padding: 14px 18px;
   font-weight: 500;
   line-height: calc(18 / 14);
-  transition: background-color var(--transition-dur-and-func),
-    color var(--transition-dur-and-func);
+  transition: color var(--transition-dur-and-func),
+    opacity var(--transition-dur-and-func),
+    border-color var(--transition-dur-and-func),
+    background-color var(--transition-dur-and-func);
 }
 .favorite-filter-btn:focus {
   background-color: var(--green-btn);
   color: var(--light-theme-fill);
+  border-color: transparent;
+  opacity: 1;
 }
 .in-focus {
   background-color: var(--green-btn);
   color: var(--light-theme-fill);
+  border-color: transparent;
+  opacity: 1;
 }
 .favorite-active-btn {
   color: var(--green-btn);
@@ -59,5 +66,7 @@
   .favorite-filter-btn:hover {
     background-color: var(--green-btn);
     color: var(--light-theme-fill);
+    border-color: transparent;
+    opacity: 1;
   }
 }

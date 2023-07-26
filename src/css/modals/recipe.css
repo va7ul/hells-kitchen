@@ -29,7 +29,6 @@
 	background-color: white;
 	z-index: 1001;
 	height: 86vh;
-	border-radius: 15px;
 }
 
 .modal_close{
@@ -38,25 +37,12 @@
 	cursor: pointer;
 	
 }
-
-/*
-.modal_close{
-	position: absolute;
-	top: 8px;
-	right: 80px;
-	border: none;
-	background-color: transparent;
-	padding: 5px;
-}*/
-
 .modal_close{
 	transition: fill .4s;
 }
-
 .modal_close:hover path {
 	stroke: #9BB537;
 }
-
 
 .modal_container{
 	margin: 0 32px 32px 32px;
@@ -65,7 +51,6 @@
 .modal_title{
 	color: #050505;
 	font-size: 18px;
-	font-family: semi-bold;
 	margin-bottom: 16px;
 }
 .modal_video{
@@ -121,10 +106,12 @@
 }
 .modal_description{
 	margin-bottom: 32px;
+	font-weight: 400;
 }
 .modal_buttons{
 	display: flex;
 }
+
 .modal_button>button{
 	padding: 14px 28px;
 	border: none;
@@ -135,6 +122,18 @@
 	color: white;
 	margin-right: 16px;
 }
+
+
+.modal_favourite:hover button,
+.modal_favourite:focus button {
+	color: #050505;
+}
+
+.modal_rating_button:hover button,
+.modal_rating_button:focus button {
+	color: #9BB537;
+}
+
 .modal_rating_button>button{
 	background-color: white;
 	outline: 1px solid #9BB537;

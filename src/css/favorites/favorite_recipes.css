@@ -31,7 +31,7 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .hero-is-hidden {
     position: absolute;
     width: 1px;
