@@ -35,35 +35,36 @@ function modalRestore(recipe){
 }
 
 function popUpFunction(_id) {
-    const modal_popup = document.querySelector('.pop-up-recipe');
-    getRecipeById(_id).then((recipe) => {
-      let current_tags = "";
-      for (let i = 0; i < recipe.tags.length; i++) {
-        if (recipe.tags[i] !== ""){
-          current_tags += '<a href="" class="modal_tag">#'+recipe.tags[i]+"</a>";
-        }
+  const modal_popup = document.querySelector('.pop-up-recipe');
+  getRecipeById(_id).then((recipe) => {
+    let current_tags = "";
+    for (let i = 0; i < recipe.tags.length; i++) {
+      if (recipe.tags[i] !== ""){
+        current_tags += '<a href="" class="modal_tag">#'+recipe.tags[i]+"</a>";
       }
-  
-      let current_ingredients = "";
-      for (let i = 0; i < recipe.ingredients.length; i++) {
-        current_ingredients += `<div class="modal_ingredient"><span>${recipe.ingredients[i].name}</span><span>${recipe.ingredients[i].measure}</span></div>`;
-      }
-  
-      let current_stars = ratingStars(recipe.rating);
-  
-      let current_youtube = "";
-      if(recipe.youtube){
-        current_youtube = recipe.youtube.replace('watch?v=','embed/');
-      }
-  
-      const transformedRecipe = `
-      <div id="bg_modal" class="bg_modal"></div>
-      <div class="popup_modal">
+    }
+
+    let current_ingredients = "";
+    for (let i = 0; i < recipe.ingredients.length; i++) {
+      current_ingredients += `<div class="modal_ingredient"><span>${recipe.ingredients[i].name}</span><span>${recipe.ingredients[i].measure}</span></div>`;
+    }
+
+    let current_stars = ratingStars(recipe.rating);
+
+    let current_youtube = "";
+    if(recipe.youtube){
+      current_youtube = recipe.youtube.replace('watch?v=','embed/');
+    }
+
+    const transformedRecipe = `
+    <div id="bg_modal" class="bg_modal"></div>
+    <div class="popup_modal">
+      <div class="popup_scroll">
         <a id="pop-up-close" class="modal_close">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M18 6L6 18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M6 6L18 18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M18 6L6 18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M6 6L18 18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
         </a>
     
         <div class="modal_container">
@@ -89,11 +90,8 @@ function popUpFunction(_id) {
           </div>
           <div class="modal_description">${recipe.description}</div>
           <div class="modal_buttons">
-            <div class="modal_button modal_favourite modal_favourite_add">
+            <div class="modal_button modal_favourite">
               <button data-id="${recipe._id}">Add to favourite</button>
-            </div>
-            <div class="modal_button modal_favourite modal_favourite_remove">
-              <button data-id="${recipe._id}">Remove from favorite</button>
             </div>
             <div class="modal_button modal_rating_button">
               <button data-id="${recipe._id}">Give a rating</button>
@@ -101,16 +99,17 @@ function popUpFunction(_id) {
           </div>
         </div>
       </div>
-      `;
-      modal_popup.innerHTML = transformedRecipe;  
-  
-      // Закриття модалки при натисканні на хрестик 
-      document.getElementById("pop-up-close").addEventListener("click", function () {
-        const popUpRecipes = document.querySelectorAll(".pop-up-recipe");
-        popUpRecipes.forEach(function (recipe) {
-          recipe.innerHTML = "";
-        });
-      });
+    </div>
+    `;
+    modal_popup.innerHTML = transformedRecipe; 
+    
+    let body = document.querySelector("body");
+    body.style.overflow = "hidden";
+
+    // Закриття модалки при натисканні на хрестик 
+    document.getElementById("pop-up-close").addEventListener("click", function () {
+      modalRestore(recipe);
+    });
 
     // Закриття модалки при натисканні в будь-якому місці екрану 
     document.getElementById("bg_modal").addEventListener("click", function () {
@@ -144,4 +143,5 @@ function popUpFunction(_id) {
     })
   }
   
- export {popUpFunction}
+export { popUpFunction }
+ 
