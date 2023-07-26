@@ -135,11 +135,11 @@ async function postOrder(recipeId) {
   }
 }
 
-function removeFromFavorites(elem, arr) {
+function removeFromFavorites(key, elem, arr) {
   const productId = elem.closest('.card-template').dataset.id;
   const removeElemIdx = arr.findIndex(item => item._id === productId);
   arr.splice(removeElemIdx, 1);
-  localStorage.setItem(KEY_FAVORITE, JSON.stringify(arr));
+  localStorage.setItem(key, JSON.stringify(arr));
 }
 
 export {
