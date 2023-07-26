@@ -594,6 +594,7 @@ input:focus+.filter-icon-search{
 .dark-theme .ss-content .ss-search input {
     background-color: var(--light-theme-main-text);
     color: var(--dark-theme-main-text);
+    border:  solid rgba(255, 255, 255, 0.20);
 }
 
 .dark-theme .filter-text-home {
