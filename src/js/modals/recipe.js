@@ -29,21 +29,6 @@ function modalRestore(recipe){
   });
 }
 
-let favorites = [];
-
-function addToFavorites(recipeId) {
-  // Check if the recipeId is not already in the favorites array
-  if (!favorites.includes(recipeId)) {
-    favorites.push(recipeId);
-    // You may want to save the favorites array to local storage here for persistence
-    console.log(`Recipe with ID ${recipeId} added to favorites`);
-  } else {
-    console.log(`Recipe with ID ${recipeId} is already in favorites`);
-  }
-}
-
-
-
 function popUpFunction(_id) {
   const modal_popup = document.querySelector('.pop-up-recipe');
   getRecipeById(_id).then((recipe) => {
@@ -71,10 +56,10 @@ function popUpFunction(_id) {
     <div class="popup_modal">
       <div class="popup_scroll">
         <a id="pop-up-close" class="modal_close">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <path d="M18 6L6 18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M6 6L18 18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M18 6L6 18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M6 6L18 18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </a>
     
         <div class="modal_container">
@@ -99,8 +84,6 @@ function popUpFunction(_id) {
             ${current_ingredients}
           </div>
           <div class="modal_description">${recipe.description}</div>
-
-          
           <div class="modal_buttons">
             <div class="modal_button modal_favourite">
               <button data-id="${recipe._id}">Add to favourite</button>
@@ -114,11 +97,6 @@ function popUpFunction(_id) {
     </div>
     `;
     modal_popup.innerHTML = transformedRecipe; 
-
-    function isRecipeFavorite(recipeId) {
-      return favorites.includes(recipeId);
-    }
-    
     
     let body = document.querySelector("body");
     body.style.overflow = "hidden";
