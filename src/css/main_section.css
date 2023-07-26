@@ -15,3 +15,15 @@
           gap: 64px;
       }
   }
+
+  @media screen and (min-width: 768px) {
+      .left-block {
+          width: 176px;
+      }
+  }
+
+  @media screen and (min-width: 1280px) {
+      .left-block {
+          width: 235px;
+      }
+  }
