@@ -1,8 +1,10 @@
 import { patchRating } from '../api';
 
-const starsEl = document.querySelector('.live-rating');
-const submitBtnEl = document.querySelector('.rating-modal-form-btn');
-const inputEl = document.querySelector('.rating-modal-form-input');
+const refs = {
+  starsEl: document.querySelector('.live-rating'),
+  submitBtnEl: document.querySelector('.rating-modal-form-btn'),
+  inputEl: document.querySelector('.rating-modal-form-input'),
+};
 
 $('.my-rating-9').starRating({
   initialRating: 0.0,
@@ -17,12 +19,12 @@ $('.my-rating-9').starRating({
   },
 });
 
-submitBtnEl.addEventListener('click', submitRating);
+refs.submitBtnEl.addEventListener('click', submitRating);
 
 function submitRating(evt) {
   evt.preventDefault();
-  let giveRating = Number(starsEl.textContent);
-  let email = inputEl.value;
+  let giveRating = Number(refs.starsEl.textContent);
+  let email = refs.inputEl.value;
   // треба підключити ID з картки
   let recipeId = '6462a8f74c3d0ddd288980d4';
   console.dir(giveRating);
@@ -45,30 +47,28 @@ const refs = {
 };
 
 refs.openButtonEl.addEventListener('click', onRatingModalOpen);
-
-refs.closeButtonEl.addEventListener('click', onModalRemove);
-
-refs.backdropEl.addEventListener('click', onBackdropClick);
+refs.closeButtonEl.addEventListener('click', onRatingModalRemove);
+refs.backdropEl.addEventListener('click', onRatingBackdropClick);
 
 function onRatingModalOpen() {
   window.addEventListener('keydown', onEscKeyPress);
   document.body.classList.add('show-modal-rating');
 }
 
-function onModalRemove() {
+function onRatingModalRemove() {
   window.removeEventListener('keydown', onEscKeyPress);
   document.body.classList.remove('show-modal-rating');
 }
 
-function onBackdropClick(event) {
+function onRatingBackdropClick(event) {
   if (event.currentTarget === event.target) {
-    onModalRemove();
+    onRatingModalRemove();
   }
 }
 
 function onEscKeyPress(event) {
   if (event.code === 'Escape') {
-    onModalRemove();
+    onRatingModalRemove();
   }
 }
 export { onRatingModalOpen };
