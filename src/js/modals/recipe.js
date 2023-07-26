@@ -89,8 +89,11 @@ function popUpFunction(_id) {
           </div>
           <div class="modal_description">${recipe.description}</div>
           <div class="modal_buttons">
-            <div class="modal_button modal_favourite">
+            <div class="modal_button modal_favourite modal_favourite_add">
               <button data-id="${recipe._id}">Add to favourite</button>
+            </div>
+            <div class="modal_button modal_favourite modal_favourite_remove">
+              <button data-id="${recipe._id}">Remove from favorite</button>
             </div>
             <div class="modal_button modal_rating_button">
               <button data-id="${recipe._id}">Give a rating</button>
@@ -133,7 +136,7 @@ function popUpFunction(_id) {
         const addBtnEl = document.querySelector('.modal_favourite_add').addEventListener('click', addToFavorites)
         removeBtnEl.classList.add('is-hidden') && addBtnEl.classList.remove('is-hidden')
       }
-       else{ return }
+      
       
 
     })
