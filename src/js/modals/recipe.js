@@ -128,6 +128,14 @@ function popUpFunction(_id) {
         }
       });
 
+       if (KEY_FAVORITE._id !== recipe._id) {
+        const removeBtnEl = document.querySelector('.modal_favourite_remove').addEventListener( 'click', removeFromFavorites)
+        const addBtnEl = document.querySelector('.modal_favourite_add').addEventListener('click', addToFavorites)
+        removeBtnEl.classList.add('is-hidden') && addBtnEl.classList.remove('is-hidden')
+      }
+       else{ return }
+      
+
     })
   }
   
