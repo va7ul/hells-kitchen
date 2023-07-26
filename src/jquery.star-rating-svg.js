@@ -20,7 +20,7 @@
     emptyColor: 'lightgray',
     hoverColor: 'orange',
     activeColor: 'gold',
-    ratedColor: 'crimson',
+    ratedColor: '#EEA10C',
     useGradient: true,
     readOnly: false,
     disableAfterRate: true,
