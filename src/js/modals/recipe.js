@@ -24,6 +24,16 @@ function ratingStars(rating){
     return current_stars
 }
 
+function modalRestore(recipe){
+  const popUpRecipes = document.querySelectorAll(".pop-up-recipe");
+  popUpRecipes.forEach(function(recipe) {
+    recipe.innerHTML = "";
+
+    let body = document.querySelector("body");
+    body.style.overflow = "auto";
+  });
+}
+
 function popUpFunction(_id) {
     const modal_popup = document.querySelector('.pop-up-recipe');
     getRecipeById(_id).then((recipe) => {
@@ -45,7 +55,7 @@ function popUpFunction(_id) {
       if(recipe.youtube){
         current_youtube = recipe.youtube.replace('watch?v=','embed/');
       }
-
+  
       const transformedRecipe = `
       <div id="bg_modal" class="bg_modal"></div>
       <div class="popup_modal">
@@ -79,11 +89,8 @@ function popUpFunction(_id) {
           </div>
           <div class="modal_description">${recipe.description}</div>
           <div class="modal_buttons">
-            <div class="modal_button modal_favourite modal_favourite_add">
+            <div class="modal_button modal_favourite">
               <button data-id="${recipe._id}">Add to favourite</button>
-            </div>
-             <div class="modal_button modal_favourite modal_favourite_remove">
-              <button data-id="${recipe._id}">Remove from favorite</button>
             </div>
             <div class="modal_button modal_rating_button">
               <button data-id="${recipe._id}">Give a rating</button>
@@ -102,13 +109,10 @@ function popUpFunction(_id) {
         });
       });
 
-      // Закриття модалки при натисканні в будь-якому місці екрану 
-      document.getElementById("bg_modal").addEventListener("click", function () {
-        const popUpRecipes = document.querySelectorAll(".pop-up-recipe");
-        popUpRecipes.forEach(function (recipe) {
-          recipe.innerHTML = "";
-        });
-      });
+    // Закриття модалки при натисканні в будь-якому місці екрану 
+    document.getElementById("bg_modal").addEventListener("click", function () {
+      modalRestore(recipe);
+    });
 
       
       // обробник подій натискання на клавішу 
@@ -124,25 +128,7 @@ function popUpFunction(_id) {
         }
       });
 
-
-      // перемикання кнопки додати та видалити
-
-      if (KEY_FAVORITE._id !== recipe._id) {
-        const removeBtnEl = document.querySelector('.modal_favourite_remove').addEventListener( 'click', removeFromFavorites)
-        const addBtnEl = document.querySelector('.modal_favourite_add').addEventListener('click', addToFavorites)
-        removeBtnEl.classList.add('is-hidden') && addBtnEl.classList.remove('is-hidden')
-      }
-       else{ return }
-      
-
-
-
     })
-  
-  
   }
-
-   
-  
   
  export {popUpFunction}
