@@ -54,41 +54,43 @@ function popUpFunction(_id) {
     const transformedRecipe = `
     <div id="bg_modal" class="bg_modal"></div>
     <div class="popup_modal">
-      <a id="pop-up-close" class="modal_close">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path d="M18 6L6 18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M6 6L18 18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
-  
-      <div class="modal_container">
-        <h4 class="modal_title">${recipe.title}</h4>
-        <iframe class="modal_video" src="${current_youtube}" referrerpolicy="no-referrer"></iframe>
-        <div class="modal_line">
-          <div class="modal_tags">
-            ${current_tags}
-          </div>
-          <div class="modal_right">
-            <div class="modal_rating">
-              <span>${recipe.rating}</span>
-              <div class="modal_rating_stars">
-                ${current_stars}
-              </div>
+      <div class="popup_scroll">
+        <a id="pop-up-close" class="modal_close">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M18 6L6 18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M6 6L18 18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+    
+        <div class="modal_container">
+          <h4 class="modal_title">${recipe.title}</h4>
+          <iframe class="modal_video" src="${current_youtube}" referrerpolicy="no-referrer"></iframe>
+          <div class="modal_line">
+            <div class="modal_tags">
+              ${current_tags}
             </div>
-            <div class="modal_time">${recipe.time} min</div>
+            <div class="modal_right">
+              <div class="modal_rating">
+                <span>${recipe.rating}</span>
+                <div class="modal_rating_stars">
+                  ${current_stars}
+                </div>
+              </div>
+              <div class="modal_time">${recipe.time} min</div>
+            </div>
           </div>
-        </div>
-  
-        <div class="modal_ingredients">
-          ${current_ingredients}
-        </div>
-        <div class="modal_description">${recipe.description}</div>
-        <div class="modal_buttons">
-          <div class="modal_button modal_favourite">
-            <button data-id="${recipe._id}">Add to favourite</button>
+    
+          <div class="modal_ingredients">
+            ${current_ingredients}
           </div>
-          <div class="modal_button modal_rating_button">
-            <button data-id="${recipe._id}">Give a rating</button>
+          <div class="modal_description">${recipe.description}</div>
+          <div class="modal_buttons">
+            <div class="modal_button modal_favourite">
+              <button data-id="${recipe._id}">Add to favourite</button>
+            </div>
+            <div class="modal_button modal_rating_button">
+              <button data-id="${recipe._id}">Give a rating</button>
+            </div>
           </div>
         </div>
       </div>
