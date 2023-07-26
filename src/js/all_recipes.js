@@ -12,8 +12,8 @@ fetchRecipes();
   async function fetchRecipes() {
     try {
       dataRecipes = await getRecipes();      
-      const recipeCard = document.querySelector('.card-template')
-      createCardTemplate(dataRecipes, cardsGallery)
+      const recipeCard = document.querySelector('.card-template');
+      createCardTemplate(dataRecipes, cardsGallery);
       cardsGallery.addEventListener('change', addToFavorites);
       return dataRecipes;
     } catch (error) {
