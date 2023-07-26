@@ -1,8 +1,10 @@
 import Pagination from 'tui-pagination';
 
+const totalItems = localStorage.getItem("totalPages")*9;
+
 const container = document.getElementById('tui-pagination');
 const options = {
-  totalItems: 20000,
+  totalItems: totalItems,
   itemsPerPage: 9,
   visiblePages: 3,
   page: 1,
@@ -26,4 +28,5 @@ const options = {
   },
 };
 const pagination = new Pagination(container, options);
+
 export {pagination}

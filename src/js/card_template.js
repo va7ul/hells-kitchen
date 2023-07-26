@@ -2,8 +2,8 @@ import {getRecipeById} from "./api";
 import { popUpFunction } from "./modals/recipe";
 import { ratingStars } from './modals/recipe';
 
-function createCardTemplate(data, list) {
-   const markup = data.map(({ _id, preview, title, description, rating, area, ingredients, time }) =>
+function createCardTemplate(array, list) {
+   const markup = array.map(({ _id, preview, title, description, rating, area, ingredients, time }) =>
      `<li class="card-template" data-id="${_id}" data-area="${area}" data-ingredients="${ingredients}" data-time="${time}">
     <label>
         <input
