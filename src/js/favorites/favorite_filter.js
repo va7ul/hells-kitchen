@@ -7,7 +7,8 @@ const btnAllCategory = document.querySelector('.all-category');
 
 let favoriteArrFromLocalStorage =
   JSON.parse(localStorage.getItem(KEY_FAVORITE)) ?? [];
-let focus = 0;
+let focusOnBtn = 0;
+let focusOnAllBtn = 0;
 
 const allCategories = favoriteArrFromLocalStorage.flatMap(
   product => product.category
@@ -27,12 +28,14 @@ favoriteRecipesListEl.addEventListener('click', removeHandler);
 function onClick(evt) {
   if (evt.target.classList.contains('favorite-filter-btn')) {
     btnAllCategory.classList.remove('favorite-active-btn');
-    if (focus != 0) {
-      const btnInFocus = document.querySelector(
-        '.favorite-filter-btn.in-focus'
-      );
+    if (focusOnAllBtn != 0) {
+      btnAllCategory.classList.remove('in-focus');
+      focusOnAllBtn = 0;
+    }
+    if (focusOnBtn != 0) {
+      const btnInFocus = document.querySelector('.in-focus');
       btnInFocus.classList.remove('in-focus');
-      focus = 0;
+      focusOnBtn = 0;
     }
     const findProduct = findProductByFilter(evt.target);
     createCardTemplate(findProduct, favoriteRecipesListEl);
@@ -50,41 +53,27 @@ function removeHandler(evt) {
     favoriteArrFromLocalStorage = JSON.parse(
       localStorage.getItem(KEY_FAVORITE)
     );
-    if (
-      favoriteArrFromLocalStorage.some(
-        item => item.category === product.category
-      )
-    ) {
+    if (favoriteArrFromLocalStorage.some(item => item.category === product.category)) {
       const btn = document.querySelector(
         `li[data-category="${product.category}"]`
       );
-      btn.firstElementChild.classList.add('in-focus');
-      focus += 1;
+      console.log(btn);
+      if (!btnAllCategory.classList.contains('in-focus')){
+        btn.firstElementChild.classList.add('in-focus');
+        focusOnBtn += 1;
+      }
       return;
     } else {
       const btn = document.querySelector(
         `li[data-category="${product.category}"]`
       );
       btn.remove();
-       focus = 0;
+       focusOnBtn = 0;
       if (favoriteArrFromLocalStorage.length === 0) {
         btnAllCategory.remove();
       }
     }
   }
-}
-
-function findProductByFilter(elem) {
-  const favoriteArrFromLocalStorage = JSON.parse(
-    localStorage.getItem(KEY_FAVORITE)
-  );
-  const searchCategory = elem.closest('.favorite-filter-item').dataset.category;
-  if (!searchCategory) {
-    return favoriteArrFromLocalStorage;
-  }
-  return favoriteArrFromLocalStorage.filter(
-    ({ category }) => category === searchCategory
-  );
 }
 
 function createFilterMarkup(arr) {
@@ -99,4 +88,19 @@ function createFilterMarkup(arr) {
     )
     .join('');
   favoriteFilterEl.insertAdjacentHTML('beforeend', markup);
+}
+
+function findProductByFilter(elem) {
+  const favoriteArrFromLocalStorage = JSON.parse(
+    localStorage.getItem(KEY_FAVORITE)
+  );
+  const searchCategory = elem.closest('.favorite-filter-item').dataset.category;
+  if (searchCategory === 'all') {
+    btnAllCategory.classList.add('in-focus');
+    focusOnAllBtn += 1;
+    return favoriteArrFromLocalStorage;
+  }
+  return favoriteArrFromLocalStorage.filter(
+    ({ category }) => category === searchCategory
+  );
 }
