@@ -111,19 +111,19 @@ body {
 
 @media screen and (min-width: 375px) {
   .container {
-    max-width: 375px;
+    width: 375px;
   }
 }
 
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 744px;
+    width: 744px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .container {
-    max-width: 1120px;
+    width: 1120px;
   }
 }
 
