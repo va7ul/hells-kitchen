@@ -115,10 +115,10 @@ async function getRecipeById(recipeId) {
   }
 }
 
-async function patchRating(recipeId, rating) {
-  const url = `/recipes/${recipeId}/${rating}`;
+async function patchRating(recipeId, options) {
+  const url = `/recipes/${recipeId}/rating`;
   try {
-    const response = await axios.patch(url);
+    const response = await axios.patch(url, options);
     return response.data;
   } catch (error) {
     Notify.failure('Oops! Something went wrong!');
