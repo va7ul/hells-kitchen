@@ -12,8 +12,6 @@
 
 .popular-container {
   max-width: 332px;
-  padding-top: 40px;
-  padding-bottom: 40px;
 }
 .popular-title {
   font-size: 18px;
@@ -50,7 +48,13 @@
 .popular-link {
   display: flex;
   height: 100%;
+  width: 100%;
 }
+.popular-link:hover,
+.popular-link:focus {
+  color: #9bb537;
+}
+
 .popular-image {
   height: 64px;
   width: 64px;
