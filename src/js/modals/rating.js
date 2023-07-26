@@ -43,7 +43,7 @@ function submitRating(evt) {
     .catch(error => console.log(error));
 }
 
-refs.openButtonEl.addEventListener('click', onRatingModalOpen);
+// refs.openButtonEl.addEventListener('click', onRatingModalOpen);
 refs.closeButtonEl.addEventListener('click', onRatingModalRemove);
 refs.backdropEl.addEventListener('click', onRatingBackdropClick);
 
