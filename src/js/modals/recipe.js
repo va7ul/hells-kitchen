@@ -1,8 +1,8 @@
 import {getRecipeById, removeFromFavorites} from "../api";
 import { createCardTemplate } from "../card_template"
-import { KEY_FAVORITE } from "../favorites/favorite_recipes";
+// import { KEY_FAVORITE } from "../favorites/favorite_recipes";
 import { addToFavorites } from "../add-to-favorites";
-
+import favoritesArray from "../favorites-array"
 
 
 
@@ -130,11 +130,13 @@ function popUpFunction(_id) {
           });
         }
       });
+         const removeBtnEl = document.querySelector('.modal_favourite_remove').addEventListener( 'click', removeFromFavorites)
+        const addBtnEl = document.querySelector('.modal_favourite_add').addEventListener('click', addToFavorites) 
 
-       if (KEY_FAVORITE._id !== recipe._id) {
-        const removeBtnEl = document.querySelector('.modal_favourite_remove').addEventListener( 'click', removeFromFavorites)
-        const addBtnEl = document.querySelector('.modal_favourite_add').addEventListener('click', addToFavorites)
-        removeBtnEl.classList.add('is-hidden') && addBtnEl.classList.remove('is-hidden')
+      
+       if (favoritesArray.find(({_id}) => _id === recipe._id)) {
+       
+        removeBtnEl.classList.remove('is-hidden') && addBtnEl.classList.add('is-hidden')
       }
       
       
