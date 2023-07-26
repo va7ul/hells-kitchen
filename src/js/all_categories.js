@@ -1,5 +1,6 @@
 import { getAllCategories, resetAllFiters, save } from './api';
 import { fetchRecipes } from './all_recipes';
+import { resetSelectsToDefault } from './search_filters';
 
 const allCategoriesEl = document.querySelector('.all-categories-btn');
 const categoriesListEl = document.querySelector('.categories-list-items');
@@ -47,6 +48,7 @@ allCategoriesEl.addEventListener('click', onAllCategory);
 
 async function onAllCategory(evt) {
   let selectCategory = evt.target;
+  resetSelectsToDefault();
   resetAllFiters();
 
   const activeCategoryEl = document.querySelector('.active-category');
