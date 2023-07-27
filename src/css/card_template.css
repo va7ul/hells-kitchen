@@ -4,7 +4,7 @@
     justify-content: flex-end;
     align-items: start;
     position: relative;
-    width: 335px;
+    width: 100%;
     height: 335px;
     flex-shrink: 0;
     overflow: hidden;
@@ -61,10 +61,8 @@
     margin: 0;
     height: 32px;
     margin-bottom: 16px;
-    overflow: hidden;
-    /* text-overflow: ellipsis; */
-    /* white-space: nowrap; */
 
+    overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -82,12 +80,25 @@
 }
 
 .card-template-rating {
-    color: #F8F8F8;
     font-size: 14px;
     font-weight: 500;
     line-height: 1.28;
+    display: flex;
 
+    justify-content: center;
+    align-items: center;
     color: var(--light-theme-fill);
+}
+
+.card-template-rating>span {
+    display: flex;
+    gap: 2px;
+    margin-left: 4px;
+}
+
+.card-template-rating svg {
+    width: 14px;
+    height: 14px;
 }
 
 .card-template-btn {
@@ -116,7 +127,7 @@
     position: absolute;
     top: 16px;
     right: 16px;
-    z-index: 9;
+    z-index: 2;
     cursor: pointer;
 }
 
@@ -127,32 +138,53 @@
     height: 22px;
     top: 16px;
     right: 16px;
-    z-index: 9;
+    z-index: 2;
     cursor: pointer;
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='22' height='22' viewBox='0 0 22 22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath opacity='0.5' fill-rule='evenodd' clip-rule='evenodd' d='M10.9944 4.70783C9.16163 2.5652 6.10542 1.98884 3.80912 3.95085C1.51282 5.91285 1.18954 9.19323 2.99283 11.5137C4.49215 13.443 9.02961 17.5121 10.5167 18.8291C10.6831 18.9764 10.7663 19.0501 10.8633 19.0791C10.948 19.1043 11.0407 19.1043 11.1254 19.0791C11.2224 19.0501 11.3056 18.9764 11.472 18.8291C12.9591 17.5121 17.4966 13.443 18.9959 11.5137C20.7992 9.19323 20.5154 5.89221 18.1796 3.95085C15.8439 2.00948 12.8271 2.5652 10.9944 4.70783Z' stroke='%23F8F8F8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-image: url("../img/notfilled-heart.svg");
     transition: var(--transition-dur-and-func);
+}
 
+.card-template:is(:hover, :focus) {
+    transform: scale(1.1);
+}
+
+.card-template:is(:hover, :focus) .heart-checkbox:is(:hover, :focus) {
+    transform: scale(1.5);
 }
 
 .add-to-fav:checked+.heart-checkbox {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' fill='none'%3E%3Cpath fill='%23F8F8F8' fill-rule='evenodd' d='M10.994 4.708C9.162 2.565 6.105 1.988 3.81 3.95c-2.296 1.962-2.62 5.242-.816 7.563 1.5 1.929 6.037 5.998 7.524 7.315.166.147.25.221.346.25a.464.464 0 0 0 .262 0c.097-.029.18-.103.347-.25 1.487-1.317 6.025-5.386 7.524-7.315 1.803-2.32 1.52-5.622-.816-7.563-2.336-1.942-5.353-1.386-7.186.757Z' clip-rule='evenodd'/%3E%3C/svg%3E");
-
+    background-image: url("../img/filled-heart.svg");
 }
 
-/*------------ tablet------------- */
+@media screen and (min-width: 375px) {
+    .card-template {
+        max-width: 335px;
+    }
+}
+
+
+/*================TABLET================ */
 
 @media screen and (min-width: 768px) {
     .card-template {
         max-width: 240px;
         height: 264px;
     }
+}
 
-    .card-template-info {
-        max-width: 208px;
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+    .card-template-rating svg {
+        width: 12px;
+        height: 12px;
+    }
+
+    .card-template-rating>span {
+        margin-left: 2px;
     }
 }
 
-/* ----------desktop----------- */
+
+/* =============DESKTOP============== */
 
 @media screen and (min-width: 1280px) {
     .card-template {
@@ -160,21 +192,7 @@
         height: 287px;
     }
 
-    .card-template-info {
-
-        max-width: 218px;
-    }
-
     .card-template-btn {
         padding: 8px 16px;
     }
-}
-
-
-.card-template:is(:hover, :focus) {
-    transform: scale(1.1);
-}
-
-.heart-checkbox:is(:hover, :focus) {
-    transform: scale(1.5);
 }
