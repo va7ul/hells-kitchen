@@ -1,5 +1,16 @@
 import {getRecipeById} from "../api";
 import {createCardTemplate} from "../card_template"
+import { save } from "../api";
+const KEY_FAVORITE = 'favorite';
+
+let favoritesArray = JSON.parse(localStorage.getItem(KEY_FAVORITE));
+
+
+
+function checkRecipeCard(item) {
+  const recipeCardCheck = document.querySelector(".js-add-to-fav")
+  
+}
 
 function ratingStars(rating){
     let current_rating = Math.round(rating);
@@ -31,11 +42,18 @@ function modalRestore(recipe){
 
 function popUpFunction(_id) {
   const modal_popup = document.querySelector('.pop-up-recipe');
+
+
+
+
+
+  
   getRecipeById(_id).then((recipe) => {
     let current_tags = "";
     for (let i = 0; i < recipe.tags.length; i++) {
-      if (recipe.tags[i] !== ""){
-        current_tags += '<a href="" class="modal_tag">#'+recipe.tags[i]+"</a>";
+      if (recipe.tags[i] !== "") {
+        current_tags += '<li class="modal_tag">#' + recipe.tags[i] + "</li>";
+        
       }
     }
 
@@ -47,9 +65,13 @@ function popUpFunction(_id) {
     let current_stars = ratingStars(recipe.rating);
 
     let current_youtube = "";
-    if(recipe.youtube){
-      current_youtube = recipe.youtube.replace('watch?v=','embed/');
+    if (recipe.youtube) {
+      current_youtube = recipe.youtube.replace('watch?v=', 'embed/');
     }
+    
+    
+    
+
 
     const transformedRecipe = `
     <div id="bg_modal" class="bg_modal"></div>
@@ -66,6 +88,11 @@ function popUpFunction(_id) {
           <h4 class="modal_title">${recipe.title}</h4>
           <iframe class="modal_video" src="${current_youtube}" referrerpolicy="no-referrer"></iframe>
           <div class="modal_line">
+
+            <ul class="modal_tags">
+              ${current_tags}
+            </ul>
+
             <div class="modal_right">
               <div class="modal_rating">
                 <span>${recipe.rating}</span>
@@ -80,13 +107,14 @@ function popUpFunction(_id) {
           <div class="modal_ingredients">
             ${current_ingredients}
           </div>
-          <div class="modal_tags">
-              ${current_tags}
-            </div>
-          <div class="modal_description">${recipe.description}</div>
+
+          <div class="modal_description">${recipe.instructions}</div>
+
           <div class="modal_buttons">
-            <div class="modal_button modal_favourite">
-              <button data-id="${recipe._id}">Add to favourite</button>
+            <div class="modal_button modal_favourite "data-id="${recipe._id}" >
+            <button class="modal-add-btn" data-id="${recipe._id}">Add to favorite</button>  
+          <button class="modal-remove-btn" data-id="${recipe._id}">Remove from favorite</button>
+              
             </div>
             <div class="modal_button modal_rating_button">
               <button data-id="${recipe._id}">Give a rating</button>
@@ -96,11 +124,16 @@ function popUpFunction(_id) {
       </div>
     </div>
     `;
-    modal_popup.innerHTML = transformedRecipe; 
+
+    modal_popup.innerHTML = transformedRecipe;
 
     
     let body = document.querySelector("body");
     body.style.overflow = "hidden";
+
+
+    
+     
 
     // Закриття модалки при натисканні на хрестик 
     document.getElementById("pop-up-close").addEventListener("click", function () {
@@ -121,9 +154,97 @@ function popUpFunction(_id) {
         modalRestore(recipe);
       }
     });
-  })
+
+
+    
+    const removeBtnEl = document.querySelector(".modal-remove-btn")
+    const addBtnEl = document.querySelector(".modal-add-btn")
+
+
+    
+    let favoritesArray = JSON.parse(localStorage.getItem(KEY_FAVORITE));
+    
+    const inStoredge = favoritesArray.some(({ _id }) => _id === recipe._id);
+    if (inStoredge) {
+      addBtnEl.classList.add('is-hidden')
+      removeBtnEl.classList.remove('is-hidden')
+    }
+    else {
+      addBtnEl.classList.remove('is-hidden')
+      removeBtnEl.classList.add('is-hidden')
+    }
+
+    const btnEl = document.querySelector('.modal_favourite')
+    btnEl.addEventListener('click', onClick)
+removeBtnEl.addEventListener('click', removeForBtn)
+
+    function onClick(evt) {
+    //   //додати до favorites
+      if (!evt.target.classList.contains('modal-add-btn')) {
+        return
+      } else {
+       const recipeId = recipe._id
+    
+        addToFavorites(recipe._id);
+        addBtnEl.classList.add('is-hidden')
+        removeBtnEl.classList.remove('is-hidden')
+      }
+
+
+
+     
+      //видалення з favorites
+      
+    }
+    
+     function removeForBtn(evt) {
+       
+        // const productId = evt.currentTarget.dataset.id;
+        removeFromFavorites(KEY_FAVORITE, favoritesArray);
+        addBtnEl.classList.remove('is-hidden')
+        removeBtnEl.classList.add('is-hidden');
+      
+      }
+    
+    
+    function addToFavorites(event) {
+      
+      if (favoritesArray.find(({ _id }) => _id === recipe._id) === undefined) {
+        // const item = dataRecipes.find(({ _id }) => _id === recipeId)
+        favoritesArray.push(recipe)
+        save(KEY_FAVORITE, favoritesArray)
+      }
+    }
+
+
+
+  function removeFromFavorites(key, arr) {
+ 
+    const removeElemIdx = arr.findIndex(item => item._id === recipe._id); 
+   
+   arr.splice(removeElemIdx, 1);
+     localStorage.setItem(key, JSON.stringify(arr));
 }
+
+    
+   
+ 
+
+    
+    
+    
+  })
+
+
+}
+
+
+   
+    
+
 
 export { popUpFunction }
 export {ratingStars}
+
+
 
