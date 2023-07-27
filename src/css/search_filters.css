@@ -273,7 +273,7 @@
 
 
 .ss-content .ss-search input::placeholder {
-    vertical-align: middle;  
+    vertical-align: middle;
 }
 
 .ss-content .ss-search input:focus {
@@ -457,21 +457,23 @@
 /* -------------------------  МОИ filter-css  --------------------------------*/
 
 
-.filter-form-home{
+.filter-form-home {
     display: flex;
     gap: 14px;
     flex-wrap: wrap;
 }
 
-.input-box{
+.input-box {
     width: 335px;
 }
 
-.time-box, .area-box, .ingr-box {
+.time-box,
+.area-box,
+.ingr-box {
     display: inline-block;
 }
 
-.filter-text-home{
+.filter-text-home {
     display: block;
     font-weight: 400;
     font-size: 12px;
@@ -480,7 +482,7 @@
     margin-left: 4px;
 }
 
-.reset-text{
+.reset-text {
     margin-bottom: 0px;
 }
 
@@ -490,7 +492,7 @@
 }
 
 .filter-input::-ms-clear {
-    fill:var(--green-btn)
+    fill: var(--green-btn)
 }
 
 .filter-time {
@@ -498,10 +500,10 @@
     height: 46px;
 }
 
-.filter-general{
+.filter-general {
     border-radius: 15px;
     border: 1px solid rgba(5, 5, 5, 0.20);
-    padding: 0 15px;     
+    padding: 0 15px;
 }
 
 .filter-input {
@@ -514,18 +516,18 @@
     outline: none;
     font-size: 14px;
 }
-   
-.filter-area{
+
+.filter-area {
     width: 160px;
     height: 46px;
 }
 
-.filter-product{
+.filter-product {
     width: 188px;
     height: 46px;
 }
 
-.filter-btn-home{
+.filter-btn-home {
     display: flex;
     margin-top: 14px;
     border: none;
@@ -534,7 +536,7 @@
     padding: 0px;
 }
 
-.filter-icon-search{
+.filter-icon-search {
     opacity: .5;
 }
 
@@ -542,38 +544,42 @@
     -webkit-appearance: none;
 }
 
-.filter-input:focus{
+.filter-input:focus {
     box-shadow: 0 0 5px var(--green-btn);
 }
 
-input:focus+.filter-icon-search{
+input:focus+.filter-icon-search {
     fill: var(--green-btn);
     opacity: 1;
 }
 
-.filter-icon-clear{
+.filter-icon-container {
+    height: 16px;
+}
+
+.filter-icon-clear {
     stroke: var(--green-btn);
 }
 
-.svg-with-input{
+.svg-with-input {
     position: relative;
 }
 
-.svg-with-input svg{
+.svg-with-input svg {
     position: absolute;
     top: 14px;
     left: 15px;
 }
 
-.dark-theme .filter-input{
+.dark-theme .filter-input {
     color: var(--dark-theme-main-text);
 }
 
-.dark-theme .filter-icon-search{
+.dark-theme .filter-icon-search {
     fill: var(--dark-theme-main-text);
 }
 
-.dark-theme input:focus+.filter-icon-search{
+.dark-theme input:focus+.filter-icon-search {
     fill: var(--green-btn)
 }
 
@@ -583,25 +589,25 @@ input:focus+.filter-icon-search{
     border: 1px solid rgba(255, 255, 255, 0.20);
 }
 
-.dark-theme .ss-main .ss-values .ss-placeholder{
+.dark-theme .ss-main .ss-values .ss-placeholder {
     color: var(--dark-theme-main-text);
 }
 
-.dark-theme .ss-content.ss-open-below{
+.dark-theme .ss-content.ss-open-below {
     background-color: var(--light-theme-main-text);
 }
 
 .dark-theme .ss-content .ss-search input {
     background-color: var(--light-theme-main-text);
     color: var(--dark-theme-main-text);
-    border:  solid rgba(255, 255, 255, 0.20);
+    border: solid rgba(255, 255, 255, 0.20);
 }
 
 .dark-theme .filter-text-home {
     color: var(--dark-theme-main-text);
 }
 
-.dark-theme .filter-input::-webkit-input-placeholder{
+.dark-theme .filter-input::-webkit-input-placeholder {
     color: rgba(255, 255, 255, 0.5);
 }
 
@@ -610,7 +616,7 @@ input:focus+.filter-icon-search{
 }
 
 @media screen and (min-width: 768px) {
-    
+
     .filter-home-container {
         width: 496px;
     }
@@ -619,9 +625,9 @@ input:focus+.filter-icon-search{
         gap: 16px;
     }
 
-   .ss-main .ss-values .ss-placeholder{
+    .ss-main .ss-values .ss-placeholder {
         font-size: 16px;
-   }
+    }
 
     .input-box {
         width: 278px;
@@ -629,7 +635,7 @@ input:focus+.filter-icon-search{
 
     .filter-text-home {
         font-size: 14px;
-    } 
+    }
 
     .filter-time {
         width: 115px;
@@ -641,11 +647,11 @@ input:focus+.filter-icon-search{
         height: 48px;
     }
 
-    .filter-product{
+    .filter-product {
         height: 48px;
     }
 
-     .filter-input {
+    .filter-input {
         width: 278px;
         height: 48px;
         font-size: 16px;
@@ -655,21 +661,21 @@ input:focus+.filter-icon-search{
         height: 188px;
     }
 
-    .ss-content .ss-list .ss-option{
+    .ss-content .ss-list .ss-option {
         font-size: 16px;
     }
 
     .ss-content .ss-search input {
         font-size: 16px;
     }
-    
-    .ss-main .ss-values .ss-single{
+
+    .ss-main .ss-values .ss-single {
         font-size: 16px;
     }
 }
 
 @media screen and (min-width: 1280px) {
-    
+
     .filter-home-container {
         width: 780px;
     }
@@ -678,4 +684,3 @@ input:focus+.filter-icon-search{
         width: 125px;
     }
 }
-

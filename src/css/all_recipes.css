@@ -1,27 +1,36 @@
-.cards-gallery{
+.gallery-wrapper {
+    margin-top: 20px;
+}
+
+.cards-gallery {
     margin-left: auto;
     margin-right: auto;
 }
 
-.card-template{
+.card-template {
     margin-bottom: 24px;
 }
 
-@media screen and (min-width: 768px){
-    .cards-gallery{
+@media screen and (min-width: 768px) {
+    .gallery-wrapper {
+        margin-top: 14px;
+    }
+
+    .cards-gallery {
         display: flex;
         flex-wrap: wrap;
         gap: 16px;
     }
-    .card-template{
+
+    .card-template {
         margin-bottom: 0;
     }
 }
 
 @media screen and (min-width: 1280px) {
-    .cards-gallery{
+    .cards-gallery {
         column-gap: 15px;
         row-gap: 20px;
     }
-    
+
 }

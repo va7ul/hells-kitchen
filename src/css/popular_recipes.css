@@ -4,6 +4,7 @@
 }
 
 @media screen and (min-width: 768px) {
+
   .popular-item:nth-child(3),
   .popular-item:nth-child(4) {
     display: block;
@@ -13,6 +14,7 @@
 .popular-container {
   max-width: 332px;
 }
+
 .popular-title {
   font-size: 18px;
   font-weight: 600;
@@ -30,6 +32,11 @@
 .popular-item {
   height: 67px;
 }
+
+.popular-item:is(:hover, :focus) {
+  cursor: pointer;
+}
+
 .popular-item:first-child {
   margin-bottom: 24px;
 }
@@ -39,6 +46,7 @@
     margin-bottom: 16px;
   }
 }
+
 @media screen and (min-width: 1280px) {
   .popular-item:not(:last-child) {
     margin-bottom: 32px;
@@ -50,6 +58,7 @@
   height: 100%;
   width: 100%;
 }
+
 .popular-link:hover,
 .popular-link:focus {
   color: #9bb537;
@@ -69,6 +78,7 @@
     margin-right: 8px;
   }
 }
+
 @media screen and (min-width: 1280px) {
   .popular-image {
     height: 64px;
@@ -81,6 +91,7 @@
   height: 100%;
   overflow: hidden;
 }
+
 .popular-subtitle {
   margin-bottom: 8px;
   font-size: 14px;
@@ -90,6 +101,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .popular-text {
   height: 41px;
   font-size: 12px;
@@ -98,6 +110,7 @@
   text-overflow: ellipsis;
   position: relative;
 }
+
 @media screen and (min-width: 768px) {
   .popular-text {
     font-size: 10px;

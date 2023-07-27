@@ -168,3 +168,12 @@
         padding: 8px 16px;
     }
 }
+
+
+.card-template:is(:hover, :focus) {
+    transform: scale(1.1);
+}
+
+.heart-checkbox:is(:hover, :focus) {
+    transform: scale(1.5);
+}
