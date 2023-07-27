@@ -119,12 +119,14 @@ async function getRecipeById(recipeId) {
 }
 
 async function patchRating(recipeId, options) {
+  Loading.pulse();
   const url = `/recipes/${recipeId}/rating`;
   try {
     const response = await axios.patch(url, options);
+    localStorage.setItem('patch-rating', '');
     return response.data;
   } catch (error) {
-    Notify.failure('Oops! Something went wrong!');
+    localStorage.setItem('patch-rating', 'error');
   }
 }
 
