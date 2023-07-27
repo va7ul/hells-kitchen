@@ -1,7 +1,7 @@
 #progress {
     position: fixed;
-    bottom: 20px;
-    right: 10px;
+    bottom: 15px;
+    right: 15px;
     height: 40px;
     width: 40px;
     display: none;
@@ -9,13 +9,14 @@
     border-radius: 50%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     cursor: pointer;
+    z-index: 2;
 }
 
 #progress-value {
     display: block;
     height: calc(100% - 15px);
     width: calc(100% - 15px);
-    background-color: var(--light-theme-fill);
+    background-color: var(--star-second-light);
     border-radius: 50%;
     display: grid;
     place-items: center;
@@ -23,6 +24,11 @@
     color: var(--dark-theme-fill);
     transition: var(--transition-dur-and-func);
 }
+
+/* .dark-theme #progress-value {
+    background-color: var(--dark-theme-fill);
+    color: var(--light-theme-fill);
+} */
 
 #progress:is(:hover, :focus) #progress-value {
     color: var(--green-btn);
