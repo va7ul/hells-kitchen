@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { Loading } from 'notiflix';
 
 axios.defaults.baseURL = 'https://tasty-treats-backend.p.goit.global/api';
 function resetAllFiters() {
@@ -78,6 +79,8 @@ async function getAreas() {
 
 async function getIngredients() {
   const url = `/ingredients`;
+  Loading.pulse();
+  localStorage.setItem('loading', 0);
   try {
     const response = await axios.get(url);
     return response.data;
@@ -94,12 +97,11 @@ async function getRecipes() {
   let time = localStorage.getItem('time');
   let area = localStorage.getItem('area');
   let ingredient = localStorage.getItem('ingredient');
-  
 
   const url = `/recipes?category=${category}&page=${page}&limit=${limit}&title=${title}&time=${time}&area=${area}&ingredient=${ingredient}`;
   try {
     const response = await axios.get(url);
-    localStorage.setItem("totalPages", response.data.totalPages)
+    localStorage.setItem('totalPages', response.data.totalPages);
     return response.data.results;
   } catch (error) {
     Notify.failure('Oops! Something went wrong!');
@@ -117,21 +119,26 @@ async function getRecipeById(recipeId) {
 }
 
 async function patchRating(recipeId, options) {
+  Loading.pulse();
   const url = `/recipes/${recipeId}/rating`;
   try {
     const response = await axios.patch(url, options);
+    localStorage.setItem('patch-rating', '');
     return response.data;
   } catch (error) {
-    Notify.failure('Oops! Something went wrong!');
+    localStorage.setItem('patch-rating', 'error');
   }
 }
 
-async function postOrder(recipeId) {
-  const url = `/recipes/${recipeId}/orders/add`;
+async function postOrder(options) {
+  Loading.pulse();
+  const url = `/orders/add`;
   try {
-    const response = await axios.post(url);
+    const response = await axios.post(url, options);
+    localStorage.setItem('patch-rating', '');
     return response.data;
   } catch (error) {
+    localStorage.setItem('patch-rating', 'error');
     Notify.failure('Oops! Something went wrong!');
   }
 }

@@ -29,7 +29,7 @@ getAllCategories()
 
 categoriesContainerEl.addEventListener('click', onCategory);
 
-async function onCategory(evt) {
+function onCategory(evt) {
   if (evt.target.nodeName !== 'BUTTON') {
     return;
   }
@@ -46,7 +46,7 @@ async function onCategory(evt) {
 
 allCategoriesEl.addEventListener('click', onAllCategory);
 
-async function onAllCategory(evt) {
+function onAllCategory(evt) {
   let selectCategory = evt.target;
   resetSelectsToDefault();
   resetAllFiters();

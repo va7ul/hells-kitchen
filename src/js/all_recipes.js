@@ -1,6 +1,6 @@
 import { getRecipes} from "./api";
 import { createCardTemplate } from "./card_template";
-import { addToFavorites } from "./add-to-favorites";
+import { addToFavorites, isInFavorites, favoritesArray } from "./add-to-favorites";
 import { pagination } from "./pagination";
 import Notiflix from "notiflix";
 
@@ -14,6 +14,7 @@ fetchRecipes();
       dataRecipes = await getRecipes();      
       const recipeCard = document.querySelector('.card-template');
       createCardTemplate(dataRecipes, cardsGallery);
+      isInFavorites(dataRecipes, favoritesArray )
       cardsGallery.addEventListener('change', addToFavorites);
       return dataRecipes;
     } catch (error) {
@@ -35,4 +36,7 @@ fetchRecipes();
         console.error('Ошибка при получении данных о рецептах:', error);
       }});
 
+ 
+
 export {fetchRecipes, dataRecipes}
+

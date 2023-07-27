@@ -1,3 +1,7 @@
+body.show-modal-order-now {
+  overflow: hidden;
+}
+
 body.show-modal-order-now .order-now-modal {
   transform: scale(1);
 }
@@ -7,7 +11,6 @@ body.show-modal-order-now .order-now-backdrop {
   visibility: visible;
   pointer-events: initial;
 }
-
 .order-now-backdrop {
   position: fixed;
   top: 0;
@@ -17,10 +20,10 @@ body.show-modal-order-now .order-now-backdrop {
   justify-content: center;
   width: 100vw;
   height: 100vh;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  position: fixed;
   background-color: rgba(46, 47, 66, 0.4);
   visibility: hidden;
+  overflow: hidden;
 }
 
 .order-now-modal {
@@ -34,6 +37,7 @@ body.show-modal-order-now .order-now-backdrop {
   background-color: #fff;
   border-radius: 15px;
   transform: scale(1.1);
+  overflow: hidden;
 }
 
 .order-now-modal__title {
@@ -44,6 +48,7 @@ body.show-modal-order-now .order-now-backdrop {
   line-height: 1.2;
   text-transform: uppercase;
   color: var(--light-theme-main-text);
+  overflow: hidden;
 }
 
 .order-now-modal__close-btn {
@@ -67,6 +72,7 @@ body.show-modal-order-now .order-now-backdrop {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .order-now-modal-form label:not(:last-of-type) {
@@ -82,8 +88,7 @@ body.show-modal-order-now .order-now-backdrop {
 }
 
 .order-now-modal-form__input {
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 14px 18px;
   height: 43px;
 }
 
@@ -96,7 +101,7 @@ textarea {
 
 .order-now-modal-form textarea {
   margin-bottom: 40px;
-  padding: 15px;
+  padding: 14px 18px;
   height: 100px;
   resize: none;
   /*overflow: scroll;*/
@@ -174,4 +179,25 @@ input {
 .order-now-modal-form__input:hover,
 .order-now-modal-form__input:focus {
   border: 1px solid var(--green-btn);
+}
+.dark-theme .order-now-modal-form input,
+.dark-theme .order-now-modal-form textarea {
+  background-color: rgba(5, 5, 5, 1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.dark-theme .order-now-modal-form input:focus,
+.dark-theme .order-now-modal-form textarea:focus {
+  border-color: var(--green-btn);
+  background-color: rgba(5, 5, 5, 1);
+  color: aqua;
+}
+
+.dark-theme .order-now-modal-form span {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.dark-theme .order-now-modal-form input::placeholder,
+.dark-theme .order-now-modal-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
 }

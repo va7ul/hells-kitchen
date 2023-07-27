@@ -4,6 +4,7 @@
 
 
 /* Header general*/
+
 .header-map {
   display: flex;
   align-items: center;
@@ -39,10 +40,6 @@
   display: flex;
   align-items: center;
 }
-
-/*.switch-theme {
-  display: none;
-}*/
 
 .burger-open {
   padding: 0;
@@ -130,18 +127,6 @@
   transition: var(--transition-dur-and-func);
 }
 
-/*.theme-light {
-  --light-theme-fill: #f8f8f8;
-  --light-theme-main-text: #050505;
-  --light-theme-switcher-btn: #cecdcd;
-}
-
-.theme-dark {
-  --dark-theme-fill: #161616;
-  --dark-theme-main-text: #ffffff;
-  --dark-theme-switcher-btn: #f3f3f3;
-}
-
 /* ---- BACKDROP ---- */
 
 .backdrop {
@@ -153,6 +138,9 @@
   bottom: 0;
   background: rgba(46, 47, 66, 0.4);
   opacity: 1;
+  position: fixed;
+  overflow-y: scroll;
+  inset: 0;
 }
 
 .backdrop.is-hidden {
@@ -452,9 +440,9 @@
 }
 
 @media screen and (min-width: 1280px) {
-  .header-container {
-    padding-top: 42px;
-    padding-bottom: 94px;
+  .container.header {
+    padding-top: 40px;
+    padding-bottom: 88px;
   }
 }
 
@@ -476,11 +464,27 @@ body.dark-theme {
   background-color: rgba(5, 5, 5, 1);
 }
 
+.dark-theme .order-now-modal-form textarea,
+.dark-theme .order-now-modal,
+.dark-theme .popup_modal,
+.dark-theme .popup_scroll {
+  background-color: rgba(5, 5, 5, 1);
+}
 .dark-theme .shopping-cart,
-.dark-theme .icon-gamburger {
+.dark-theme .icon-gamburger,
+.dark-theme .order-now-modal-close__img {
   stroke: var(--dark-theme-main-text);
 }
 
+.dark-theme .icon-gamburger:hover,
+.dark-theme .icon-gamburger:focus {
+  stroke: var(--green-btn);
+}
+.dark-theme .mobile-icon-x:hover,
+.dark-theme .mobile-icon-x:focus {
+  stroke: var(--green-btn);
+  fill: blue;
+}
 .dark-theme .hero-title,
 .dark-theme .hero-description,
 .dark-theme .hero-btn {
@@ -492,11 +496,29 @@ body.dark-theme {
 .dark-theme .order-now-modal,
 .dark-theme .form input,
 .dark-theme .order-now-modal-form textarea,
-.dark-theme .order-now-modal__title {
+.dark-theme .order-now-modal__title,
+.dark-theme .modal_title {
   color: rgba(255, 255, 255, 1);
 }
 
 .dark-theme .mobile-nav-link:hover,
 .dark-theme .mobile-nav-link:focus {
   color: var(--green-btn);
+}
+
+@media screen and (min-width: 767px) {
+  .container .header-container .second {
+    padding-bottom: 51px;
+    padding-top: 20px;
+  }
+}
+
+.container.header {
+  padding-top: 40px;
+  padding-bottom: 88px;
+}
+
+.container.head-second {
+  padding-top: 20px;
+  padding-bottom: 44.5px;
 }
