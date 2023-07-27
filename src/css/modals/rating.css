@@ -19,11 +19,7 @@ body.show-modal-rating .rating-modal-backdrop {
     justify-content: center;
     z-index: 5;
     visibility: hidden;
-    background: var(--dark-theme-fill);
-}
-
-.dark-theme .rating-modal-backdrop {
-    background: var(--dark-theme-fill);
+    background: rgba(22, 22, 22, 0.9);
 }
 
 .rating-modal {
