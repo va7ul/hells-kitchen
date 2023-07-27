@@ -98,9 +98,6 @@ function popUpFunction(_id) {
     `;
     modal_popup.innerHTML = transformedRecipe; 
 
-
-    function addToFavorites(recipeId){}
-
     
     let body = document.querySelector("body");
     body.style.overflow = "hidden";
