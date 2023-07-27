@@ -70,22 +70,59 @@ function onEscKeyPress(event) {
     onModalRemove();
   }
 }
+
+function extractFormData(form) {
+  let formData = {};
+  
+  formData.name = form.querySelector('input[name="name"]').value;
+  formData.phone = form.querySelector('input[name="phone"]').value;
+  formData.email = form.querySelector('input[name="email"]').value;
+  formData.comment = form.querySelector('textarea[name="comment"]').value;
+  
+  return formData;
+}
+
 function onSubmitForm(e) {
   e.preventDefault();
 
   const formData = extractFormData(refs.modalOrderNowForm);
   console.log(formData);
 
+
+
+
+
+
+
   refs.modalOrderNowForm.reset();
 }
 
-function extractFormData(form) {
-  let formData = {};
 
-  formData.name = form.querySelector('input[name="name"]').value;
-  formData.phone = form.querySelector('input[name="phone"]').value;
-  formData.email = form.querySelector('input[name="email"]').value;
-  formData.comment = form.querySelector('textarea[name="comment"]').value;
 
-  return formData;
+function submitRating(evt) {
+  evt.preventDefault();
+  let giveRating = Number(refs.starsEl.textContent);
+  let email = refs.inputEl.value;
+  // треба підключити ID з картки
+  let recipeId = '6462a8f74c3d0ddd288980d4';
+  const options = {
+    rate: giveRating,
+    email,
+  };
+
+  patchRating(recipeId, options)
+    .then(categories => {
+      // console.log(categories);
+      if (localStorage.getItem('patch-rating') == 'error') {
+        return Notify.failure('Oops! Something went wrong!');
+      }
+      onRatingModalRemove();
+      refs.starsEl.textContent = '0.0';
+      refs.inputEl.value = '';
+      Notify.success('Thank you for your feedback!');
+    })
+    .catch(error => console.log(error))
+    .finally(() => Loading.remove());
 }
+
+
