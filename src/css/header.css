@@ -4,6 +4,7 @@
 
 
 /* Header general*/
+
 .header-map {
   display: flex;
   align-items: center;
@@ -137,6 +138,9 @@
   bottom: 0;
   background: rgba(46, 47, 66, 0.4);
   opacity: 1;
+  position: fixed;
+  overflow-y: scroll;
+  inset: 0;
 }
 
 .backdrop.is-hidden {
@@ -436,9 +440,9 @@
 }
 
 @media screen and (min-width: 1280px) {
-  .header-container {
-    padding-top: 42px;
-    padding-bottom: 94px;
+  .container.header {
+    padding-top: 40px;
+    padding-bottom: 88px;
   }
 }
 
@@ -472,6 +476,15 @@ body.dark-theme {
   stroke: var(--dark-theme-main-text);
 }
 
+.dark-theme .icon-gamburger:hover,
+.dark-theme .icon-gamburger:focus {
+  stroke: var(--green-btn);
+}
+.dark-theme .mobile-icon-x:hover,
+.dark-theme .mobile-icon-x:focus {
+  stroke: var(--green-btn);
+  fill: blue;
+}
 .dark-theme .hero-title,
 .dark-theme .hero-description,
 .dark-theme .hero-btn {
@@ -493,28 +506,19 @@ body.dark-theme {
   color: var(--green-btn);
 }
 
-@media screen and (max-width: 767px) {
-  .container .header-container .second-page {
+@media screen and (min-width: 767px) {
+  .container .header-container .second {
     padding-bottom: 51px;
+    padding-top: 20px;
   }
 }
-.dark-theme .order-now-modal-form input,
-.dark-theme .order-now-modal-form textarea {
-  background-color: transparent;
-  border-color: rgba(255, 255, 255, 0.5);
-  color: rgba(255, 255, 255, 0.5);
+
+.container.header {
+  padding-top: 40px;
+  padding-bottom: 88px;
 }
 
-.dark-theme .order-now-modal-form input:focus,
-.dark-theme .order-now-modal-form textarea:focus {
-  border-color: var(--green-btn);
-}
-
-.dark-theme .order-now-modal-form span {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.dark-theme .order-now-modal-form input::placeholder,
-.dark-theme .order-now-modal-form textarea::placeholder {
-  color: rgba(255, 255, 255, 0.5);
+.container.head-second {
+  padding-top: 20px;
+  padding-bottom: 44.5px;
 }

@@ -14,6 +14,7 @@
             class="order-now-modal-form__input"
             name="name"
             type="text"
+            placeholder="Your name"
             value=""
             required
           />
@@ -26,7 +27,7 @@
             name="phone"
             value=""
             placeholder="+38 (000) 000 00 00"
-            pattern="^\+?3?8?(0\d{9})$"
+            pattern="\+38\d{10}"
             required
           />
         </label>
@@ -36,6 +37,7 @@
             class="order-now-modal-form__input"
             name="email"
             type="email"
+            placeholder="Your email"
             value=""
             name="email"
             required
@@ -43,7 +45,11 @@
         </label>
         <label>
           <span label-comment-order-now>Comment</span>
-          <textarea class="comment-textarea" name="comment"></textarea>
+          <textarea
+            class="comment-textarea"
+            name="comment"
+            placeholder="Text input"
+          ></textarea>
         </label>
         <button type="submit">Send</button>
       </form>
