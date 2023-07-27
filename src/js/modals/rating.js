@@ -43,13 +43,24 @@ function submitRating(evt) {
     .catch(error => console.log(error));
 }
 
-// refs.openButtonEl.addEventListener('click', onRatingModalOpen);
+refs.openButtonEl.addEventListener('click', onRatingModalOpen);
 refs.closeButtonEl.addEventListener('click', onRatingModalRemove);
 refs.backdropEl.addEventListener('click', onRatingBackdropClick);
 
 function onRatingModalOpen() {
   window.addEventListener('keydown', onEscKeyPress);
   document.body.classList.add('show-modal-rating');
+  if (document.body.classList.contains('show-modal-rating')) {
+    window.addEventListener("click", onClickWin)
+  }
+}
+
+function onClickWin(event) {
+  if (!event.target.classList.contains("js-backdrop")) {
+    return;
+  }
+    onRatingModalRemove()
+    window.removeEventListener("click", onClickWin)
 }
 
 function onRatingModalRemove() {
