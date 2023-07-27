@@ -17,14 +17,16 @@
 
 .favorite-filter-list::-webkit-scrollbar-thumb {
   border-radius: 12px;
-  background-color: rgba(5, 5, 5, 0.18);
+  background-color: rgba(5, 5, 5, 0.2);
 }
-
+.dark-theme .favorite-filter-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+}
 .favorite-filter-btn {
   background: none;
   color: var(--light-theme-main-text);
   opacity: 0.3;
-  border: 1px solid var(--light-theme-main-text);
+  border: 1px solid rgba(5, 5, 5, 0.2);
   border-radius: 15px;
   padding: 14px 18px;
   font-weight: 500;
@@ -33,6 +35,10 @@
     opacity var(--transition-dur-and-func),
     border-color var(--transition-dur-and-func),
     background-color var(--transition-dur-and-func);
+}
+.dark-theme .favorite-filter-btn {
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 .favorite-filter-btn:focus {
   background-color: var(--green-btn);
@@ -46,12 +52,17 @@
   border-color: transparent;
   opacity: 1;
 }
+
 .favorite-active-btn {
   color: var(--green-btn);
   border-color: var(--green-btn);
   opacity: 1;
 }
-
+.dark-theme .favorite-active-btn {
+  color: var(--green-btn);
+  border-color: var(--green-btn);
+  opacity: 1;
+}
 @media screen and (min-width: 768px) {
   .favorite-filter {
     margin-bottom: 32px;
