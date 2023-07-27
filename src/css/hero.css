@@ -72,6 +72,7 @@
 
 .slider-item-topic {
   position: relative;
+  border: 1px solid rgba(155, 181, 55, 0.3);
 
   width: 200px;
   height: 280px;
@@ -171,6 +172,10 @@
   width: 10px;
   height: 10px;
   background-color: var(--green-btn);
+}
+
+.dark-theme .slick-dots button {
+  background-color: var(--dark-theme-main-text);
 }
 
 @media screen and (min-width: 375px) {
