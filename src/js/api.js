@@ -130,12 +130,15 @@ async function patchRating(recipeId, options) {
   }
 }
 
-async function postOrder(recipeId) {
-  const url = `/recipes/${recipeId}/orders/add`;
+async function postOrder(options) {
+  Loading.pulse();
+  const url = `/orders/add`;
   try {
-    const response = await axios.post(url);
+    const response = await axios.post(url, options);
+    localStorage.setItem('patch-rating', '');
     return response.data;
   } catch (error) {
+    localStorage.setItem('patch-rating', 'error');
     Notify.failure('Oops! Something went wrong!');
   }
 }

@@ -1,4 +1,8 @@
+import { postOrder } from '../api';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { Loading } from 'notiflix';
 import { disablePageScroll, enablePageScroll } from 'scroll-lock';
+
 const refs = {
   modalOrderNowForm: document.querySelector('.order-now-modal-form'),
   openButtonEl: document.querySelector('.shopping-cart'),
@@ -58,33 +62,27 @@ function onSubmitForm(e) {
   e.preventDefault();
 
   const formData = extractFormData(refs.modalOrderNowForm);
-  console.log(formData);
 
-  refs.modalOrderNowForm.reset();
-}
+  const { name, phone, email, comment } = formData;
 
-function submitRating(evt) {
-  evt.preventDefault();
-  let giveRating = Number(refs.starsEl.textContent);
-  let email = refs.inputEl.value;
-  // треба підключити ID з картки
-  let recipeId = '6462a8f74c3d0ddd288980d4';
   const options = {
-    rate: giveRating,
+    name,
+    phone,
     email,
+    comment,
   };
 
-  patchRating(recipeId, options)
-    .then(categories => {
-      // console.log(categories);
-      if (localStorage.getItem('patch-rating') == 'error') {
-        return Notify.failure('Oops! Something went wrong!');
+  postOrder(options)
+    .then(() => {
+      if (localStorage.getItem('patch-rating') !== 'error') {
+        onModalRemove();
+        Notify.success('Thank you for your order!');
       }
-      onRatingModalRemove();
-      refs.starsEl.textContent = '0.0';
-      refs.inputEl.value = '';
-      Notify.success('Thank you for your feedback!');
+      return;
     })
     .catch(error => console.log(error))
     .finally(() => Loading.remove());
+
+  refs.modalOrderNowForm.reset();
 }
+export { onModalOpen };

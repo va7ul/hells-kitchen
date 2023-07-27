@@ -45,7 +45,7 @@ function submitRating(evt) {
   patchRating(recipeId, options)
     .then(categories => {
       // console.log(categories);
-      if (localStorage.getItem('patch-rating') == 'error') {
+      if (localStorage.getItem('patch-rating') === 'error') {
         return Notify.failure('Oops! Something went wrong!');
       }
       onRatingModalRemove();
