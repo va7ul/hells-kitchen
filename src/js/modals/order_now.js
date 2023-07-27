@@ -73,8 +73,7 @@ function onSubmitForm(e) {
   };
 
   postOrder(options)
-    .then(categories => {
-      // console.log(categories);
+    .then(() => {
       if (localStorage.getItem('patch-rating') !== 'error') {
         onModalRemove();
         Notify.success('Thank you for your order!');
@@ -84,5 +83,6 @@ function onSubmitForm(e) {
     .catch(error => console.log(error))
     .finally(() => Loading.remove());
 
-  // refs.modalOrderNowForm.reset()
+  refs.modalOrderNowForm.reset();
 }
+export { onModalOpen };
