@@ -106,18 +106,27 @@ getIngredients()
 
 
 function onTimeOptions(evt) {
+        if (evt.currentTarget.value === timeSelect.getData()[0].value) {
+          return;
+        }
         const time = evt.currentTarget.value;
         localStorage.setItem('time', time);
         fetchRecipes();
 }
 
 function onAreaOptions(evt) {
+        if (evt.currentTarget.value === areaSelect.getData()[0].value) {
+          return;
+        }
         const area = evt.currentTarget.value;
         localStorage.setItem('area', area);
         fetchRecipes();
 }
 
 function onProductOptions(evt) {
+        if (evt.currentTarget.value === productSelect.getData()[0].value) {
+          return;
+        }
         const ingredient = evt.target.options[evt.target.selectedIndex].dataset.ing;
         localStorage.setItem('ingredient', ingredient);
         fetchRecipes();
