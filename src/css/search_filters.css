@@ -615,6 +615,19 @@ input:focus+.filter-icon-search {
     stroke: var(--dark-theme-main-text);
 }
 
+@media screen and (min-width: 320px){
+
+    .filter-input{
+        width: 280px;
+    }
+
+    .filter-area,
+    .filter-time{
+        width: 132px;
+    }
+}
+
+
 @media screen and (min-width: 768px) {
 
     .filter-home-container {
