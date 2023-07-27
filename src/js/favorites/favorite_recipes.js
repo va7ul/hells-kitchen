@@ -20,7 +20,7 @@ if (favoritesArray.length !== 0) {
 } else {
   heroEl.classList.add("hero-is-hidden");
   filtersEl.classList.add('hiddenvisualy');
-  paginationEl.classList.add('hiddenvisualy');
+  //paginationEl.classList.add('hiddenvisualy');
   emptyStorageEl.classList.remove('hiddenvisualy');
 }
 
@@ -29,19 +29,14 @@ favoriteRecipesListEl.addEventListener('click', onClick);
 function onClick(evt) {
   //відкриття модалки
   if (evt.target.classList.contains('card-template-btn')) {
-    const product = findProduct(evt.target);
-    popUpFunction(product);
+    const productId = evt.target.closest('.card-template').dataset.id;
+    popUpFunction(productId);
   }
   //видалення з favorites
   if (evt.target.classList.contains('js-add-to-fav')) {
     removeFromFavorites(KEY_FAVORITE, evt.target, favoritesArray);
     evt.target.closest('.card-template').remove();
   }
-}
-
-function findProduct(elem) {
-  const productId = elem.closest('.card-template').dataset.id;
-  return favoritesArray.find(({ _id }) => _id === productId);
 }
 
 export {KEY_FAVORITE};
