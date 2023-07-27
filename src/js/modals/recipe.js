@@ -66,9 +66,6 @@ function popUpFunction(_id) {
           <h4 class="modal_title">${recipe.title}</h4>
           <iframe class="modal_video" src="${current_youtube}" referrerpolicy="no-referrer"></iframe>
           <div class="modal_line">
-            <div class="modal_tags">
-              ${current_tags}
-            </div>
             <div class="modal_right">
               <div class="modal_rating">
                 <span>${recipe.rating}</span>
@@ -83,6 +80,9 @@ function popUpFunction(_id) {
           <div class="modal_ingredients">
             ${current_ingredients}
           </div>
+          <div class="modal_tags">
+              ${current_tags}
+            </div>
           <div class="modal_description">${recipe.description}</div>
           <div class="modal_buttons">
             <div class="modal_button modal_favourite">
@@ -97,6 +97,10 @@ function popUpFunction(_id) {
     </div>
     `;
     modal_popup.innerHTML = transformedRecipe; 
+
+
+    function addToFavorites(recipeId){}
+
     
     let body = document.querySelector("body");
     body.style.overflow = "hidden";

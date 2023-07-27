@@ -113,7 +113,7 @@
 	display: flex;
 	justify-content: space-between;
 	padding-bottom: 6px;
-	border-bottom: 1px solid #E6E6E6;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.10);
 	margin-bottom: 10px;
 }
 .modal_ingredient:last-of-type{
@@ -121,6 +121,9 @@
 }
 .modal_ingredient span:last-of-type{
 	color: #828282;
+}
+.modal_tags{
+	margin-bottom: 40px;
 }
 .modal_description{
 	margin-bottom: 40px;
@@ -154,15 +157,21 @@
 }
 .modal_favourite:hover button, .modal_favourite:focus button {
 	color: #050505;
+	transition: var(--transition-dur-and-func);
 }
 .modal_rating_button:hover button, .modal_rating_button:focus button {
 	color: #9BB537 !important;
+	transition: var(--transition-dur-and-func);
 }
 .modal_rating_button>button{
 	background-color: transparent;
 	outline: 1px solid #9BB537;
 }
 
+
+body.dark-theme .bg_modal{
+	opacity: 0.1;
+}
 body.dark-theme .popup_modal{
 	background-color: var(--dark-theme-fill);
 	color: white;
@@ -182,6 +191,7 @@ body.dark-theme .modal_tag{
 	background-color: var(--dark-theme-fill);
 	color: white;
 }
+
 body.dark-theme .modal_close path {
 	background-color: var(--dark-theme-fill);
 	stroke: white;
