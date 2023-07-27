@@ -180,24 +180,3 @@ input {
 .order-now-modal-form__input:focus {
   border: 1px solid var(--green-btn);
 }
-.dark-theme .order-now-modal-form input,
-.dark-theme .order-now-modal-form textarea {
-  background-color: rgba(5, 5, 5, 1);
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-.dark-theme .order-now-modal-form input:focus,
-.dark-theme .order-now-modal-form textarea:focus {
-  border-color: var(--green-btn);
-  background-color: rgba(5, 5, 5, 1);
-  color: aqua;
-}
-
-.dark-theme .order-now-modal-form span {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.dark-theme .order-now-modal-form input::placeholder,
-.dark-theme .order-now-modal-form textarea::placeholder {
-  color: rgba(255, 255, 255, 0.5);
-}
