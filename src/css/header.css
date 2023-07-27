@@ -40,10 +40,6 @@
   align-items: center;
 }
 
-/*.switch-theme {
-  display: none;
-}*/
-
 .burger-open {
   padding: 0;
   margin: 0;
@@ -128,18 +124,6 @@
   stroke: var(--green-btn);
   fill: none;
   transition: var(--transition-dur-and-func);
-}
-
-/*.theme-light {
-  --light-theme-fill: #f8f8f8;
-  --light-theme-main-text: #050505;
-  --light-theme-switcher-btn: #cecdcd;
-}
-
-.theme-dark {
-  --dark-theme-fill: #161616;
-  --dark-theme-main-text: #ffffff;
-  --dark-theme-switcher-btn: #f3f3f3;
 }
 
 /* ---- BACKDROP ---- */
@@ -476,8 +460,15 @@ body.dark-theme {
   background-color: rgba(5, 5, 5, 1);
 }
 
+.dark-theme .order-now-modal-form textarea,
+.dark-theme .order-now-modal,
+.dark-theme .popup_modal,
+.dark-theme .popup_scroll {
+  background-color: rgba(5, 5, 5, 1);
+}
 .dark-theme .shopping-cart,
-.dark-theme .icon-gamburger {
+.dark-theme .icon-gamburger,
+.dark-theme .order-now-modal-close__img {
   stroke: var(--dark-theme-main-text);
 }
 
@@ -492,11 +483,38 @@ body.dark-theme {
 .dark-theme .order-now-modal,
 .dark-theme .form input,
 .dark-theme .order-now-modal-form textarea,
-.dark-theme .order-now-modal__title {
+.dark-theme .order-now-modal__title,
+.dark-theme .modal_title {
   color: rgba(255, 255, 255, 1);
 }
 
 .dark-theme .mobile-nav-link:hover,
 .dark-theme .mobile-nav-link:focus {
   color: var(--green-btn);
+}
+
+@media screen and (max-width: 767px) {
+  .container .header-container .second-page {
+    padding-bottom: 51px;
+  }
+}
+.dark-theme .order-now-modal-form input,
+.dark-theme .order-now-modal-form textarea {
+  background-color: transparent;
+  border-color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.dark-theme .order-now-modal-form input:focus,
+.dark-theme .order-now-modal-form textarea:focus {
+  border-color: var(--green-btn);
+}
+
+.dark-theme .order-now-modal-form span {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.dark-theme .order-now-modal-form input::placeholder,
+.dark-theme .order-now-modal-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
 }

@@ -1,11 +1,14 @@
 body.show-modal-order-now .order-now-modal {
   transform: scale(1);
+  overflow: hidden;
 }
 
 body.show-modal-order-now .order-now-backdrop {
   opacity: 1;
   visibility: visible;
   pointer-events: initial;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .order-now-backdrop {
@@ -17,10 +20,10 @@ body.show-modal-order-now .order-now-backdrop {
   justify-content: center;
   width: 100vw;
   height: 100vh;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  position: fixed;
   background-color: rgba(46, 47, 66, 0.4);
   visibility: hidden;
+  overflow: hidden;
 }
 
 .order-now-modal {
@@ -34,6 +37,7 @@ body.show-modal-order-now .order-now-backdrop {
   background-color: #fff;
   border-radius: 15px;
   transform: scale(1.1);
+  overflow: hidden;
 }
 
 .order-now-modal__title {
@@ -44,6 +48,7 @@ body.show-modal-order-now .order-now-backdrop {
   line-height: 1.2;
   text-transform: uppercase;
   color: var(--light-theme-main-text);
+  overflow: hidden;
 }
 
 .order-now-modal__close-btn {
@@ -67,6 +72,7 @@ body.show-modal-order-now .order-now-backdrop {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .order-now-modal-form label:not(:last-of-type) {
