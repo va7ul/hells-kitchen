@@ -48,12 +48,12 @@ allCategoriesEl.addEventListener('click', onAllCategory);
 
 async function onAllCategory(evt) {
   let selectCategory = evt.target;
-  resetSelectsToDefault();
-  resetAllFiters();
+  await resetSelectsToDefault();
+  await resetAllFiters();
 
   const activeCategoryEl = document.querySelector('.active-category');
   activeCategoryEl.classList.remove('active-category');
   selectCategory.classList.add('active-category');
 
-  fetchRecipes();
+  await fetchRecipes();
 }
