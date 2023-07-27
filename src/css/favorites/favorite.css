@@ -1,8 +1,1 @@
 @import './common.css';
-
-@media screen and (max-width: 767px) {
-  .second-page {
-    padding-top: 27px;
-    padding-bottom: 51px;
-  }
-}
