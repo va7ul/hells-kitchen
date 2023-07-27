@@ -94,12 +94,11 @@ async function getRecipes() {
   let time = localStorage.getItem('time');
   let area = localStorage.getItem('area');
   let ingredient = localStorage.getItem('ingredient');
-  
 
   const url = `/recipes?category=${category}&page=${page}&limit=${limit}&title=${title}&time=${time}&area=${area}&ingredient=${ingredient}`;
   try {
     const response = await axios.get(url);
-    localStorage.setItem("totalPages", response.data.totalPages)
+    localStorage.setItem('totalPages', response.data.totalPages);
     return response.data.results;
   } catch (error) {
     Notify.failure('Oops! Something went wrong!');
