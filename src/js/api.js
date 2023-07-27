@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { Loading } from 'notiflix';
 
 axios.defaults.baseURL = 'https://tasty-treats-backend.p.goit.global/api';
 function resetAllFiters() {
@@ -78,6 +79,8 @@ async function getAreas() {
 
 async function getIngredients() {
   const url = `/ingredients`;
+  Loading.pulse();
+  localStorage.setItem('loading', 0);
   try {
     const response = await axios.get(url);
     return response.data;

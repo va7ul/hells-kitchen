@@ -2,6 +2,7 @@ import SlimSelect from "slim-select";
 import debounce from "lodash.debounce";
 import { getAreas, getIngredients, resetFilters } from "./api";
 import { fetchRecipes } from "./all_recipes";
+import { Loading } from "notiflix";
 
 let userInput = "";
 let i = 0;
@@ -24,7 +25,6 @@ productOptions.addEventListener("change", onProductOptions);
 resetBtn.addEventListener("click", onResetBtn);
 
 function onResetBtn() {
-        
         resetSelectsToDefault();
         resetFilters();
         fetchRecipes();
@@ -103,7 +103,11 @@ getIngredients()
                 
         })
         .catch(error => console.log(error))
-
+        .finally(() => {
+                Loading.remove()
+                localStorage.setItem('loading', 1);
+        })
+        
 
 function onTimeOptions(evt) {
         if (evt.currentTarget.value === timeSelect.getData()[0].value) {
