@@ -17,7 +17,7 @@ function createCardTemplate(array, list) {
     <h2 class="card-template-title">${title}</h2>
   <p class="card-template-descr">${description}</p>
   <div class="card-template-rating-and-btn">
-  <div class="card-template-rating">${rating.toFixed(1)}${ratingStars(rating)}</div>
+  <div class="card-template-rating">${rating.toFixed(1)}<span>${ratingStars(rating)}</span></div>
   <button id="pop-up-modal-toogle" class="card-template-btn" type="button" data-id="${_id}">See recipe</button>
   </div>
   </div>
