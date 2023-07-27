@@ -1,16 +1,16 @@
+body.show-modal-order-now {
+  overflow: hidden;
+}
+
 body.show-modal-order-now .order-now-modal {
   transform: scale(1);
-  overflow: hidden;
 }
 
 body.show-modal-order-now .order-now-backdrop {
   opacity: 1;
   visibility: visible;
   pointer-events: initial;
-  height: 100vh;
-  overflow: hidden;
 }
-
 .order-now-backdrop {
   position: fixed;
   top: 0;
@@ -88,8 +88,7 @@ body.show-modal-order-now .order-now-backdrop {
 }
 
 .order-now-modal-form__input {
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 14px 18px;
   height: 43px;
 }
 
@@ -102,7 +101,7 @@ textarea {
 
 .order-now-modal-form textarea {
   margin-bottom: 40px;
-  padding: 15px;
+  padding: 14px 18px;
   height: 100px;
   resize: none;
   /*overflow: scroll;*/
@@ -180,4 +179,25 @@ input {
 .order-now-modal-form__input:hover,
 .order-now-modal-form__input:focus {
   border: 1px solid var(--green-btn);
+}
+.dark-theme .order-now-modal-form input,
+.dark-theme .order-now-modal-form textarea {
+  background-color: rgba(5, 5, 5, 1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.dark-theme .order-now-modal-form input:focus,
+.dark-theme .order-now-modal-form textarea:focus {
+  border-color: var(--green-btn);
+  background-color: rgba(5, 5, 5, 1);
+  color: aqua;
+}
+
+.dark-theme .order-now-modal-form span {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.dark-theme .order-now-modal-form input::placeholder,
+.dark-theme .order-now-modal-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
 }
