@@ -71,6 +71,14 @@
 	margin-bottom: 32px;
 }
 
+.modal_tags {
+	display: flex;
+	justify-content: space-between;
+	padding-bottom: 6px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+	margin-bottom: 10px;
+}
+
 .modal_tag {
 	border: 1px solid #cdcdcd;
 	border-radius: 35px;
@@ -118,7 +126,11 @@
 }
 
 .modal_tags {
-	margin-bottom: 40px;
+	display: flex;
+	justify-content: left;
+	flex-wrap: wrap;
+	gap: 4px;
+	
 }
 
 .modal_description {
@@ -286,4 +298,5 @@ body.dark-theme .modal_rating_button button {
 	.modal_ingredients{
      font-size: 12px;
   }
+  
   }
