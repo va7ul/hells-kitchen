@@ -11,4 +11,3 @@ import './js/modals/recipe';
 import './js/modals/scroll-up';
 
 import './js/api';
-import './js/templates';
