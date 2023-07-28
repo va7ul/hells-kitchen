@@ -5,6 +5,9 @@ import Pagination from 'tui-pagination';
 
 const KEY_FAVORITE = 'favorite';
 
+const mainElement = document.documentElement;
+const mainElementWidth = mainElement.clientWidth;
+
 const favoriteRecipesListEl = document.querySelector('.favorite-recipes-list');
 const heroEl = document.querySelector('.hero-section-favorites');
 const filtersEl = document.querySelector('.favorite-filter');
@@ -15,7 +18,23 @@ const emptyStorageEl = document.querySelector('.empty-storage-wrapper');
 const favoritesArray = JSON.parse(localStorage.getItem(KEY_FAVORITE)) ?? [];
 
 let currentPage = 1;
-let itemsPerPage = 9;
+let itemsPerPage = 0;
+let visiblePages = 0;
+
+if (mainElement.clientWidth < 768) {
+  itemsPerPage = 3;
+  visiblePages = 2;
+  if (favoritesArray.length <= itemsPerPage) {
+    paginationEl.classList.add('hiddenvisualy');
+  }
+} else if (mainElement.clientWidth >= 768) {
+  itemsPerPage = 12;
+  visiblePages = 3;
+  if (favoritesArray.length <= itemsPerPage) {
+    paginationEl.classList.add('hiddenvisualy');
+  }
+}
+
 let start = itemsPerPage * currentPage - itemsPerPage;
 let end = start + itemsPerPage;
 let partOfArr = favoritesArray.slice(start, end);
@@ -48,8 +67,8 @@ function onClick(evt) {
 
 let pagination = new Pagination('pagination', {
   totalItems: favoritesArray.length,
-  itemsPerPage: 9,
-  visiblePages: 3,
+  itemsPerPage: itemsPerPage,
+  visiblePages: visiblePages,
   template: {
     page: '<a href="#" class="tui-page-btn">{{page}}</a>',
     currentPage:
@@ -69,7 +88,6 @@ let pagination = new Pagination('pagination', {
 
 pagination.on('afterMove', function (eventData) {
   currentPage = eventData.page;
-  console.log(currentPage);
   start = itemsPerPage * currentPage - itemsPerPage;
   end = start + itemsPerPage;
   partOfArr = favoritesArray.slice(start, end);
