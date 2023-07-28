@@ -4,7 +4,8 @@ import { save } from '../api';
 import { dataRecipes } from '../all_recipes';
 
 const KEY_FAVORITE = 'favorite';
-
+let recipeId = 0;
+let removeRecipeId = 0;
 let favoritesArray = JSON.parse(localStorage.getItem(KEY_FAVORITE));
 
 function checkRecipeCard(item) {
@@ -143,17 +144,16 @@ function popUpFunction(_id) {
     const removeBtnEl = document.querySelector('.modal-remove-btn');
     const addBtnEl = document.querySelector('.modal-add-btn');
 
-    // let favoritesArray = JSON.parse(localStorage.getItem(KEY_FAVORITE));
-    // console.log(favoritesArray);
+    let favoritesArray = JSON.parse(localStorage.getItem(KEY_FAVORITE));
 
-    // const inStoredge = favoritesArray.some(({ _id }) => _id === recipe._id);
-    // if (inStoredge) {
-    //   addBtnEl.classList.add('is-hidden');
-    //   removeBtnEl.classList.remove('is-hidden');
-    // } else {
-    //   addBtnEl.classList.remove('is-hidden');
-    //   removeBtnEl.classList.add('is-hidden');
-    // }
+    const inStoredge = favoritesArray.some(({ _id }) => _id === recipe._id);
+    if (inStoredge) {
+      addBtnEl.classList.add('is-hidden');
+      removeBtnEl.classList.remove('is-hidden');
+    } else {
+      addBtnEl.classList.remove('is-hidden');
+      removeBtnEl.classList.add('is-hidden');
+    }
 
     const btnEl = document.querySelector('.modal_favourite');
     btnEl.addEventListener('click', onClick);
@@ -164,7 +164,7 @@ function popUpFunction(_id) {
       if (!evt.target.classList.contains('modal-add-btn')) {
         return;
       } else {
-        const recipeId = recipe._id;
+        recipeId = recipe._id;
 
         addToFavorites(recipe._id);
         addBtnEl.classList.add('is-hidden');
@@ -179,19 +179,42 @@ function popUpFunction(_id) {
       removeFromFavorites(KEY_FAVORITE, favoritesArray);
       addBtnEl.classList.remove('is-hidden');
       removeBtnEl.classList.add('is-hidden');
+      // console.log(evt.target.closest('.card-template').dataset.id);
     }
 
     function addToFavorites(event) {
       if (favoritesArray.find(({ _id }) => _id === recipe._id) === undefined) {
-        // const item = dataRecipes.find(({ _id }) => _id === recipeId)
+        const item = dataRecipes.find(({ _id }) => _id === recipeId);
         favoritesArray.push(recipe);
         save(KEY_FAVORITE, favoritesArray);
+        // isInFavorites(dataRecipes, favoritesArray);
+        function addToFavoritesInModal() {
+          for (let i = 0; i < favoritesArray.length; i += 1) {
+            if (recipeId === favoritesArray[i]._id) {
+              const recipeCardEl = document.querySelector(
+                `.card-template[data-id="${recipeId}"]`
+              );
+              recipeCardEl.firstElementChild.firstElementChild.checked = true;
+            }
+          }
+        }
+        addToFavoritesInModal();
       }
     }
 
     function removeFromFavorites(key, arr) {
       const removeElemIdx = arr.findIndex(item => item._id === recipe._id);
-
+      function removeFromFavoritesInModal() {
+        for (let i = 0; i < arr.length; i += 1) {
+          if (recipe._id === arr[i]._id) {
+            const recipeCardEl = document.querySelector(
+              `.card-template[data-id="${recipe._id}"]`
+            );
+            recipeCardEl.firstElementChild.firstElementChild.checked = false;
+          }
+        }
+      }
+      removeFromFavoritesInModal();
       arr.splice(removeElemIdx, 1);
       localStorage.setItem(key, JSON.stringify(arr));
     }
