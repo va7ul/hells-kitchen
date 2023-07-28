@@ -24,10 +24,11 @@
 }
 
 .cook-svg{
-    width: 280px;
-    height: 280px;
+    width: 200px;
+    height: 200px;
     fill: var(--light-theme-main-text);
     opacity: .5;
+    margin-top: 20px;
 }
 
 .svg-div{
@@ -70,8 +71,8 @@
     }
 
     .cook-svg {
-        width: 340px;
-        height: 340px;
+        width: 260px;
+        height: 260px;
     }
 
     .text-cook{
@@ -92,8 +93,8 @@
     }
 
     .cook-svg {
-        width: 460px;
-        height: 460px;
+        width: 380px;
+        height: 380px;
     }
 
 }
