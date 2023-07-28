@@ -7,9 +7,8 @@
 	height: 100%;
 	/*bottom: 0;*/
 	z-index: 3;
-	background-color: #121212;
 	display: flex;
-	opacity: 0.5;
+	background: rgba(22, 22, 22, 0.9);
 }
 
 .popup_modal {
@@ -192,7 +191,7 @@
 
 
 body.dark-theme .bg_modal {
-	opacity: 0.1;
+	background: rgba(22, 22, 22, 0.9);
 }
 
 body.dark-theme .popup_modal {

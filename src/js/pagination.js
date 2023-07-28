@@ -12,7 +12,8 @@ if (window.innerWidth < 1280) {
 const container = document.getElementById('tui-pagination');
 const options = {
   totalItems: totalItems,
-  visiblePages: visiblePages,
+  itemsPerPage: 9,
+  visiblePages: 3,
   page: 1,
   centerAlign: false,
   firstItemClassName: 'tui-first-child',
