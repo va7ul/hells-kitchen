@@ -54,7 +54,9 @@ function extractFormData(form) {
   formData.phone = form.querySelector('input[name="phone"]').value;
   formData.email = form.querySelector('input[name="email"]').value;
   formData.comment = form.querySelector('textarea[name="comment"]').value;
-
+  if (form.querySelector('textarea[name="comment"]').value === '') {
+    formData.comment = 'So delicious';
+  }
   return formData;
 }
 
@@ -76,13 +78,18 @@ function onSubmitForm(e) {
     .then(() => {
       if (localStorage.getItem('patch-rating') !== 'error') {
         onModalRemove();
-        Notify.success('Thank you for your order!');
+        setTimeout(() => {
+          Notify.success('Thank you for your order!');
+        }, 500);
+        refs.modalOrderNowForm.reset();
       }
       return;
     })
     .catch(error => console.log(error))
-    .finally(() => Loading.remove());
-
-  refs.modalOrderNowForm.reset();
+    .finally(
+      setTimeout(() => {
+        Loading.remove();
+      }, 500)
+    );
 }
 export { onModalOpen };
