@@ -11,7 +11,7 @@ fetchRecipes();
 
   async function fetchRecipes() {
     try {
-      dataRecipes = await getRecipes();      
+      dataRecipes = await getRecipes({ page: 1 });      
       const recipeCard = document.querySelector('.card-template');
       createCardTemplate(dataRecipes, cardsGallery);
       isInFavorites(dataRecipes, favoritesArray )
@@ -20,6 +20,7 @@ fetchRecipes();
     } catch (error) {
       onError(error);
     }
+    console.log(dataRecipes)
   }
 
   function onError(error) {
@@ -30,8 +31,8 @@ fetchRecipes();
       const currentPage = event.page;
       localStorage.setItem('page', currentPage)
       try {
-        const currentRecipeData = await getRecipes({ page: currentPage });
-        createCardTemplate(currentRecipeData, cardsGallery);
+        const dataRecipes= await getRecipes({ page: currentPage });
+        createCardTemplate(dataRecipes, cardsGallery);
       } catch (error) {
         console.error('Ошибка при получении данных о рецептах:', error);
       }});
