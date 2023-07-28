@@ -31,13 +31,13 @@ fetchRecipes();
       const currentPage = event.page;
       localStorage.setItem('page', currentPage)
       try {
-        const dataRecipes= await getRecipes({ page: currentPage });
+        dataRecipes= await getRecipes({ page: currentPage });
         createCardTemplate(dataRecipes, cardsGallery);
       } catch (error) {
         console.error('Ошибка при получении данных о рецептах:', error);
       }});
 
  
-
+console.log(pagination)
 export {fetchRecipes, dataRecipes}
 
