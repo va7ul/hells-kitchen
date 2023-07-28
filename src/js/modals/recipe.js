@@ -104,7 +104,7 @@ function popUpFunction(_id) {
               
             </div>
             <div class="modal_button modal_rating_button">
-              <button data-id="${recipe._id}">Give a rating</button>
+              <button class="rating-modal-btn-open" data-id="${recipe._id}">Give a rating</button>
             </div>
           </div>
         </div>
@@ -141,16 +141,17 @@ function popUpFunction(_id) {
     const removeBtnEl = document.querySelector('.modal-remove-btn');
     const addBtnEl = document.querySelector('.modal-add-btn');
 
-    let favoritesArray = JSON.parse(localStorage.getItem(KEY_FAVORITE));
+    // let favoritesArray = JSON.parse(localStorage.getItem(KEY_FAVORITE));
+    // console.log(favoritesArray);
 
-    const inStoredge = favoritesArray.some(({ _id }) => _id === recipe._id);
-    if (inStoredge) {
-      addBtnEl.classList.add('is-hidden');
-      removeBtnEl.classList.remove('is-hidden');
-    } else {
-      addBtnEl.classList.remove('is-hidden');
-      removeBtnEl.classList.add('is-hidden');
-    }
+    // const inStoredge = favoritesArray.some(({ _id }) => _id === recipe._id);
+    // if (inStoredge) {
+    //   addBtnEl.classList.add('is-hidden');
+    //   removeBtnEl.classList.remove('is-hidden');
+    // } else {
+    //   addBtnEl.classList.remove('is-hidden');
+    //   removeBtnEl.classList.add('is-hidden');
+    // }
 
     const btnEl = document.querySelector('.modal_favourite');
     btnEl.addEventListener('click', onClick);
