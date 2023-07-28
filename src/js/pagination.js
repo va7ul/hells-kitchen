@@ -1,12 +1,18 @@
 import Pagination from 'tui-pagination';
 
-const totalItems = localStorage.getItem("totalPages")*9;
+const totalItems = localStorage.getItem("totalPages")*localStorage.getItem("limit");
+let visiblePages = 2;
+
+if (window.innerWidth < 1280) {
+  visiblePages = 2;
+} else {
+  visiblePages = 3;
+}
 
 const container = document.getElementById('tui-pagination');
 const options = {
   totalItems: totalItems,
-  itemsPerPage: 9,
-  visiblePages: 3,
+  visiblePages: visiblePages,
   page: 1,
   centerAlign: false,
   firstItemClassName: 'tui-first-child',
@@ -24,7 +30,7 @@ const options = {
       '<span class="tui-ico-{{type}}"></span>' +
       '</span>',
     moreButton:
-      '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">...</a>',
+      '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip"></a>',
   },
 };
 const pagination = new Pagination(container, options);
