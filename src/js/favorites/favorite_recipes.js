@@ -1,6 +1,7 @@
-import { createCardTemplate } from "../card_template";
+import { createCardTemplate } from '../card_template';
 import { popUpFunction } from '../modals/recipe';
-import { removeFromFavorites} from '../api';
+import { removeFromFavorites } from '../api';
+import Pagination from 'tui-pagination';
 
 const KEY_FAVORITE = 'favorite';
 
@@ -13,14 +14,20 @@ const emptyStorageEl = document.querySelector('.empty-storage-wrapper');
 
 const favoritesArray = JSON.parse(localStorage.getItem(KEY_FAVORITE)) ?? [];
 
+let currentPage = 1;
+let itemsPerPage = 9;
+let start = itemsPerPage * currentPage - itemsPerPage;
+let end = start + itemsPerPage;
+let partOfArr = favoritesArray.slice(start, end);
+
 if (favoritesArray.length !== 0) {
-  createCardTemplate(favoritesArray, favoriteRecipesListEl);
+  createCardTemplate(partOfArr, favoriteRecipesListEl);
   const checkHeartEl = document.querySelectorAll('.js-add-to-fav');
-  checkHeartEl.forEach((item) => item.checked = true)
+  checkHeartEl.forEach(item => (item.checked = true));
 } else {
-  heroEl.classList.add("hero-is-hidden");
+  heroEl.classList.add('hero-is-hidden');
   filtersEl.classList.add('hiddenvisualy');
-  //paginationEl.classList.add('hiddenvisualy');
+  paginationEl.classList.add('hiddenvisualy');
   emptyStorageEl.classList.remove('hiddenvisualy');
 }
 
@@ -39,4 +46,34 @@ function onClick(evt) {
   }
 }
 
-export {KEY_FAVORITE};
+let pagination = new Pagination('pagination', {
+  totalItems: favoritesArray.length,
+  itemsPerPage: 9,
+  visiblePages: 3,
+  template: {
+    page: '<a href="#" class="tui-page-btn">{{page}}</a>',
+    currentPage:
+      '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+    moveButton:
+      '<a href="#" class="tui-page-btn tui-{{type}}">' +
+      '<span class="tui-ico-{{type}}"></span>' +
+      '</a>',
+    disabledMoveButton:
+      '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
+      '<span class="tui-ico-{{type}}"></span>' +
+      '</span>',
+    moreButton:
+      '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">...</a>',
+  },
+});
+
+pagination.on('afterMove', function (eventData) {
+  currentPage = eventData.page;
+  console.log(currentPage);
+  start = itemsPerPage * currentPage - itemsPerPage;
+  end = start + itemsPerPage;
+  partOfArr = favoritesArray.slice(start, end);
+  createCardTemplate(partOfArr, favoriteRecipesListEl);
+});
+
+export { KEY_FAVORITE };
