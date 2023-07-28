@@ -1,6 +1,7 @@
 import Pagination from 'tui-pagination';
 
-const totalItems = localStorage.getItem("totalPages")*localStorage.getItem("limit");
+const totalItems =
+  localStorage.getItem('totalPages') * localStorage.getItem('limit');
 let visiblePages = 2;
 
 if (window.innerWidth < 1280) {
@@ -30,10 +31,9 @@ const options = {
       '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
       '<span class="tui-ico-{{type}}"></span>' +
       '</span>',
-    moreButton:
-      '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip"></a>',
+    moreButton: '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip"></a>',
   },
 };
 const pagination = new Pagination(container, options);
 
-export {pagination}
+export { pagination };
