@@ -203,6 +203,7 @@ input {
   border: 1px solid var(--green-btn);
 }
 
+
 .dark-theme .order-now-modal-form__input:is(:hover, :focus) {
   border: 1px solid var(--green-btn);
 }
@@ -217,7 +218,6 @@ input {
 .dark-theme .order-now-modal-form textarea:focus {
   border-color: var(--green-btn);
   background-color: rgba(5, 5, 5, 1);
-  color: aqua;
 }
 
 .dark-theme .order-now-modal-form span {
