@@ -53,6 +53,18 @@ body.show-modal-order-now .order-now-backdrop {
   color: var(--light-theme-main-text);
   overflow: hidden;
 }
+@media screen and (min-width: 375px) {
+  .order-now-modal__title {
+    margin-bottom: 40px;
+  }
+  .order-now-modal-form input,
+  textarea {
+    width: 270px;
+  }
+  .order-now-modal-form textarea {
+    margin-bottom: 40px;
+  }
+}
 
 .order-now-modal__close-btn {
   position: absolute;
@@ -97,17 +109,14 @@ body.show-modal-order-now .order-now-backdrop {
 
 .order-now-modal-form input,
 textarea {
-  width: 270px;
   border-radius: 15px;
   border: 1px solid rgba(5, 5, 5, 0.2);
 }
 
 .order-now-modal-form textarea {
-  margin-bottom: 40px;
   padding: 14px 18px;
   height: 100px;
   resize: none;
-  /*overflow: scroll;*/
   transition: var(--transition-dur-and-func);
 }
 
@@ -202,7 +211,6 @@ input {
 .order-now-modal-form__input:focus {
   border: 1px solid var(--green-btn);
 }
-
 
 .dark-theme .order-now-modal-form__input:is(:hover, :focus) {
   border: 1px solid var(--green-btn);
