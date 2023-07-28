@@ -3,7 +3,6 @@ import debounce from "lodash.debounce";
 import { getAreas, getIngredients, resetFilters } from "./api";
 import { fetchRecipes } from "./all_recipes";
 import { Loading } from "notiflix";
-import { pagination } from "./pagination";
 
 let userInput = "";
 let i = 0;
@@ -49,7 +48,6 @@ function onInputSearch(evt) {
         }
         localStorage.setItem('title', userInput);
         fetchRecipes();
-        pagination.movePageTo(1);
 }
 
 function createTimeOptions() {
@@ -119,9 +117,7 @@ function onTimeOptions(evt) {
         }
         const time = evt.currentTarget.value;
         localStorage.setItem('time', time);
-        pagination.movePageTo(1);
         fetchRecipes();
-
 }
 
 function onAreaOptions(evt) {
@@ -130,7 +126,6 @@ function onAreaOptions(evt) {
         }
         const area = evt.currentTarget.value;
         localStorage.setItem('area', area);
-        pagination.movePageTo(1);
         fetchRecipes();
 }
 
@@ -140,7 +135,6 @@ function onProductOptions(evt) {
         }
         const ingredient = evt.target.options[evt.target.selectedIndex].dataset.ing;
         localStorage.setItem('ingredient', ingredient);
-        pagination.movePageTo(1);
         fetchRecipes();
 }
 

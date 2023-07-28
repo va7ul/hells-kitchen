@@ -38,6 +38,5 @@ fetchRecipes();
       }});
 
  
-console.log(pagination)
 export {fetchRecipes, dataRecipes}
 
