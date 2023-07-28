@@ -14,6 +14,7 @@ function addToFavorites(event){
      }
      else{
       removeFromFavorites(KEY_FAVORITE, event.target, favoritesArray);
+      
      }
   }
 

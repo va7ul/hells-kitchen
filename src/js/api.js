@@ -90,6 +90,13 @@ async function getIngredients() {
 }
 
 async function getRecipes() {
+  if (window.innerWidth < 768) {
+    localStorage.setItem("limit", 6);
+  } else if (window.innerWidth< 1280) {
+    localStorage.setItem("limit", 8);
+  } else {
+    localStorage.setItem("limit", 9);
+  }
   let category = localStorage.getItem('category');
   let page = localStorage.getItem('page');
   let limit = localStorage.getItem('limit');
@@ -97,6 +104,8 @@ async function getRecipes() {
   let time = localStorage.getItem('time');
   let area = localStorage.getItem('area');
   let ingredient = localStorage.getItem('ingredient');
+
+  
 
   const url = `/recipes?category=${category}&page=${page}&limit=${limit}&title=${title}&time=${time}&area=${area}&ingredient=${ingredient}`;
   try {
