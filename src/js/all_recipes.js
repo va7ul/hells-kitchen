@@ -31,15 +31,6 @@ function onError(error) {
   Notiflix.Notify.failure(error.message);
 }
 
-pagination.on('afterMove', async event => {
-  const currentPage = event.page;
-  localStorage.setItem('page', currentPage);
-  try {
-    dataRecipes = await getRecipes({ page: currentPage });
-    createCardTemplate(dataRecipes, cardsGallery);
-  } catch (error) {
-    console.error('Ошибка при получении данных о рецептах:', error);
-  }
-});
+
 
 export { fetchRecipes, dataRecipes };
