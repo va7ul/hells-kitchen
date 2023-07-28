@@ -33,7 +33,6 @@ body.show-modal-order-now .order-now-backdrop {
   position: relative;
   display: flex;
   flex-direction: column;
-  /* max-height: calc(100% - 60px);*/
   max-width: 320px;
   opacity: 1;
   padding: 28px 20px;
@@ -45,7 +44,6 @@ body.show-modal-order-now .order-now-backdrop {
 
 .order-now-modal__title {
   margin: 0;
-  margin-bottom: 40px;
   font-weight: 600;
   font-size: 18px;
   line-height: 1.2;
@@ -65,7 +63,18 @@ body.show-modal-order-now .order-now-backdrop {
     margin-bottom: 40px;
   }
 }
-
+@media screen and (max-width: 375px) {
+  .order-now-modal__title {
+    margin-bottom: 15px;
+  }
+  .order-now-modal-form input,
+  textarea {
+    width: 250px;
+  }
+  .order-now-modal-form textarea {
+    margin-bottom: 15px;
+  }
+}
 .order-now-modal__close-btn {
   position: absolute;
   top: 14px;
@@ -165,7 +174,7 @@ input {
 
 @media screen and (max-width: 320px) {
   .order-now-modal {
-    width: calc(100% - 30px);
+    width: 100%;
   }
 
   .order-now-modal-form input,
