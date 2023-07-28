@@ -12,20 +12,24 @@ const refs = {
 };
 
 if (refs.openButtonHeroEl) {
-  refs.openButtonHeroEl.addEventListener('click', onModalOpen);
+  refs.openButtonHeroEl.addEventListener('click', onModalOpen, {
+    passive: true,
+  });
 }
 
-refs.openButtonEl.addEventListener('click', onModalOpen);
+refs.openButtonEl.addEventListener('click', onModalOpen, { passive: true });
 
-refs.closeButtonEl.addEventListener('click', onModalRemove);
+refs.closeButtonEl.addEventListener('click', onModalRemove, { passive: true });
 
-refs.backdropEl.addEventListener('click', onBackdropClick);
+refs.backdropEl.addEventListener('click', onBackdropClick, { passive: true });
 
-refs.modalOrderNowForm.addEventListener('submit', onSubmitForm);
+refs.modalOrderNowForm.addEventListener('submit', onSubmitForm, {
+  passive: true,
+});
 
 function onModalOpen() {
   disablePageScroll();
-  window.addEventListener('keydown', onEscKeyPress);
+  window.addEventListener('keydown', onEscKeyPress, { passive: true });
   document.body.classList.add('show-modal-order-now');
 }
 
