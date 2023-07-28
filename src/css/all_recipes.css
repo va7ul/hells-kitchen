@@ -11,6 +11,45 @@
     margin-bottom: 24px;
 }
 
+.js-cook-box{
+    width: 280px;
+    margin: 0 auto;
+}
+
+.text-cook{
+    color: var(--light-theme-main-text);
+    opacity: 0.5;
+    font-size: 14px;
+    text-align: center;
+}
+
+.cook-svg{
+    width: 280px;
+    height: 280px;
+    fill: var(--light-theme-main-text);
+    opacity: .5;
+}
+
+.svg-div{
+    display: flex;
+    justify-content: center;
+}
+
+.dark-theme .text-cook{
+    color: var(--dark-theme-main-text);
+}
+
+.dark-theme .cook-svg {
+    fill: var(--green-btn);
+}
+
+@media screen and (min-width: 375px){
+
+    .js-cook-box{
+        width: 335px;
+    }
+}
+
 @media screen and (min-width: 768px) {
     .gallery-wrapper {
         margin-top: 14px;
@@ -25,12 +64,36 @@
     .card-template {
         margin-bottom: 0;
     }
+
+    .js-cook-box{
+        width: 496px;
+    }
+
+    .cook-svg {
+        width: 340px;
+        height: 340px;
+    }
+
+    .text-cook{
+        font-size: 16px;
+    }
 }
+
+ 
 
 @media screen and (min-width: 1280px) {
     .cards-gallery {
         column-gap: 15px;
         row-gap: 20px;
+    }
+
+    .js-cook-box {
+        width: 780px;
+    }
+
+    .cook-svg {
+        width: 460px;
+        height: 460px;
     }
 
 }
