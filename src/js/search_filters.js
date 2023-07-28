@@ -3,6 +3,7 @@ import debounce from "lodash.debounce";
 import { getAreas, getIngredients, resetFilters } from "./api";
 import { fetchRecipes } from "./all_recipes";
 import { Loading } from "notiflix";
+import { pagination } from "./pagination";
 
 let userInput = "";
 let i = 0;
@@ -28,6 +29,8 @@ function onResetBtn() {
         resetSelectsToDefault();
         resetFilters();
         fetchRecipes();
+        localStorage.setItem('page', 1);
+        pagination.movePageTo(1);
 }
 
 function resetSelectsToDefault() {
