@@ -5,11 +5,9 @@ import { ratingStars } from './modals/recipe';
 function createCardTemplate(array, list) {
    const markup = array.map(({ _id, preview, title, description, rating, area, ingredients, time }) =>
      `<li class="card-template" data-id="${_id}" data-area="${area}" data-ingredients="${ingredients}" data-time="${time}">
-    <label>
-        <input
-      type="checkbox"
-      class="js-add-to-fav add-to-fav"/>
-      <span class="heart-checkbox"></span>
+      <label>
+        <input type="checkbox" data-id="${_id}" class="js-add-to-fav add-to-fav"/>
+        <span class="heart-checkbox"></span>
       </label>
 
     <img src="${preview}" alt="${title}" class="card-template-img" />
@@ -18,23 +16,19 @@ function createCardTemplate(array, list) {
   <p class="card-template-descr">${description}</p>
   <div class="card-template-rating-and-btn">
   <div class="card-template-rating">${rating.toFixed(1)}<span>${ratingStars(rating)}</span></div>
-  <button id="pop-up-modal-toogle" class="card-template-btn" type="button" data-id="${_id}">See recipe</button>
+  <button id="pop-up-modal-toogle" class="card-template-btn" type="button" data-id="${_id}">See recipe</button> <!-- в кнопку передається id --> 
   </div>
   </div>
   
 
 </li>`).join('');
- 
-
     list.innerHTML = markup;
 }
-
-
 
 function onButtonClick(event) {
   const button = event.target;
   const _id = button.dataset.id;
-  popUpFunction(_id);
+  popUpFunction(_id); // id з кнопки використовується для пошуку рецепту
 }
 
 document.addEventListener('click', function(event) {

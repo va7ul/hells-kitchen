@@ -1,6 +1,6 @@
 import { getRecipeById } from '../api';
-import { createCardTemplate } from '../card_template';
 import { save } from '../api';
+import { createCardTemplate } from "../card_template";
 const KEY_FAVORITE = 'favorite';
 
 let favoritesArray = JSON.parse(localStorage.getItem(KEY_FAVORITE));
@@ -41,6 +41,7 @@ function popUpFunction(_id) {
   const modal_popup = document.querySelector('.pop-up-recipe');
 
   getRecipeById(_id).then(recipe => {
+    // перебір тегів для html
     let current_tags = '';
     for (let i = 0; i < recipe.tags.length; i++) {
       if (recipe.tags[i] !== '') {
@@ -48,6 +49,7 @@ function popUpFunction(_id) {
       }
     }
 
+    // перебір інгредієнтів для html
     let current_ingredients = '';
     for (let i = 0; i < recipe.ingredients.length; i++) {
       current_ingredients += `<div class="modal_ingredient"><span>${recipe.ingredients[i].name}</span><span>${recipe.ingredients[i].measure}</span></div>`;
@@ -55,31 +57,48 @@ function popUpFunction(_id) {
 
     let current_stars = ratingStars(recipe.rating);
 
+    // очистка url відео, аби не скаржився браузер
     let current_youtube = '';
     if (recipe.youtube) {
       current_youtube = recipe.youtube.replace('watch?v=', 'embed/');
     }
 
+    //перевірка улюбленого при завантажені модалки
+    function checkFav(id){
+      let favoritesArray = JSON.parse(localStorage.getItem(KEY_FAVORITE));
+      if (favoritesArray !== null){ //якщо улюблені вже існують
+        if (favoritesArray.find(({ _id }) => _id === id)) { //якщо серед них вже є рецепт з id з параметру
+          return true; 
+        } 
+      } else {
+        return false;
+      }
+    }
+
+    //улюблені
+    let current_fav = "";
+    if (!checkFav(recipe._id)){ //якщо не улюблений, додати й навпаки
+      current_fav = `<button class="modal-fav-add-btn" data-id="${recipe._id}">Add to favorites</button> <!-- в кнопку передається id -->`;
+    }
+    else{
+      current_fav = `<button class="modal-fav-add-btn modal-fav-remove-btn" data-id="${recipe._id}">Remove from favorites</button> <!-- в кнопку передається id -->`;
+    }
+
+    // заповнення html
     const transformedRecipe = `
-    <div id="bg_modal" class="bg_modal"></div>
+    <div id="bg_modal" class="bg_modal"></div> <!--фон, натиск на нього відслідковується для закриття-->
     <div class="popup_modal">
       <div class="popup_scroll">
-        <a id="pop-up-close" class="modal_close">
+        <a id="pop-up-close" class="modal_close"> <!-- натиск відслідковується для закриття -->
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
             <path d="M18 6L6 18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M6 6L18 18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </a>
-    
         <div class="modal_container">
           <h4 class="modal_title">${recipe.title}</h4>
           <iframe class="modal_video" src="${current_youtube}" referrerpolicy="no-referrer"></iframe>
           <div class="modal_line">
-
-            <ul class="modal_tags">
-              ${current_tags}
-            </ul>
-
             <div class="modal_right">
               <div class="modal_rating">
                 <span>${recipe.rating}</span>
@@ -90,18 +109,16 @@ function popUpFunction(_id) {
               <div class="modal_time">${recipe.time} min</div>
             </div>
           </div>
-    
           <div class="modal_ingredients">
             ${current_ingredients}
           </div>
-
+          <ul class="modal_tags">
+            ${current_tags}
+          </ul>
           <div class="modal_description">${recipe.instructions}</div>
-
           <div class="modal_buttons">
             <div class="modal_button modal_favourite "data-id="${recipe._id}" >
-            <button class="modal-add-btn" data-id="${recipe._id}">Add to favorite</button>  
-          <button class="modal-remove-btn" data-id="${recipe._id}">Remove from favorite</button>
-              
+              ${current_fav}
             </div>
             <div class="modal_button modal_rating_button">
               <button class="rating-modal-btn-open" data-id="${recipe._id}">Give a rating</button>
@@ -111,7 +128,6 @@ function popUpFunction(_id) {
       </div>
     </div>
     `;
-
     modal_popup.innerHTML = transformedRecipe;
 
     let body = document.querySelector('body');
@@ -122,11 +138,13 @@ function popUpFunction(_id) {
       .getElementById('pop-up-close')
       .addEventListener('click', function () {
         modalRestore(recipe);
+        fetchRecipes();
       });
 
     // Закриття модалки при натисканні в будь-якому місці екрану
     document.getElementById('bg_modal').addEventListener('click', function () {
       modalRestore(recipe);
+      fetchRecipes();
     });
 
     // обробник подій натискання на клавішу
@@ -135,63 +153,60 @@ function popUpFunction(_id) {
       // Перевірка натискання ESC (код клавиші ESC: 27)
       if (key === 'Escape' || key === 'Esc' || key === 27) {
         modalRestore(recipe);
+        fetchRecipes();
       }
     });
 
-    const removeBtnEl = document.querySelector('.modal-remove-btn');
-    const addBtnEl = document.querySelector('.modal-add-btn');
-
-    // let favoritesArray = JSON.parse(localStorage.getItem(KEY_FAVORITE));
-    // console.log(favoritesArray);
-
-    // const inStoredge = favoritesArray.some(({ _id }) => _id === recipe._id);
-    // if (inStoredge) {
-    //   addBtnEl.classList.add('is-hidden');
-    //   removeBtnEl.classList.remove('is-hidden');
-    // } else {
-    //   addBtnEl.classList.remove('is-hidden');
-    //   removeBtnEl.classList.add('is-hidden');
-    // }
-
     const btnEl = document.querySelector('.modal_favourite');
     btnEl.addEventListener('click', onClick);
-    removeBtnEl.addEventListener('click', removeForBtn);
 
-    function onClick(evt) {
-      //   //додати до favorites
-      if (!evt.target.classList.contains('modal-add-btn')) {
-        return;
-      } else {
-        const recipeId = recipe._id;
-
+    function onClick(event) {
+      let addFavButton = document.querySelector('.modal-fav-add-btn');
+      let remFavButton = document.querySelector('.modal-fav-remove-btn');
+      const checkHeartEl = document.querySelectorAll('.js-add-to-fav');
+      if (event.target == addFavButton && event.target !== remFavButton) {
         addToFavorites(recipe._id);
-        addBtnEl.classList.add('is-hidden');
-        removeBtnEl.classList.remove('is-hidden');
+        addFavButton.classList.add("modal-fav-remove-btn");
+        addFavButton.innerHTML = "Remove from favorites";
+        // сердечко по id
+        checkHeartEl.forEach((item) => {
+          if (item.dataset.id === recipe._id){
+            item.checked = true;
+          }
+        })
+      } else if (event.target == remFavButton) {
+        removeFromFavorites(recipe._id);
+        remFavButton.classList.remove("modal-fav-remove-btn");
+        remFavButton.innerHTML = "Add to favorites";
+        // сердечки
+        checkHeartEl.forEach((item) => {
+          if (item.dataset.id === recipe._id){
+            item.checked = false;
+          }
+        })
       }
-
-      //видалення з favorites
     }
 
-    function removeForBtn(evt) {
-      // const productId = evt.currentTarget.dataset.id;
-      removeFromFavorites(KEY_FAVORITE, favoritesArray);
-      addBtnEl.classList.remove('is-hidden');
-      removeBtnEl.classList.add('is-hidden');
-    }
-
-    function addToFavorites(event) {
-      if (favoritesArray.find(({ _id }) => _id === recipe._id) === undefined) {
-        // const item = dataRecipes.find(({ _id }) => _id === recipeId)
-        favoritesArray.push(recipe);
+    function addToFavorites(id) {
+      let favoritesArray = JSON.parse(localStorage.getItem(KEY_FAVORITE)); //перевірка локального сховища, результат списком
+      if (favoritesArray === null){ // при першому записі список пустий
+        save(KEY_FAVORITE, [recipe]); //запис списком для відповідності типів
+      }
+      else if (!favoritesArray.find(({ _id }) => _id === id)) { //якщо не!знайдено таку саму айдішку (саме з параметра = важливо для сердечка)
+        favoritesArray.push(recipe); //дописування, зберігаючи минуле
         save(KEY_FAVORITE, favoritesArray);
       }
     }
 
-    function removeFromFavorites(key, arr) {
-      const removeElemIdx = arr.findIndex(item => item._id === recipe._id);
-
-      arr.splice(removeElemIdx, 1);
-      localStorage.setItem(key, JSON.stringify(arr));
+    function removeFromFavorites(id) {
+      let favoritesArray = JSON.parse(localStorage.getItem(KEY_FAVORITE));
+      const removeElemIdx = favoritesArray.findIndex(item => item._id === id);
+      favoritesArray.splice(removeElemIdx, 1); //зайвий вирізається по id
+      if (favoritesArray.length !== 0){
+        save(KEY_FAVORITE, favoritesArray);
+      } else { //якщо це останній елемент, сам список видаляється, щоб не було багів зі сміттям
+        localStorage.removeItem(KEY_FAVORITE);
+      }
     }
   });
 }
