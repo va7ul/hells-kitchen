@@ -19,7 +19,7 @@ function addToFavorites(event){
   }
 
   async function isInFavorites (recipeArray, favoritesArray){
-    for (i = 0; i < favoritesArray.length; i+= 1){
+    for (let i = 0; i < favoritesArray.length; i+= 1){
       const recipeFav = recipeArray.find(({ _id }) => _id === favoritesArray[i]._id)
         if(recipeFav._id === favoritesArray[i]._id){
       const recipeCardEl = document.querySelector(`.card-template[data-id="${recipeFav._id}"]`)
