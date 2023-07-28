@@ -1,3 +1,4 @@
+const bodyScrollLock = require('body-scroll-lock');
 (() => {
   const mobileMenu = document.querySelector('.js-menu-container');
   const openMenuBtn = document.querySelector('.js-open-menu');
@@ -15,11 +16,8 @@
   openMenuBtn.addEventListener('click', toggleMenu);
   closeMenuBtn.addEventListener('click', toggleMenu);
 
-  const scrollY = document.body.style.top;
-  document.body.style.position = '';
-  document.body.style.top = '';
-  window.scrollTo(0, parseInt(scrollY || '0') * -1);
-
+  // Закрываем мобильное меню на более широких экранах
+  // в случае изменения ориентации устройства.
   // Close the mobile menu on wider screens if the device orientation changes
   window.matchMedia('(min-width: 768px)').addEventListener('change', e => {
     if (!e.matches) return;
@@ -28,3 +26,15 @@
     bodyScrollLock.enableBodyScroll(document.body);
   });
 })();
+
+//disableBodyScroll(container, {
+// allowTouchMove: el => {
+//    while (el && el !== document.body) {
+//    if (el.getAttribute('body-scroll-lock-ignore') !== null) {
+//     return true;
+//   }
+
+//  el = el.parentElement;
+// }
+// },
+//});

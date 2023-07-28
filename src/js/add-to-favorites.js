@@ -1,9 +1,9 @@
-import favoritesArray from "./favorites-array";
 import { dataRecipes } from "./all_recipes";
 import { save } from "./api";
 import { removeFromFavorites } from "./api";
 
 const KEY_FAVORITE = 'favorite';
+const favoritesArray = JSON.parse(localStorage.getItem(KEY_FAVORITE)) ?? [];
 
 function addToFavorites(event){
     const recipeId = event.target.closest('.card-template').dataset.id;
@@ -14,7 +14,19 @@ function addToFavorites(event){
      }
      else{
       removeFromFavorites(KEY_FAVORITE, event.target, favoritesArray);
+      
      }
   }
 
-export {addToFavorites}
+  async function isInFavorites (recipeArray, favoritesArray){
+    for (i = 0; i < favoritesArray.length; i+= 1){
+      const recipeFav = recipeArray.find(({ _id }) => _id === favoritesArray[i]._id)
+        if(recipeFav._id === favoritesArray[i]._id){
+      const recipeCardEl = document.querySelector(`.card-template[data-id="${recipeFav._id}"]`)
+      recipeCardEl.firstElementChild.firstElementChild.checked = true;
+      } else{
+      return   
+      }
+  }
+  }
+export {addToFavorites, isInFavorites, favoritesArray}

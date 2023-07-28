@@ -94,3 +94,8 @@
 .check-toggle:active::before {
   width: 44px;
 }
+body.show-modal-order-now .order-now-backdrop {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: initial;
+}
