@@ -28,7 +28,7 @@ getAllCategories()
   })
   .catch(error => console.log(error));
 
-categoriesContainerEl.addEventListener('click', onCategory);
+categoriesContainerEl.addEventListener('click', onCategory, { passive: true });
 
 function onCategory(evt) {
   if (evt.target.nodeName !== 'BUTTON') {
@@ -45,7 +45,7 @@ function onCategory(evt) {
   fetchRecipes();
 }
 
-allCategoriesEl.addEventListener('click', onAllCategory);
+allCategoriesEl.addEventListener('click', onAllCategory, { passive: true });
 
 function onAllCategory(evt) {
   let selectCategory = evt.target;
