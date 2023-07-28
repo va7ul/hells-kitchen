@@ -223,3 +223,7 @@ function popUpFunction(_id) {
 
 export { popUpFunction };
 export { ratingStars };
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
