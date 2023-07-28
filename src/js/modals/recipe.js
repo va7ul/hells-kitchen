@@ -1,6 +1,8 @@
 import { getRecipeById } from '../api';
 import { createCardTemplate } from '../card_template';
 import { save } from '../api';
+import { dataRecipes } from '../all_recipes';
+
 const KEY_FAVORITE = 'favorite';
 
 let favoritesArray = JSON.parse(localStorage.getItem(KEY_FAVORITE));
