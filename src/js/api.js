@@ -136,6 +136,9 @@ async function patchRating(recipeId, options) {
     return response.data;
   } catch (error) {
     localStorage.setItem('patch-rating', 'error');
+    setTimeout(() => {
+      Notify.failure('Oops! Something went wrong!');
+    }, 500);
   }
 }
 
@@ -148,7 +151,9 @@ async function postOrder(options) {
     return response.data;
   } catch (error) {
     localStorage.setItem('patch-rating', 'error');
-    Notify.failure('Oops! Something went wrong!');
+    setTimeout(() => {
+      Notify.failure('Oops! Something went wrong!');
+    }, 500);
   }
 }
 

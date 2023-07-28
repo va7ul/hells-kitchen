@@ -25,10 +25,10 @@
     transition: var(--transition-dur-and-func);
 }
 
-/* .dark-theme #progress-value {
+.dark-theme #progress-value {
     background-color: var(--dark-theme-fill);
     color: var(--light-theme-fill);
-} */
+}
 
 #progress:is(:hover, :focus) #progress-value {
     color: var(--green-btn);

@@ -149,12 +149,22 @@ body.show-modal-rating .rating-modal-backdrop {
     border-radius: 15px;
     outline: none;
     margin-bottom: 14px;
+    transition: var(--transition-dur-and-func);
 }
 
 @media screen and (min-width: 768px) {
     .rating-modal-form-input {
         margin-bottom: 16px;
     }
+}
+
+.rating-modal-form-input:hover,
+.rating-modal-form-input:focus {
+    border: 1px solid var(--green-btn);
+}
+
+.dark-theme .rating-modal-form-input:is(:hover, :focus) {
+    border: 1px solid var(--green-btn);
 }
 
 .dark-theme .rating-modal-form-input {

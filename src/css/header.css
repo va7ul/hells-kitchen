@@ -321,7 +321,7 @@
     height: 20px;
     border-radius: 18px;
     background-color: var(--light-theme-switcher-btn);
-
+    transition: 300ms cubic-bezier(0.3, 0, 0.3, 1);
     cursor: pointer;
   }
 
@@ -334,10 +334,12 @@
     height: 18px;
     border-radius: 18px;
     background-color: var(--light-theme-fill);
+    transition: 300ms cubic-bezier(0.3, 0, 0.3, 1);
   }
 
   .switcher-toggle:checked + .check-toggle {
     background-color: var(--green-btn);
+    transition: 300ms cubic-bezier(0.3, 0, 0.3, 1);
   }
 
   .switcher-toggle:checked + .check-toggle::before {
@@ -483,7 +485,6 @@ body.dark-theme {
 .dark-theme .mobile-icon-x:hover,
 .dark-theme .mobile-icon-x:focus {
   stroke: var(--green-btn);
-  fill: blue;
 }
 .dark-theme .hero-title,
 .dark-theme .hero-description,
@@ -493,9 +494,6 @@ body.dark-theme {
 .dark-theme .categories-list-btn,
 .dark-theme .card-template-title,
 .dark-theme .card-template-descr,
-.dark-theme .order-now-modal,
-.dark-theme .form input,
-.dark-theme .order-now-modal-form textarea,
 .dark-theme .order-now-modal__title,
 .dark-theme .modal_title {
   color: rgba(255, 255, 255, 1);
@@ -512,13 +510,23 @@ body.dark-theme {
     padding-top: 20px;
   }
 }
-
-.container.header {
-  padding-top: 40px;
-  padding-bottom: 88px;
+.dark-theme .order-now-modal-form input,
+.dark-theme .order-now-modal-form textarea {
+  background-color: transparent;
+  border-color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.5);
 }
 
-.container.head-second {
-  padding-top: 20px;
-  padding-bottom: 44.5px;
+.dark-theme .order-now-modal-form input:focus,
+.dark-theme .order-now-modal-form textarea:focus {
+  border-color: var(--green-btn);
+}
+
+.dark-theme .order-now-modal-form span {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.dark-theme .order-now-modal-form input::placeholder,
+.dark-theme .order-now-modal-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
 }

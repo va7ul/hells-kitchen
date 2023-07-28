@@ -11,6 +11,7 @@ body.show-modal-order-now .order-now-backdrop {
   visibility: visible;
   pointer-events: initial;
 }
+
 .order-now-backdrop {
   position: fixed;
   top: 0;
@@ -24,6 +25,8 @@ body.show-modal-order-now .order-now-backdrop {
   background-color: rgba(46, 47, 66, 0.4);
   visibility: hidden;
   overflow: hidden;
+  z-index: 4;
+  background: rgba(22, 22, 22, 0.9);
 }
 
 .order-now-modal {
@@ -105,17 +108,26 @@ textarea {
   height: 100px;
   resize: none;
   /*overflow: scroll;*/
+  transition: var(--transition-dur-and-func);
 }
+
 .order-now-modal-form textarea:hover,
 .order-now-modal-form textarea:focus {
   border: 1px solid var(--green-btn);
 }
+
+.dark-theme .order-now-modal-form textarea:is(:hover, :focus) {
+  border: 1px solid var(--green-btn);
+}
+
 input {
   outline: none;
 }
+
 .comment-textarea {
   outline: none;
 }
+
 .order-now-modal-form button {
   width: 100%;
   padding: 15px 0;
@@ -125,7 +137,9 @@ input {
   background: var(--green-btn);
   color: white;
   cursor: pointer;
+  transition: var(--transition-dur-and-func);
 }
+
 .order-now-modal-form button:hover,
 .order-now-modal-form button:focus {
   color: rgba(248, 248, 248, 1);
@@ -144,16 +158,19 @@ input {
   .order-now-modal {
     width: calc(100% - 30px);
   }
+
   .order-now-modal-form input,
   textarea {
     width: 100%;
   }
 }
+
 @media screen and (max-width: 767px) {
   .order-now-modal-form input {
     width: 270px;
   }
 }
+
 @media screen and (min-width: 767px) {
   .order-now-modal {
     max-width: none;
@@ -162,24 +179,35 @@ input {
     height: 632px;
     padding: 40px;
   }
+
   .order-now-modal-form input,
   textarea {
     width: 360px;
     border-radius: 15px;
     border: 1px solid rgba(5, 5, 5, 0.2);
   }
+
   .order-now-modal-form__input {
     height: 48px;
+    transition: var(--transition-dur-and-func);
   }
+
   .order-now-modal-close__img {
     width: 24px;
     height: 24px;
   }
 }
+
 .order-now-modal-form__input:hover,
 .order-now-modal-form__input:focus {
   border: 1px solid var(--green-btn);
 }
+
+
+.dark-theme .order-now-modal-form__input:is(:hover, :focus) {
+  border: 1px solid var(--green-btn);
+}
+
 .dark-theme .order-now-modal-form input,
 .dark-theme .order-now-modal-form textarea {
   background-color: rgba(5, 5, 5, 1);
@@ -190,7 +218,6 @@ input {
 .dark-theme .order-now-modal-form textarea:focus {
   border-color: var(--green-btn);
   background-color: rgba(5, 5, 5, 1);
-  color: aqua;
 }
 
 .dark-theme .order-now-modal-form span {
