@@ -11,6 +11,7 @@ const refs = {
   closeButtonEl: document.querySelector('.rating-modal-btn-close'),
   backdropEl: document.querySelector('.js-backdrop'),
   test: document.querySelector('.my-rating-9'),
+  modalRecipeEl: document.querySelector('.modal_favourite'),
 };
 
 $('.my-rating-9').starRating({
@@ -37,6 +38,19 @@ function submitRating(evt) {
   let email = refs.inputEl.value;
   // треба підключити ID з картки
   let recipeId = '6462a8f74c3d0ddd288980d4';
+
+  refs.modalRecipeEl.addEventListener('click', onClick);
+
+  function onClick(evt) {
+    if (!evt.target.classList.contains('rating-modal-btn-open')) {
+      return;
+    } else {
+      const recipeId = recipe._id;
+      const recipeId = evt.target.closest('.card-template').dataset.id;
+      console.log(recipeId);
+    }
+  }
+
   const options = {
     rate: giveRating,
     email,
@@ -45,16 +59,22 @@ function submitRating(evt) {
   patchRating(recipeId, options)
     .then(categories => {
       // console.log(categories);
-      if (localStorage.getItem('patch-rating') === 'error') {
-        return Notify.failure('Oops! Something went wrong!');
+      if (localStorage.getItem('patch-rating') !== 'error') {
+        onRatingModalRemove();
+        refs.starsEl.textContent = '0.0';
+        refs.inputEl.value = '';
+        setTimeout(() => {
+          Notify.success('Thank you for your feedback!');
+        }, 500);
       }
-      onRatingModalRemove();
-      refs.starsEl.textContent = '0.0';
-      refs.inputEl.value = '';
-      Notify.success('Thank you for your feedback!');
+      return;
     })
     .catch(error => console.log(error))
-    .finally(() => Loading.remove());
+    .finally(
+      setTimeout(() => {
+        Loading.remove();
+      }, 500)
+    );
 }
 
 function onRatingModalOpen() {
