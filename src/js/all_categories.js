@@ -1,6 +1,7 @@
 import { getAllCategories, resetAllFiters, save } from './api';
 import { fetchRecipes } from './all_recipes';
 import { resetSelectsToDefault } from './search_filters';
+import { pagination } from './pagination';
 
 const allCategoriesEl = document.querySelector('.all-categories-btn');
 const categoriesListEl = document.querySelector('.categories-list-items');
@@ -50,6 +51,8 @@ function onAllCategory(evt) {
   let selectCategory = evt.target;
   resetSelectsToDefault();
   resetAllFiters();
+  localStorage.setItem('page', 1);
+  pagination.movePageTo(1);
 
   const activeCategoryEl = document.querySelector('.active-category');
   activeCategoryEl.classList.remove('active-category');
