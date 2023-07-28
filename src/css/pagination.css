@@ -74,16 +74,27 @@
     border-radius: 50%;
     background-color: transparent;
     border: 1px solid rgba(255, 255, 255, 0.3);
-    color: rgba(255, 255, 255, 1);
+    
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+.dark-theme .tui-page-btn.tui-prev-is-ellip::before {
+    content: '...';
+    top: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+
 .tui-page-btn.tui-prev-is-ellip::before {
     content: '...';
     top: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #050505;
 }
+
+
 
 /* Остальные стили */
 .tui-pagination {
@@ -121,7 +132,7 @@
     height: 40px;
     width: 40px;
     border-radius: 50%;
-    border: 1px solid rgba(5, 5, 5, 0.3);
+    border: 1px solid rgba(5, 5, 5, 0.30);
     color: rgba(5, 5, 5, 1);
     background: transparent;
 }
@@ -158,6 +169,10 @@
     position: relative;
     width: 40px;
     height: 40px;
+    border: 1px solid rgba(5, 5, 5, 0.30);
+    
+
+    
 }
 
 .tui-page-btn.tui-next {
