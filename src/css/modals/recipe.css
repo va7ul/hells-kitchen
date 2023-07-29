@@ -152,7 +152,7 @@
 
 .modal_buttons button {
 	padding: 12px 24px;
-	max-width: 148px;
+	width: 156px;
 	border: none;
 	border-radius: 15px;
 	letter-spacing: -0.04em;
@@ -183,7 +183,7 @@
 	outline: 1px solid #9BB537;
 }
 .modal-fav-remove-btn{
-	background-color: red !important;
+	background-color: rgb(250, 112, 112) !important;
 }
 
 body.dark-theme .bg_modal {
