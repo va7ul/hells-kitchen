@@ -1,5 +1,10 @@
 import Pagination from 'tui-pagination';
+import { getTotalItems } from './api';
+import { dataRecipes, fetchRecipesForPagination } from './all_recipes';
 
+
+let response = [];
+let pagination;
 const totalItems =
   localStorage.getItem('totalPages') * localStorage.getItem('limit');
 let visiblePages = 2;
@@ -10,16 +15,22 @@ if (window.innerWidth < 1280) {
   visiblePages = 3;
 }
 
-const container = document.getElementById('tui-pagination');
-const options = {
-  totalItems: totalItems,
-  itemsPerPage: 9,
-  visiblePages: 3,
-  page: 1,
-  centerAlign: false,
-  firstItemClassName: 'tui-first-child',
-  lastItemClassName: 'tui-last-child',
-  template: {
+async function createPagination() {
+  
+  const arr = await getTotalItems();
+ 
+
+  const container = document.getElementById('tui-pagination');
+  
+  const options = {
+    totalItems: arr[0],
+    itemsPerPage: arr[1],
+    visiblePages: 3,
+    page: 1,
+    centerAlign: false,
+    firstItemClassName: 'tui-first-child',
+    lastItemClassName: 'tui-last-child',
+    template: {
     page: '<a href="#" class="tui-page-btn">{{page}}</a>',
     currentPage:
       '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
@@ -32,8 +43,23 @@ const options = {
       '<span class="tui-ico-{{type}}"></span>' +
       '</span>',
     moreButton: '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip"></a>',
-  },
-};
-const pagination = new Pagination(container, options);
+    },
+  };
 
-export { pagination };
+   pagination = new Pagination(container, options)
+  
+   pagination.on('beforeMove', async (event) => {
+      const currentPage = event.page;
+      localStorage.setItem('page', currentPage)
+     try {
+       dataRecipes = await fetchRecipesForPagination()
+    
+      } catch (error) {
+        console.error('Ошибка при получении данных о рецептах:', error);
+      }});
+
+}
+
+createPagination();
+
+export { pagination, createPagination };

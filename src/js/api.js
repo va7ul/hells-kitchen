@@ -2,6 +2,9 @@ import axios from 'axios';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { Loading } from 'notiflix';
 
+let totalItems;
+let limitCard;
+
 axios.defaults.baseURL = 'https://tasty-treats-backend.p.goit.global/api';
 function resetAllFiters() {
   localStorage.setItem('category', '');
@@ -92,10 +95,13 @@ async function getIngredients() {
 async function getRecipes() {
   if (window.innerWidth < 768) {
     localStorage.setItem("limit", 6);
+    limitCard = 6;
   } else if (window.innerWidth< 1280) {
     localStorage.setItem("limit", 8);
+    limitCard = 8;
   } else {
     localStorage.setItem("limit", 9);
+    limitCard = 9;
   }
   let category = localStorage.getItem('category');
   let page = localStorage.getItem('page');
@@ -104,8 +110,6 @@ async function getRecipes() {
   let time = localStorage.getItem('time');
   let area = localStorage.getItem('area');
   let ingredient = localStorage.getItem('ingredient');
-
-  
 
   const url = `/recipes?category=${category}&page=${page}&limit=${limit}&title=${title}&time=${time}&area=${area}&ingredient=${ingredient}`;
   try {
@@ -164,6 +168,25 @@ function removeFromFavorites(key, elem, arr) {
   localStorage.setItem(key, JSON.stringify(arr));
 }
 
+async function getTotalItems() {
+  if (window.innerWidth < 768) {
+    limitCard = 6;
+  } else if (window.innerWidth< 1280) {
+    limitCard = 8;
+  } else {
+    limitCard = 9;
+  }
+  
+  const url = `/recipes?limit=${limitCard}`;
+  try {
+    const response = await axios.get(url);
+    totalItems = response.data.totalPages * limitCard;
+    return [totalItems, limitCard]
+  } catch (error) {
+    Notify.failure('Oops! Something went wrong!');
+  }
+}
+
 export {
   getMasterclasses,
   getAllCategories,
@@ -179,4 +202,6 @@ export {
   save,
   load,
   removeFromFavorites,
+  getTotalItems,
+  limitCard  
 };
