@@ -41,6 +41,7 @@ function onCategory(evt) {
   const activeCategoryEl = document.querySelector('.active-category');
   activeCategoryEl.classList.remove('active-category');
   selectCategory.classList.add('active-category');
+  pagination.movePageTo(1);
 
   fetchRecipes();
 }
