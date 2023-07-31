@@ -1,7 +1,7 @@
 import Pagination from 'tui-pagination';
 import { getTotalItems } from './api';
 import { fetchRecipesForPagination } from './all_recipes';
-import { dataRecipes } from './all_recipes';
+// import { dataRecipes } from './all_recipes';
 
 
 let response = [];
