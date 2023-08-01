@@ -30,7 +30,7 @@
 }
 .popup_scroll {
 	overflow: auto;
-	max-width: 530px;
+	/* max-width: 530px; */
 	background-color: white;
 	z-index: 4;
 	height: 86vh;
@@ -48,8 +48,8 @@
 	stroke: #9BB537;
 }
 .modal_container {
-	margin: 0 32px 32px 32px;
-	font-weight: 500;
+	margin: 40px 20px;
+	font-weight: 400;
 }
 .modal_title {
 	font-size: 18px;
@@ -137,26 +137,27 @@
 	margin-bottom: 40px;
 	font-size: 14px;
 	font-weight: 400;
-	line-height: 1.29;
+	line-height: 1.28;
+	opacity: 0.8;
 
 }
 
 .modal_buttons {
 	/*display: flex;*/
+	width: 280px;
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
-	gap: 10px;
-
+	gap: 14px;
 }
 
 .modal_buttons button {
 	padding: 12px 24px;
-	width: 156px;
+	width: 133px;
 	border: none;
 	border-radius: 15px;
 	letter-spacing: -0.04em;
-	font-size: 14px;
+	font-size: 12px;
 	font-weight: 500;
 	transition: var(--basic-transition);
 }
@@ -285,6 +286,18 @@ body.dark-theme .modal_rating_button button {
 	.popup_modal {
 		width: 335px;
 	}
+
+	.modal_container {
+		width: 295px;
+	}
+
+	.modal_buttons {
+		width: 295px;
+		gap: 14px;
+	}
+	.modal_buttons button{
+		width: 140px;
+	}
 }
 
 /* (ширина від 768px) */
@@ -292,6 +305,21 @@ body.dark-theme .modal_rating_button button {
 	.popup_modal {
 		width: 531px;
 	}
+
+	.modal_container {
+		width: 467px;
+    	margin: 32px;
+    	font-weight: 400;
+	}
+	.modal_buttons {
+		width: 467px;
+		gap: 16px;
+		justify-content: left;
+	}	
+
+	.modal_buttons button{
+		width: 148px;
+	}	
 }
 
 @media screen and (max-width: 374px){
@@ -300,3 +328,12 @@ body.dark-theme .modal_rating_button button {
   }
   
   }
+
+@media screen and (min-width: 1280px) {
+
+	.modal_container {
+		width: 467px;
+		margin: 32px;
+		font-weight: 400;
+	}
+}
