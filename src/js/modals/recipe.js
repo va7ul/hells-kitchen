@@ -81,7 +81,7 @@ function popUpFunction(_id) {
       current_fav = `<button class="modal-fav-add-btn" data-id="${recipe._id}">Add to favorites</button> <!-- в кнопку передається id -->`;
     }
     else{
-      current_fav = `<button class="modal-fav-add-btn modal-fav-remove-btn" data-id="${recipe._id}">Remove from favorites</button> <!-- в кнопку передається id -->`;
+      current_fav = `<button class="modal-fav-add-btn modal-fav-remove-btn" data-id="${recipe._id}">Remove favorite</button> <!-- в кнопку передається id -->`;
     }
 
     // заповнення html
@@ -167,7 +167,7 @@ function popUpFunction(_id) {
       if (event.target == addFavButton && event.target !== remFavButton) {
         addToFavorites(recipe._id);
         addFavButton.classList.add("modal-fav-remove-btn");
-        addFavButton.innerHTML = "Remove from favorites";
+        addFavButton.innerHTML = "Remove favorite";
         // сердечко по id
         checkHeartEl.forEach((item) => {
           if (item.dataset.id === recipe._id){
