@@ -80,6 +80,8 @@ function removeHandler(evt) {
       if (!btnAllCategory.classList.contains('favorite-active-btn')) {
         btnAllCategory.classList.add('in-focus');
         createCardTemplate(favoriteArrFromLocalStorage, favoriteRecipesListEl);
+         const checkHeartEl = document.querySelectorAll('.js-add-to-fav');
+         checkHeartEl.forEach(item => (item.checked = true));
         focusOnAllCategoryBtn += 1;
       }
       if (favoriteArrFromLocalStorage.length === 0) {
