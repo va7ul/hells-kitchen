@@ -1,15 +1,12 @@
 import { createCardTemplate } from '../card_template';
 import { KEY_FAVORITE } from './favorite_recipes';
+import { checkHeart } from './helpers/check-heart';
 import Pagination from 'tui-pagination';
-
-
 
 const favoriteFilterSectionEl = document.querySelector('.favorite-filter');
 const favoriteFilterEl = document.querySelector('.favorite-filter-list');
 const favoriteRecipesListEl = document.querySelector('.favorite-recipes-list');
 const emptyStorageEl = document.querySelector('.empty-storage-wrapper');
-const paginationEl = document.querySelector('.tui-pagination');
-
 
 let favoriteArrFromLocalStorage =
   JSON.parse(localStorage.getItem(KEY_FAVORITE)) ?? [];
@@ -29,7 +26,6 @@ uniqueCategories.sort((a, b) => a.localeCompare(b));
 createFilterMarkup(uniqueCategories);
 const btnAllCategory = document.querySelector('.all-category');
 
-
 function onClick(evt) {
   if (evt.target.classList.contains('favorite-filter-btn')) {
     btnAllCategory.classList.remove('favorite-active-btn');
@@ -44,81 +40,10 @@ function onClick(evt) {
     }
     let findProduct = findProductByFilter(evt.target);
 
-    //pagination
-    const mainElement = document.documentElement;
-    const mainElementWidth = mainElement.clientWidth;
-    console.log('paginationEl', paginationEl);
-
-    let currentPage = 1;
-    let itemsPerPage = 0;
-    let visiblePages = 0;
-
-    if (mainElementWidth < 768) {
-      console.log('mainElementWidth', mainElementWidth);
-      itemsPerPage = 3;
-      visiblePages = 2;
-      if (findProduct.length <= itemsPerPage) {
-        paginationEl.classList.add('hiddenvisualy');
-      }
-      if (findProduct.length > itemsPerPage) {
-        paginationEl.classList.remove('hiddenvisualy');
-      }
-    } else if (mainElementWidth >= 768) {
-      console.log('mainElementWidth', mainElementWidth);
-      itemsPerPage = 2;
-      visiblePages = 3;
-      if (findProduct.length <= itemsPerPage) {
-        paginationEl.classList.add('hiddenvisualy');
-      }
-      if (findProduct.length > itemsPerPage) {
-        paginationEl.classList.remove('hiddenvisualy');
-      }
-    }
-
-    let start = itemsPerPage * currentPage - itemsPerPage;
-    let end = start + itemsPerPage;
-    let partOfArr = findProduct.slice(start, end);
-    console.log('function');
-    //pagination
     createCardTemplate(partOfArr, favoriteRecipesListEl);
-    const checkHeartEl = document.querySelectorAll('.js-add-to-fav');
-    checkHeartEl.forEach(item => (item.checked = true));
-
-    //pg
-    let paginationFilter = new Pagination('pagination', {
-  totalItems: findProduct.length,
-  itemsPerPage: itemsPerPage,
-  visiblePages: visiblePages,
-  template: {
-    page: '<a href="#" class="tui-page-btn">{{page}}</a>',
-    currentPage:
-      '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
-    moveButton:
-      '<a href="#" class="tui-page-btn tui-{{type}}">' +
-      '<span class="tui-ico-{{type}}"></span>' +
-      '</a>',
-    disabledMoveButton:
-      '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
-      '<span class="tui-ico-{{type}}"></span>' +
-      '</span>',
-    moreButton: '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip"></a>',
-  },
-});
-
-paginationFilter.on('afterMove', function (eventData) {
-  console.log('eventData', eventData);
-  currentPage = eventData.page;
-  start = itemsPerPage * currentPage - itemsPerPage;
-  end = start + itemsPerPage;
-  partOfArr = findProduct.slice(start, end);
-  createCardTemplate(partOfArr, favoriteRecipesListEl);
-  const checkHeartEl = document.querySelectorAll('.js-add-to-fav');
-  checkHeartEl.forEach(item => (item.checked = true));
-});
-    //pg
- 
-    }
+    checkHeart();
   }
+}
 
 function removeHandler(evt) {
   if (evt.target.classList.contains('js-add-to-fav')) {
@@ -154,8 +79,7 @@ function removeHandler(evt) {
       if (!btnAllCategory.classList.contains('favorite-active-btn')) {
         btnAllCategory.classList.add('in-focus');
         createCardTemplate(favoriteArrFromLocalStorage, favoriteRecipesListEl);
-        const checkHeartEl = document.querySelectorAll('.js-add-to-fav');
-        checkHeartEl.forEach(item => (item.checked = true));
+        checkHeart();
         focusOnAllCategoryBtn += 1;
       }
       if (favoriteArrFromLocalStorage.length === 0) {
@@ -205,7 +129,3 @@ function findProductByFilter(elem) {
 
 favoriteFilterEl.addEventListener('click', onClick);
 favoriteRecipesListEl.addEventListener('click', removeHandler);
-console.log('filter');
-
-
-
