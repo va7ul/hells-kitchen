@@ -2,11 +2,20 @@ import { createCardTemplate } from '../card_template';
 import { KEY_FAVORITE } from './favorite_recipes';
 import { checkHeart } from './helpers/check-heart';
 import Pagination from 'tui-pagination';
+import { calculationOfVisibleElements, movePage, printPagination, setPagination } from './helpers/favorite-pagination';
 
 const favoriteFilterSectionEl = document.querySelector('.favorite-filter');
 const favoriteFilterEl = document.querySelector('.favorite-filter-list');
 const favoriteRecipesListEl = document.querySelector('.favorite-recipes-list');
 const emptyStorageEl = document.querySelector('.empty-storage-wrapper');
+const paginationEl = document.getElementById('pagination');
+
+const mainElement = document.documentElement;
+const mainElementWidth = mainElement.clientWidth;
+
+let currentPage = 1;
+let itemsPerPage = 0;
+let visiblePages = 0;
 
 let favoriteArrFromLocalStorage =
   JSON.parse(localStorage.getItem(KEY_FAVORITE)) ?? [];
@@ -40,8 +49,38 @@ function onClick(evt) {
     }
     let findProduct = findProductByFilter(evt.target);
 
+    const paginationSettings = setPagination(
+      mainElementWidth,
+      paginationEl,
+      findProduct
+    );
+
+    itemsPerPage = paginationSettings.itemsPerPage;
+    console.log('itemsPerPage', itemsPerPage);
+    visiblePages = paginationSettings.visiblePages;
+    console.log('visiblePages', visiblePages);
+
+    let partOfArr = calculationOfVisibleElements(
+      itemsPerPage,
+      currentPage,
+      findProduct
+    );
     createCardTemplate(partOfArr, favoriteRecipesListEl);
     checkHeart();
+    let paginationMain = new Pagination(
+      'pagination',
+      printPagination(findProduct, itemsPerPage, visiblePages)
+    );
+
+    paginationMain.on('afterMove', eventData =>
+      movePage(
+        eventData,
+        findProduct,
+        itemsPerPage,
+        currentPage,
+        favoriteRecipesListEl
+      )
+    );
   }
 }
 
