@@ -15,7 +15,6 @@ export function setPagination(elementWidth, element, arr = undefined) {
       element.classList.remove('hiddenvisualy');
     }
   } else if (elementWidth >= 768) {
-    console.log('elementWidth', elementWidth);
     itemsPerPage = 2;
     visiblePages = 3;
     if (arr?.length <= itemsPerPage) {
@@ -58,9 +57,22 @@ export function printPagination(arr, itemsPerPage, visiblePages) {
   return paginationMain;
 }
 
-export function movePage(eventData, arr, itemsPerPage, currentPage, element) {
+export function movePage(
+  eventData,
+  arr,
+  itemsPerPage,
+  currentPage,
+  elementList,
+  elementFilter = undefined,
+  focusOnBtn
+) {
   currentPage = eventData.page;
   let partOfArr = calculationOfVisibleElements(itemsPerPage, currentPage, arr);
-  createCardTemplate(partOfArr, element);
+  if (elementFilter) {
+    elementFilter.firstElementChild.classList.add('in-focus');
+    focusOnBtn[0] += 1;
+    console.log('intoPag', focusOnBtn);
+  }
+  createCardTemplate(partOfArr, elementList);
   checkHeart();
 }

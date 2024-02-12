@@ -23,23 +23,22 @@ const mainElementWidth = mainElement.clientWidth;
 let currentPage = 1;
 let itemsPerPage = 0;
 let visiblePages = 0;
+let paginationMain = null;
 
 const emptyStorageEl = document.querySelector('.empty-storage-wrapper');
 
 const favoritesArray = JSON.parse(localStorage.getItem(KEY_FAVORITE)) ?? [];
-console.log('favoritesArray', favoritesArray);
 
 
 if (favoritesArray.length !== 0) {
   const paginationSettings = setPagination(
     mainElementWidth,
-    paginationEl, favoritesArray
+    paginationEl,
+    favoritesArray
   );
 
   itemsPerPage = paginationSettings.itemsPerPage;
-  console.log('itemsPerPage', itemsPerPage);
   visiblePages = paginationSettings.visiblePages;
-    console.log('visiblePages', visiblePages);
 
   let partOfArr = calculationOfVisibleElements(
     itemsPerPage,
@@ -49,7 +48,7 @@ if (favoritesArray.length !== 0) {
   createCardTemplate(partOfArr, favoriteRecipesListEl);
   checkHeart();
 
-  let paginationMain = new Pagination(
+  paginationMain = new Pagination(
     'pagination',
     printPagination(favoritesArray, itemsPerPage, visiblePages)
   );
@@ -81,6 +80,11 @@ function onClick(evt) {
   //видалення з favorites
   if (evt.target.classList.contains('js-add-to-fav')) {
     removeFromFavorites(KEY_FAVORITE, evt.target, favoritesArray);
+
+    paginationMain._options.totalItems = favoritesArray.length;
+    if (favoritesArray?.length === 0) {
+      paginationEl.classList.add('hiddenvisualy');
+    }
     evt.target.closest('.card-template').remove();
   }
 }

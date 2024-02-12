@@ -2,7 +2,12 @@ import { createCardTemplate } from '../card_template';
 import { KEY_FAVORITE } from './favorite_recipes';
 import { checkHeart } from './helpers/check-heart';
 import Pagination from 'tui-pagination';
-import { calculationOfVisibleElements, movePage, printPagination, setPagination } from './helpers/favorite-pagination';
+import {
+  calculationOfVisibleElements,
+  movePage,
+  printPagination,
+  setPagination,
+} from './helpers/favorite-pagination';
 
 const favoriteFilterSectionEl = document.querySelector('.favorite-filter');
 const favoriteFilterEl = document.querySelector('.favorite-filter-list');
@@ -16,11 +21,13 @@ const mainElementWidth = mainElement.clientWidth;
 let currentPage = 1;
 let itemsPerPage = 0;
 let visiblePages = 0;
+let paginationFilter = null;
+let findProduct = null;
+let focusOnBtn = [0];
+let focusOnAllCategoryBtn = 0;
 
 let favoriteArrFromLocalStorage =
   JSON.parse(localStorage.getItem(KEY_FAVORITE)) ?? [];
-let focusOnBtn = 0;
-let focusOnAllCategoryBtn = 0;
 
 const allCategories = favoriteArrFromLocalStorage.flatMap(
   product => product.category
@@ -36,18 +43,25 @@ createFilterMarkup(uniqueCategories);
 const btnAllCategory = document.querySelector('.all-category');
 
 function onClick(evt) {
+  console.log('aaaa');
   if (evt.target.classList.contains('favorite-filter-btn')) {
     btnAllCategory.classList.remove('favorite-active-btn');
+
     if (focusOnAllCategoryBtn != 0) {
       btnAllCategory.classList.remove('in-focus');
       focusOnAllCategoryBtn = 0;
     }
-    if (focusOnBtn != 0) {
-      const btnInFocus = document.querySelector('.in-focus');
-      btnInFocus.classList.remove('in-focus');
-      focusOnBtn = 0;
+    if (focusOnBtn[0] != 0) {
+      const btnInFocusEl = document.querySelector('.in-focus');
+      console.log('btnInFocus', btnInFocusEl);
+      console.log('CCC');
+      btnInFocusEl.classList.remove('in-focus');
+      focusOnBtn[0] = 0;
     }
-    let findProduct = findProductByFilter(evt.target);
+    const searchCategory = evt.target.closest('.favorite-filter-item').dataset
+      .category;
+    const btn = document.querySelector(`li[data-category="${searchCategory}"]`);
+    findProduct = findProductByFilter(searchCategory);
 
     const paginationSettings = setPagination(
       mainElementWidth,
@@ -56,9 +70,7 @@ function onClick(evt) {
     );
 
     itemsPerPage = paginationSettings.itemsPerPage;
-    console.log('itemsPerPage', itemsPerPage);
     visiblePages = paginationSettings.visiblePages;
-    console.log('visiblePages', visiblePages);
 
     let partOfArr = calculationOfVisibleElements(
       itemsPerPage,
@@ -67,20 +79,23 @@ function onClick(evt) {
     );
     createCardTemplate(partOfArr, favoriteRecipesListEl);
     checkHeart();
-    let paginationMain = new Pagination(
+    paginationFilter = new Pagination(
       'pagination',
       printPagination(findProduct, itemsPerPage, visiblePages)
     );
 
-    paginationMain.on('afterMove', eventData =>
+    paginationFilter.on('afterMove', eventData =>
       movePage(
         eventData,
         findProduct,
         itemsPerPage,
         currentPage,
-        favoriteRecipesListEl
+        favoriteRecipesListEl,
+        btn,
+        focusOnBtn
       )
     );
+    console.log('focusOnBtn', focusOnBtn);
   }
 }
 
@@ -90,6 +105,12 @@ function removeHandler(evt) {
     const product = favoriteArrFromLocalStorage.find(
       ({ _id }) => _id === productId
     );
+    findProduct = findProductByFilter(product.category);
+    console.log('paginationFilter', paginationFilter);
+    if (paginationFilter) {
+      paginationFilter._options.totalItems = findProduct.length;
+    }
+
     favoriteArrFromLocalStorage = JSON.parse(
       localStorage.getItem(KEY_FAVORITE)
     );
@@ -106,7 +127,9 @@ function removeHandler(evt) {
         !btnAllCategory.classList.contains('favorite-active-btn')
       ) {
         btn.firstElementChild.classList.add('in-focus');
-        focusOnBtn += 1;
+
+        focusOnBtn[0] += 1;
+        console.log('focusOnBtn', focusOnBtn);
       }
       return;
     } else {
@@ -114,7 +137,7 @@ function removeHandler(evt) {
         `li[data-category="${product.category}"]`
       );
       btn.remove();
-      focusOnBtn = 0;
+      focusOnBtn[0] = 0;
       if (!btnAllCategory.classList.contains('favorite-active-btn')) {
         btnAllCategory.classList.add('in-focus');
         createCardTemplate(favoriteArrFromLocalStorage, favoriteRecipesListEl);
@@ -153,9 +176,8 @@ function createFilterMarkup(arr) {
   favoriteFilterEl.insertAdjacentHTML('beforeend', markup);
 }
 
-function findProductByFilter(elem) {
+function findProductByFilter(searchCategory) {
   const arrFromLocalStorage = JSON.parse(localStorage.getItem(KEY_FAVORITE));
-  const searchCategory = elem.closest('.favorite-filter-item').dataset.category;
   if (searchCategory === 'all') {
     btnAllCategory.classList.add('in-focus');
     focusOnAllCategoryBtn += 1;
