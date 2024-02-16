@@ -17,6 +17,7 @@ const paginationEl = document.getElementById('pagination');
 
 const mainElement = document.documentElement;
 const mainElementWidth = mainElement.clientWidth;
+let paginationSettings;
 
 let currentPage = 1;
 let itemsPerPage = 0;
@@ -53,8 +54,8 @@ function onClick(evt) {
     }
     if (focusOnBtn[0] != 0) {
       const btnInFocusEl = document.querySelector('.in-focus');
-      console.log('btnInFocus', btnInFocusEl);
-      console.log('CCC');
+      console.log('focusOnBtn', focusOnBtn);
+       console.log('btnInFocusEl', btnInFocusEl);
       btnInFocusEl.classList.remove('in-focus');
       focusOnBtn[0] = 0;
     }
@@ -63,7 +64,7 @@ function onClick(evt) {
     const btn = document.querySelector(`li[data-category="${searchCategory}"]`);
     findProduct = findProductByFilter(searchCategory);
 
-    const paginationSettings = setPagination(
+    paginationSettings = setPagination(
       mainElementWidth,
       paginationEl,
       findProduct
@@ -79,20 +80,18 @@ function onClick(evt) {
     );
     createCardTemplate(partOfArr, favoriteRecipesListEl);
     checkHeart();
-    paginationFilter = new Pagination(
+    let paginationAll = new Pagination(
       'pagination',
       printPagination(findProduct, itemsPerPage, visiblePages)
     );
-
-    paginationFilter.on('afterMove', eventData =>
+        console.log('paginationFilter', paginationFilter);
+    paginationAll.on('afterMove', eventData =>
       movePage(
         eventData,
         findProduct,
         itemsPerPage,
         currentPage,
-        favoriteRecipesListEl,
-        btn,
-        focusOnBtn
+        favoriteRecipesListEl
       )
     );
     console.log('focusOnBtn', focusOnBtn);
@@ -138,10 +137,48 @@ function removeHandler(evt) {
       );
       btn.remove();
       focusOnBtn[0] = 0;
+          console.log('focusOnBtn0', focusOnBtn);
       if (!btnAllCategory.classList.contains('favorite-active-btn')) {
         btnAllCategory.classList.add('in-focus');
-        createCardTemplate(favoriteArrFromLocalStorage, favoriteRecipesListEl);
-        checkHeart();
+        findProduct = findProductByFilter('all');
+
+          paginationSettings = setPagination(
+            mainElementWidth,
+            paginationEl,
+            findProduct
+          );
+
+          itemsPerPage = paginationSettings.itemsPerPage;
+          visiblePages = paginationSettings.visiblePages;
+
+          let partOfArr = calculationOfVisibleElements(
+            itemsPerPage,
+            currentPage,
+            findProduct
+          );
+          createCardTemplate(partOfArr, favoriteRecipesListEl);
+          checkHeart();
+          paginationFilter = new Pagination(
+            'pagination',
+            printPagination(findProduct, itemsPerPage, visiblePages)
+          );
+          console.log('paginationFilter', paginationFilter);
+          paginationFilter.on('afterMove', eventData =>
+            movePage(
+              eventData,
+              findProduct,
+              itemsPerPage,
+              currentPage,
+              favoriteRecipesListEl,
+              btn,
+              focusOnBtn
+            )
+          );
+        console.log(
+          'paginationFilter',
+          paginationFilter
+        );
+
         focusOnAllCategoryBtn += 1;
       }
       if (favoriteArrFromLocalStorage.length === 0) {

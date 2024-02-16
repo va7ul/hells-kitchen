@@ -64,13 +64,15 @@ export function movePage(
   currentPage,
   elementList,
   elementFilter = undefined,
-  focusOnBtn
+  focusOnBtn=null
 ) {
   currentPage = eventData.page;
   let partOfArr = calculationOfVisibleElements(itemsPerPage, currentPage, arr);
   if (elementFilter) {
     elementFilter.firstElementChild.classList.add('in-focus');
-    focusOnBtn[0] += 1;
+    if (focusOnBtn) {
+      focusOnBtn[0] += 1;
+    } 
     console.log('intoPag', focusOnBtn);
   }
   createCardTemplate(partOfArr, elementList);
