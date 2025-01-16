@@ -23,9 +23,9 @@ let currentPage = 1;
 let itemsPerPage = 0;
 let visiblePages = 0;
 let paginationFilter = null;
-let findProduct = null;
-let focusOnBtn = [0];
-let focusOnAllCategoryBtn = 0;
+let findProductArr = null;
+// const focusOnBtn = { isFocusOnBtn: false };
+let focusOnAllCategoryBtn = false;
 
 let favoriteArrFromLocalStorage =
   JSON.parse(localStorage.getItem(KEY_FAVORITE)) ?? [];
@@ -43,31 +43,37 @@ uniqueCategories.sort((a, b) => a.localeCompare(b));
 createFilterMarkup(uniqueCategories);
 const btnAllCategory = document.querySelector('.all-category');
 
+favoriteFilterEl.addEventListener('click', onClick);
+favoriteRecipesListEl.addEventListener('click', removeHandler);
+
 function onClick(evt) {
-  console.log('aaaa');
   if (evt.target.classList.contains('favorite-filter-btn')) {
     btnAllCategory.classList.remove('favorite-active-btn');
-
-    if (focusOnAllCategoryBtn != 0) {
+    if (focusOnAllCategoryBtn) {
       btnAllCategory.classList.remove('in-focus');
-      focusOnAllCategoryBtn = 0;
+      focusOnAllCategoryBtn = false;
     }
-    if (focusOnBtn[0] != 0) {
-      const btnInFocusEl = document.querySelector('.in-focus');
-      console.log('focusOnBtn', focusOnBtn);
-       console.log('btnInFocusEl', btnInFocusEl);
+    const btnInFocusEl = document.querySelector('.in-focus');
+    if (btnInFocusEl) {
       btnInFocusEl.classList.remove('in-focus');
-      focusOnBtn[0] = 0;
     }
+    // if (!focusOnBtn.isFocusOnBtn) {
+
+    //   console.log('focusOnBtn', focusOnBtn);
+    //   console.log('btnInFocusEl', btnInFocusEl);
+
+    // }
     const searchCategory = evt.target.closest('.favorite-filter-item').dataset
       .category;
-    const btn = document.querySelector(`li[data-category="${searchCategory}"]`);
-    findProduct = findProductByFilter(searchCategory);
+    const btnEl = document.querySelector(
+      `li[data-category="${searchCategory}"]`
+    );
+    findProductArr = findProductByFilter(searchCategory);
 
     paginationSettings = setPagination(
       mainElementWidth,
       paginationEl,
-      findProduct
+      findProductArr
     );
 
     itemsPerPage = paginationSettings.itemsPerPage;
@@ -76,25 +82,25 @@ function onClick(evt) {
     let partOfArr = calculationOfVisibleElements(
       itemsPerPage,
       currentPage,
-      findProduct
+      findProductArr
     );
     createCardTemplate(partOfArr, favoriteRecipesListEl);
     checkHeart();
     let paginationAll = new Pagination(
       'pagination',
-      printPagination(findProduct, itemsPerPage, visiblePages)
+      printPagination(findProductArr, itemsPerPage, visiblePages)
     );
-        console.log('paginationFilter', paginationFilter);
+    console.log('paginationFilter', paginationFilter);
     paginationAll.on('afterMove', eventData =>
       movePage(
         eventData,
-        findProduct,
+        findProductArr,
         itemsPerPage,
         currentPage,
-        favoriteRecipesListEl
+        favoriteRecipesListEl,
+        btnEl,
       )
     );
-    console.log('focusOnBtn', focusOnBtn);
   }
 }
 
@@ -104,10 +110,10 @@ function removeHandler(evt) {
     const product = favoriteArrFromLocalStorage.find(
       ({ _id }) => _id === productId
     );
-    findProduct = findProductByFilter(product.category);
+    findProductArr = findProductByFilter(product.category);
     console.log('paginationFilter', paginationFilter);
     if (paginationFilter) {
-      paginationFilter._options.totalItems = findProduct.length;
+      paginationFilter._options.totalItems = findProductArr.length;
     }
 
     favoriteArrFromLocalStorage = JSON.parse(
@@ -127,8 +133,7 @@ function removeHandler(evt) {
       ) {
         btn.firstElementChild.classList.add('in-focus');
 
-        focusOnBtn[0] += 1;
-        console.log('focusOnBtn', focusOnBtn);
+        // focusOnBtn.isFocusOnBtn = true;
       }
       return;
     } else {
@@ -136,50 +141,44 @@ function removeHandler(evt) {
         `li[data-category="${product.category}"]`
       );
       btn.remove();
-      focusOnBtn[0] = 0;
-          console.log('focusOnBtn0', focusOnBtn);
+      // focusOnBtn.isFocusOnBtn = false;
       if (!btnAllCategory.classList.contains('favorite-active-btn')) {
         btnAllCategory.classList.add('in-focus');
-        findProduct = findProductByFilter('all');
+        findProductArr = findProductByFilter('all');
 
-          paginationSettings = setPagination(
-            mainElementWidth,
-            paginationEl,
-            findProduct
-          );
-
-          itemsPerPage = paginationSettings.itemsPerPage;
-          visiblePages = paginationSettings.visiblePages;
-
-          let partOfArr = calculationOfVisibleElements(
-            itemsPerPage,
-            currentPage,
-            findProduct
-          );
-          createCardTemplate(partOfArr, favoriteRecipesListEl);
-          checkHeart();
-          paginationFilter = new Pagination(
-            'pagination',
-            printPagination(findProduct, itemsPerPage, visiblePages)
-          );
-          console.log('paginationFilter', paginationFilter);
-          paginationFilter.on('afterMove', eventData =>
-            movePage(
-              eventData,
-              findProduct,
-              itemsPerPage,
-              currentPage,
-              favoriteRecipesListEl,
-              btn,
-              focusOnBtn
-            )
-          );
-        console.log(
-          'paginationFilter',
-          paginationFilter
+        paginationSettings = setPagination(
+          mainElementWidth,
+          paginationEl,
+          findProductArr
         );
 
-        focusOnAllCategoryBtn += 1;
+        itemsPerPage = paginationSettings.itemsPerPage;
+        visiblePages = paginationSettings.visiblePages;
+
+        let partOfArr = calculationOfVisibleElements(
+          itemsPerPage,
+          currentPage,
+          findProductArr
+        );
+        createCardTemplate(partOfArr, favoriteRecipesListEl);
+        checkHeart();
+        paginationFilter = new Pagination(
+          'pagination',
+          printPagination(findProductArr, itemsPerPage, visiblePages)
+        );
+        console.log('paginationFilter', paginationFilter);
+        paginationFilter.on('afterMove', eventData =>
+          movePage(
+            eventData,
+            findProductArr,
+            itemsPerPage,
+            currentPage,
+            favoriteRecipesListEl,
+          )
+        );
+        console.log('paginationFilter', paginationFilter);
+
+        focusOnAllCategoryBtn = true;
       }
       if (favoriteArrFromLocalStorage.length === 0) {
         btnAllCategory.remove();
@@ -217,13 +216,10 @@ function findProductByFilter(searchCategory) {
   const arrFromLocalStorage = JSON.parse(localStorage.getItem(KEY_FAVORITE));
   if (searchCategory === 'all') {
     btnAllCategory.classList.add('in-focus');
-    focusOnAllCategoryBtn += 1;
+    focusOnAllCategoryBtn = true;
     return arrFromLocalStorage;
   }
   return arrFromLocalStorage.filter(
     ({ category }) => category === searchCategory
   );
 }
-
-favoriteFilterEl.addEventListener('click', onClick);
-favoriteRecipesListEl.addEventListener('click', removeHandler);

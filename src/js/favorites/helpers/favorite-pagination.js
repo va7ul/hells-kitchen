@@ -1,12 +1,12 @@
 import { createCardTemplate } from '../../card_template';
 import { checkHeart } from './check-heart';
 
-export function setPagination(elementWidth, element, arr = undefined) {
+export function setPagination(elementWidth, element, arr = []) {
   let itemsPerPage = 0;
   let visiblePages = 0;
   if (elementWidth < 768) {
     console.log('elementWidth', elementWidth);
-    itemsPerPage = 3;
+    itemsPerPage = 9;
     visiblePages = 2;
     if (arr?.length <= itemsPerPage) {
       element.classList.add('hiddenvisualy');
@@ -15,7 +15,7 @@ export function setPagination(elementWidth, element, arr = undefined) {
       element.classList.remove('hiddenvisualy');
     }
   } else if (elementWidth >= 768) {
-    itemsPerPage = 2;
+    itemsPerPage = 12;
     visiblePages = 3;
     if (arr?.length <= itemsPerPage) {
       element.classList.add('hiddenvisualy');
@@ -24,7 +24,7 @@ export function setPagination(elementWidth, element, arr = undefined) {
       element.classList.remove('hiddenvisualy');
     }
   }
-  return (paginationSettings = { itemsPerPage, visiblePages });
+  return { itemsPerPage, visiblePages };
 }
 
 export function calculationOfVisibleElements(itemsPerPage, currentPage, arr) {
@@ -63,17 +63,12 @@ export function movePage(
   itemsPerPage,
   currentPage,
   elementList,
-  elementFilter = undefined,
-  focusOnBtn=null
+  elementFilter = null,
 ) {
   currentPage = eventData.page;
   let partOfArr = calculationOfVisibleElements(itemsPerPage, currentPage, arr);
   if (elementFilter) {
     elementFilter.firstElementChild.classList.add('in-focus');
-    if (focusOnBtn) {
-      focusOnBtn[0] += 1;
-    } 
-    console.log('intoPag', focusOnBtn);
   }
   createCardTemplate(partOfArr, elementList);
   checkHeart();
